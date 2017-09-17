@@ -3,24 +3,39 @@
 # Project 02
 
 # Get file
-gedFile = open("MyFamily.ged", "r")
+gedFile = open("Alex-Buhse-Family.ged", "r")
 # Acceptable tags
 projectTags = ["INDI", "NAME", "SEX", "BIRT", "DEAT", "FAMC", "FAMS", "FAM", "MARR", "HUSB", "WIFE", "CHIL", "DIV", "DATE", "HEAD", "TRLR", "NOTE"]
+
+individuals = [];
+
+namebool = False;
+idnum = " ";
 
 # Unique Family Values Container
 families = []
 currentFam = ''
 currentHusb = ''
 currentWife = ''
+
 # Main loop
 for line in gedFile:
     # Common Variables
     # Split words of line up, may come with spaces so must strip later
     words = line.split()
+
+    if namebool:
+        individuals.append([idnum, words[2], words[3]])
+        namebool = False;
+
+
     level = words[0]
     # Tag Line
     if level == "0":
         if len(words) >= 3:
+            if words[2] == "INDI":
+                idnum = words[1][1:-1];
+                namebool = True;
             tag = words[2]
             lineID = words[1]
             valid = ""
@@ -35,6 +50,7 @@ for line in gedFile:
                     currentFam = words[1]
             else:
                 valid = "N"
+
             # Input
             print("--> " + line.strip())
             # Output
@@ -78,14 +94,12 @@ for line in gedFile:
         # Space out pairings of i/o
         print("")
 
-# Check to see if any new families were declared at the end of the file
-if currentFam != '' and currentHusb != '' and currentWife != '':
-    addFam = [currentFam, currentHusb, currentWife]
-    families.append(addFam)
+# Close file
+gedFile.close()
+
+for individual in individuals:
+    print(individual[0] + " " + individual[1] + " " + individual[2])
 
 # Print Family Table
 for family in families:
     print(family[0] + " --- " + family[1] + " --- " + family[2])
-
-# Close file
-gedFile.close()
