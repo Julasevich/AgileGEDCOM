@@ -7,6 +7,11 @@ gedFile = open("MyFamily.ged", "r")
 # Acceptable tags
 projectTags = ["INDI", "NAME", "SEX", "BIRT", "DEAT", "FAMC", "FAMS", "FAM", "MARR", "HUSB", "WIFE", "CHIL", "DIV", "DATE", "HEAD", "TRLR", "NOTE"]
 
+# Unique Family Values Container
+families = []
+currentFam = ''
+currentHusb = ''
+currentWife = ''
 # Main loop
 for line in gedFile:
     # Common Variables
@@ -21,6 +26,13 @@ for line in gedFile:
             valid = ""
             if tag in projectTags:
                 valid = "Y"
+                if tag == "FAM":
+                    if currentFam != '' and currentHusb != '' and currentWife != '':
+                        addFam = [currentFam, currentHusb, currentWife]
+                        families.append(addFam)
+                        currentHusb = ''
+                        currentWife = ''
+                    currentFam = words[1]
             else:
                 valid = "N"
             # Input
@@ -53,6 +65,10 @@ for line in gedFile:
             arguments = ""
         if tag in projectTags:
             valid = "Y"
+            if tag == "HUSB":
+                currentHusb = words[2]
+            elif tag == "WIFE":
+                currentWife = words[2]
         else:
             valid = "N"
         # Input
@@ -61,6 +77,15 @@ for line in gedFile:
         print("<-- " + level.strip() + "|" + tag.strip() + "|" + valid + "|" + arguments.strip())
         # Space out pairings of i/o
         print("")
+
+# Check to see if any new families were declared at the end of the file
+if currentFam != '' and currentHusb != '' and currentWife != '':
+    addFam = [currentFam, currentHusb, currentWife]
+    families.append(addFam)
+
+# Print Family Table
+for family in families:
+    print(family[0] + " --- " + family[1] + " --- " + family[2])
 
 # Close file
 gedFile.close()
