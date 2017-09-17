@@ -3,19 +3,32 @@
 # Project 02
 
 # Get file
-gedFile = open("MyFamily.ged", "r")
+gedFile = open("Alex-Buhse-Family.ged", "r")
 # Acceptable tags
 projectTags = ["INDI", "NAME", "SEX", "BIRT", "DEAT", "FAMC", "FAMS", "FAM", "MARR", "HUSB", "WIFE", "CHIL", "DIV", "DATE", "HEAD", "TRLR", "NOTE"]
 
+individuals = [];
+
+namebool = False;
+idnum = " ";
 # Main loop
 for line in gedFile:
     # Common Variables
     # Split words of line up, may come with spaces so must strip later
     words = line.split()
+    
+    if namebool:
+        individuals.append([idnum, words[2], words[3]])
+        namebool = False;
+    
+        
     level = words[0]
     # Tag Line
     if level == "0":
         if len(words) >= 3:
+            if words[2] == "INDI":
+                idnum = words[1][1:-1];
+                namebool = True;
             tag = words[2]
             lineID = words[1]
             valid = ""
@@ -23,6 +36,7 @@ for line in gedFile:
                 valid = "Y"
             else:
                 valid = "N"
+            
             # Input
             print("--> " + line.strip())
             # Output
@@ -64,3 +78,6 @@ for line in gedFile:
 
 # Close file
 gedFile.close()
+
+for individual in individuals:
+    print(individual[0] + " " + individual[1] + " " + individual[2])
