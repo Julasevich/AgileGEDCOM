@@ -3,7 +3,7 @@
 # Project 02
 
 # Get file
-gedFile = open("Alex-Buhse-Family.ged", "r")
+gedFile = open("MyFamily.ged", "r")
 # Acceptable tags
 projectTags = ["INDI", "NAME", "SEX", "BIRT", "DEAT", "FAMC", "FAMS", "FAM", "MARR", "HUSB", "WIFE", "CHIL", "DIV", "DATE", "HEAD", "TRLR", "NOTE"]
 
@@ -97,9 +97,30 @@ for line in gedFile:
 # Close file
 gedFile.close()
 
+if currentFam != '' and currentHusb != '' and currentWife != '':
+    addFam = [currentFam, currentHusb, currentWife]
+    families.append(addFam)
+
+# Print Individuals
+print("Table of Unique Individuals")
 for individual in individuals:
     print(individual[0] + " " + individual[1] + " " + individual[2])
 
+print("")
+
 # Print Family Table
+print("Table of Families")
+print("** FamilyID --- HusbandID : HusbandName --- WifeID : WifeName **")
 for family in families:
-    print(family[0] + " --- " + family[1] + " --- " + family[2])
+    famID = family[0][1:-1]
+    husbID = family[1][1:-1]
+    wifeID = family[2][1:-1]
+    husbName = ''
+    wifeName = ''
+    for individual in individuals:
+        if individual[0] == husbID:
+            husbName = individual[1] + " " + individual[2]
+        elif individual[0] == wifeID:
+            wifeName = individual[1] + " " + individual[2]
+    output = famID + " --- " + husbID + ": " + husbName + " --- " + wifeID + ": " + wifeName
+    print(output)
