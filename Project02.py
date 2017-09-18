@@ -1,22 +1,25 @@
-# Jacob Ulasevich
-# 9/9/2017
 # Project 02
+from prettytable import PrettyTable
 
 # Get file
 gedFile = open("MyFamily.ged", "r")
 # Acceptable tags
 projectTags = ["INDI", "NAME", "SEX", "BIRT", "DEAT", "FAMC", "FAMS", "FAM", "MARR", "HUSB", "WIFE", "CHIL", "DIV", "DATE", "HEAD", "TRLR", "NOTE"]
 
-individuals = [];
+individuals = []
 
-namebool = False;
-idnum = " ";
+namebool = False
+idnum = " "
 
 # Unique Family Values Container
 families = []
 currentFam = ''
+currentMarr = ''
+currentDiv = ''
 currentHusb = ''
 currentWife = ''
+currentChildren = []
+stillMarried = True
 
 # Main loop
 for line in gedFile:
@@ -26,16 +29,15 @@ for line in gedFile:
 
     if namebool:
         individuals.append([idnum, words[2], words[3]])
-        namebool = False;
-
+        namebool = False
 
     level = words[0]
     # Tag Line
     if level == "0":
         if len(words) >= 3:
             if words[2] == "INDI":
-                idnum = words[1][1:-1];
-                namebool = True;
+                idnum = words[1][1:-1]
+                namebool = True
             tag = words[2]
             lineID = words[1]
             valid = ""
@@ -43,10 +45,17 @@ for line in gedFile:
                 valid = "Y"
                 if tag == "FAM":
                     if currentFam != '' and currentHusb != '' and currentWife != '':
-                        addFam = [currentFam, currentHusb, currentWife]
+                        if currentChildren == []:
+                            currentChildren = "NA"
+                        if currentDiv == '':
+                            currentDiv = "NA"
+                        addFam = [currentFam, currentMarr, currentDiv, currentHusb, currentWife, currentChildren]
                         families.append(addFam)
+                        currentMarr = ''
+                        currentDiv = ''
                         currentHusb = ''
                         currentWife = ''
+                        currentChildren = []
                     currentFam = words[1]
             else:
                 valid = "N"
@@ -85,6 +94,18 @@ for line in gedFile:
                 currentHusb = words[2]
             elif tag == "WIFE":
                 currentWife = words[2]
+            elif tag == "CHIL":
+                currentChildren.append(words[2])
+            elif tag == "MARR":
+                stillMarried = True
+            elif tag == "DIV":
+                stillMarried = False
+            elif tag == "DATE":
+                if stillMarried is True:
+                    currentMarr = words[2:]
+                else:
+                    currentDiv = words[2:]
+
         else:
             valid = "N"
         # Input
@@ -98,7 +119,11 @@ for line in gedFile:
 gedFile.close()
 
 if currentFam != '' and currentHusb != '' and currentWife != '':
-    addFam = [currentFam, currentHusb, currentWife]
+    if currentChildren == []:
+        currentChildren = "NA"
+    if currentDiv == '':
+        currentDiv = "NA"
+    addFam = [currentFam, currentMarr, currentDiv, currentHusb, currentWife, currentChildren]
     families.append(addFam)
 
 # Print Individuals
@@ -109,12 +134,24 @@ for individual in individuals:
 print("")
 
 # Print Family Table
-print("Table of Families")
-print("** FamilyID --- HusbandID : HusbandName --- WifeID : WifeName **")
+FamIDs = []
+MarrDates = []
+DivDates = []
+HusbIDs = []
+WifeIDs = []
+ChildrenIDs = []
+HusbNames = []
+WifeNames = []
+
 for family in families:
-    famID = family[0][1:-1]
-    husbID = family[1][1:-1]
-    wifeID = family[2][1:-1]
+    FamIDs.append(family[0][1:-1])
+    MarrDates.append(family[1])
+    DivDates.append(family[2])
+    husbID = family[3][1:-1]
+    HusbIDs.append(husbID)
+    wifeID = family[4][1:-1]
+    WifeIDs.append(wifeID)
+    ChildrenIDs.append(family[5])
     husbName = ''
     wifeName = ''
     for individual in individuals:
@@ -122,5 +159,16 @@ for family in families:
             husbName = individual[1] + " " + individual[2]
         elif individual[0] == wifeID:
             wifeName = individual[1] + " " + individual[2]
-    output = famID + " --- " + husbID + ": " + husbName + " --- " + wifeID + ": " + wifeName
-    print(output)
+    HusbNames.append(husbName)
+    WifeNames.append(wifeName)
+
+famTable = PrettyTable()
+famTable.add_column("ID", FamIDs)
+famTable.add_column("Married", MarrDates)
+famTable.add_column("Divorced", DivDates)
+famTable.add_column("Husband ID", HusbIDs)
+famTable.add_column("Husband Name", HusbNames)
+famTable.add_column("Wife ID", WifeIDs)
+famTable.add_column("Wife Name", WifeNames)
+famTable.add_column("Children", ChildrenIDs)
+print(famTable)
