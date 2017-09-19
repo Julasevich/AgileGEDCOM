@@ -2,6 +2,7 @@
 from prettytable import PrettyTable
 import time
 
+months = {"JAN": 1, "FEB": 2, "MAR": 3, "APR": 4, "MAY": 5, "JUN": 6, "JUL": 7, "AUG": 8, "SEP": 9, "OCT": 10, "NOV": 11, "DEC": 12}
 today = time.strftime("%Y %m %d")
 
 
@@ -14,16 +15,16 @@ def getAge(today, birthday, alive, deathday):
         today_month = date[1]
         today_day = date[2]
         age = int(today_year) - int(birthday[2])
-        age += (int(today_month) / 12.0) - (int(birthday[1])/12.0)
+        age += (int(today_month) / 12.0) - (months[birthday[1]]/12.0)
         age += (int(today_day)/365.0) - (int(birthday[0])/365.0)
         return(int(age))
     else:
         # Compute Age up to death day
         death_year = deathday[2]
-        death_month = deathday[1]
+        death_month = months[deathday[1]]
         death_day = deathday[0]
         age = int(death_year) - int(birthday[2])
-        age += (int(death_month) / 12.0) - (int(birthday[1])/12.0)
+        age += (int(death_month) / 12.0) - (months[birthday[1]]/12.0)
         age += (int(death_day)/365.0) - (int(birthday[0])/365.0)
         return int(age)
 
