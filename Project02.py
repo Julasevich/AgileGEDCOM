@@ -1,17 +1,54 @@
 # Project 02
 from prettytable import PrettyTable
+import time
+
+today = time.strftime("%Y %m %d")
+
+
+def getAge(today, birthday, alive, deathday):
+    '''Take today's date and compute an age.'''
+    if alive:
+        # Compute Age normally
+        date = today.split()
+        today_year = date[0]
+        today_month = date[1]
+        today_day = date[2]
+        age = int(today_year) - int(birthday[2])
+        age += (int(today_month) / 12.0) - (int(birthday[1])/12.0)
+        age += (int(today_day)/365.0) - (int(birthday[0])/365.0)
+        return(int(age))
+    else:
+        # Compute Age up to death day
+        death_year = deathday[2]
+        death_month = deathday[1]
+        death_day = deathday[0]
+        age = int(death_year) - int(birthday[2])
+        age += (int(death_month) / 12.0) - (int(birthday[1])/12.0)
+        age += (int(death_day)/365.0) - (int(birthday[0])/365.0)
+        return int(age)
+
 
 # Get file
 gedFile = open("MyFamily.ged", "r")
 # Acceptable tags
 projectTags = ["INDI", "NAME", "SEX", "BIRT", "DEAT", "FAMC", "FAMS", "FAM", "MARR", "HUSB", "WIFE", "CHIL", "DIV", "DATE", "HEAD", "TRLR", "NOTE"]
 
+# Unique Individual Values
 individuals = []
+idnum = ''
+indiFirstName = ''
+indiLastName = ''
+indiSex = ''
+indiBirthday = ''
+indiAge = ''
+indiAlive = True
+indiDeath = ''
+indiChild = ''
+indiSpouse = ''
+birthday = False
+deathday = False
 
-namebool = False
-idnum = " "
-
-# Unique Family Values Container
+# Unique Family Values
 families = []
 currentFam = ''
 currentMarr = ''
@@ -27,23 +64,35 @@ for line in gedFile:
     # Split words of line up, may come with spaces so must strip later
     words = line.split()
 
-    if namebool:
-        individuals.append([idnum, words[2], words[3]])
-        namebool = False
-
     level = words[0]
     # Tag Line
     if level == "0":
         if len(words) >= 3:
-            if words[2] == "INDI":
-                idnum = words[1][1:-1]
-                namebool = True
             tag = words[2]
             lineID = words[1]
             valid = ""
             if tag in projectTags:
                 valid = "Y"
-                if tag == "FAM":
+                if tag == "INDI":
+                    if indiFirstName != '' and indiLastName != '' and idnum != '':
+                        if indiDeath == '':
+                            indiDeath = "NA"
+                        if indiChild == '':
+                            indiChild = "NA"
+                        if indiSpouse == '':
+                            indiSpouse = "NA"
+                        indiAge = getAge(today, indiBirthday, indiAlive, indiDeath)
+                        individuals.append([idnum, indiFirstName, indiLastName, indiSex, indiBirthday, indiAge, indiAlive, indiDeath, indiChild, indiSpouse])
+                        indiFirstName = ''
+                        indiLastName = ''
+                        indiSex = ''
+                        indiAge = ''
+                        indiAlive = True
+                        indiDeath = ''
+                        indiChild = ''
+                        indiSpouse = ''
+                    idnum = words[1][1:-1]
+                elif tag == "FAM":
                     if currentFam != '' and currentHusb != '' and currentWife != '':
                         if currentChildren == []:
                             currentChildren = "NA"
@@ -101,11 +150,30 @@ for line in gedFile:
             elif tag == "DIV":
                 stillMarried = False
             elif tag == "DATE":
-                if stillMarried is True:
+                if stillMarried is True and birthday is False and deathday is False:
                     currentMarr = words[2:]
-                else:
+                elif birthday is False and deathday is False:
                     currentDiv = words[2:]
-
+                elif deathday is False:
+                    indiBirthday = words[2:]
+                    birthday = False
+                else:
+                    indiDeath = words[2:]
+                    deathday = False
+            elif tag == "NAME":
+                indiFirstName = words[2]
+                indiLastName = words[3]
+            elif tag == "SEX":
+                indiSex = words[2]
+            elif tag == "BIRT":
+                birthday = True
+            elif tag == "DEAT":
+                deathday = True
+                indiAlive = False
+            elif tag == "FAMC":
+                indiChild = words[2][1:-1]
+            elif tag == "FAMS":
+                indiSpouse = words[2][1:-1]
         else:
             valid = "N"
         # Input
@@ -118,6 +186,7 @@ for line in gedFile:
 # Close file
 gedFile.close()
 
+# Check if any new families are waiting to be added
 if currentFam != '' and currentHusb != '' and currentWife != '':
     if currentChildren == []:
         currentChildren = "NA"
@@ -126,11 +195,50 @@ if currentFam != '' and currentHusb != '' and currentWife != '':
     addFam = [currentFam, currentMarr, currentDiv, currentHusb, currentWife, currentChildren]
     families.append(addFam)
 
-# Print Individuals
-print("Table of Unique Individuals")
-for individual in individuals:
-    print(individual[0] + " " + individual[1] + " " + individual[2])
+# Check if any new individuals are waiting to be added
+if indiFirstName != '' and indiLastName != '':
+    if indiDeath == '':
+        indiDeath = "NA"
+    if indiChild == '':
+        indiChild = "NA"
+    if indiSpouse == '':
+        indiSpouse = "NA"
+    indiAge = getAge(today, indiBirthday, indiAlive, indiDeath)
+    individuals.append([idnum, indiFirstName, indiLastName, indiSex, indiBirthday, indiAge, indiAlive, indiDeath, indiChild, indiSpouse])
 
+# Print Individuals Table
+IndiIDs = []
+IndiNames = []
+IndiSexs = []
+IndiBirthdays = []
+IndiAges = []
+IndiAlives = []
+IndiDeaths = []
+IndiChilds = []
+IndiSpouses = []
+
+for individual in individuals:
+    IndiIDs.append(individual[0])
+    IndiNames.append(individual[1] + " " + individual[2])
+    IndiSexs.append(individual[3])
+    IndiBirthdays.append(individual[4])
+    IndiAges.append(individual[5])
+    IndiAlives.append(individual[6])
+    IndiDeaths.append(individual[7])
+    IndiChilds.append(individual[8])
+    IndiSpouses.append(individual[9])
+
+indiTable = PrettyTable()
+indiTable.add_column("ID", IndiIDs)
+indiTable.add_column("Name", IndiNames)
+indiTable.add_column("Sex", IndiSexs)
+indiTable.add_column("Birthday", IndiBirthdays)
+indiTable.add_column("Age", IndiAges)
+indiTable.add_column("Alive", IndiAlives)
+indiTable.add_column("Death", IndiDeaths)
+indiTable.add_column("Child", IndiChilds)
+indiTable.add_column("Spouse", IndiSpouses)
+print(indiTable)
 print("")
 
 # Print Family Table
