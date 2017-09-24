@@ -32,6 +32,26 @@ def getAge(today, birthday, alive, deathday):
             age = 0
         return int(age)
 
+def pastDate(date):
+    '''
+    Function that takes in a date and returns false if the date has not happened yet and true if it has.
+    Input is taken as a list containing date information as stored in a GED file
+    '''
+    today = time.strftime("%Y %m %d").split()
+    if int(date[2]) < int(today[0]):
+        return True
+    elif int(today[0]) < int(date[2]):
+        return False
+    else:
+        if months[date[1]] < int(today[1]):
+            return True
+        elif int(today[1]) < months[date[1]]:
+            return False
+        else:
+            if int(today[2]) < int(date[0]):
+                return False
+            return True
+    
 
 # Get file
 gedFile = open("MyFamily.ged", "r")
