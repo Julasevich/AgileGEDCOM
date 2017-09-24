@@ -17,6 +17,8 @@ def getAge(today, birthday, alive, deathday):
         age = int(today_year) - int(birthday[2])
         age += (int(today_month) / 12.0) - (months[birthday[1]]/12.0)
         age += (int(today_day)/365.0) - (int(birthday[0])/365.0)
+        if int(age) >= 150:
+            age = 0
         return(int(age))
     else:
         # Compute Age up to death day
@@ -26,6 +28,8 @@ def getAge(today, birthday, alive, deathday):
         age = int(death_year) - int(birthday[2])
         age += (int(death_month) / 12.0) - (months[birthday[1]]/12.0)
         age += (int(death_day)/365.0) - (int(birthday[0])/365.0)
+        if int(age) >= 150:
+            age = 0
         return int(age)
 
 
@@ -83,6 +87,8 @@ for line in gedFile:
                         if indiSpouse == '':
                             indiSpouse = "NA"
                         indiAge = getAge(today, indiBirthday, indiAlive, indiDeath)
+                        if indiAge >= 150:
+                            indiAge = 0
                         individuals.append([idnum, indiFirstName, indiLastName, indiSex, indiBirthday, indiAge, indiAlive, indiDeath, indiChild, indiSpouse])
                         indiFirstName = ''
                         indiLastName = ''
