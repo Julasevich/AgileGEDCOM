@@ -1,9 +1,34 @@
-# Project 03
 from prettytable import PrettyTable
 import time
 
 months = {"JAN": 1, "FEB": 2, "MAR": 3, "APR": 4, "MAY": 5, "JUN": 6, "JUL": 7, "AUG": 8, "SEP": 9, "OCT": 10, "NOV": 11, "DEC": 12}
 today = time.strftime("%Y %m %d")
+
+
+def marrBeforeDiv(date_marr, date_div):
+    '''Function to find any instances of divorce before marriage.'''
+    if(date_marr[2] > date_div[2]):
+        return False
+    elif(date_marr[2] == date_div[2]):
+        if(date_marr[1] > date_div[1]):
+            return False
+        elif(date_marr[1] == date_div[1]):
+            if(date_marr[0] > date_div[0]):
+                return False
+    return True
+
+
+def marrBeforeDeath(date_marr, date_death):
+    '''Function to find any instances of death before marriage.'''
+    if(date_marr[2] > date_death[2]):
+        return False
+    elif(date_marr[2] == date_death[2]):
+        if(date_marr[1] > date_death[1]):
+            return False
+        elif(date_marr[1] == date_death[1]):
+            if(date_marr[0] > date_death[0]):
+                return False
+    return True
 
 
 def getAge(today, birthday, alive, deathday):
