@@ -430,3 +430,10 @@ for i, family in enumerate(families):
         print("ERROR: FAMILY: " + family[0][1:-1] + " -- Death before married.")
     if not noBigamy(individual[9].count, family[2].count):
         print("ERROR: FAMILY: US11: " + family[0][1:-1] + " -- Married again without divorcing.")
+
+    if div_before_death(family[2], IndiDeaths[husbIndex]) is False:
+        print("ERROR: FAMILY: " + family[0][1:-1] + " -- Divorce after death")
+    if div_before_death(family[2], IndiDeaths[wifeIndex]) is False:
+        print("ERROR: FAMILY: " + family[0][1:-1] + " -- Divorce after death")
+
+
