@@ -399,7 +399,7 @@ for indi in individuals:
     if  not pastDate(indi[4]):
         print("ERROR: INDIVIDUAL: US01: " + indi[0] + ": Birthday " + indi[4][0] + " " indi[4][1] + " " + indi[4][2] " occurs in the future")
     if  not indi[6]:
-        if !pastDate(indi[7]):
+        if not pastDate(indi[7]):
             print("ERROR: INDIVIDUAL: US01: " + indi[0] + ": Death " + indi[4][0] + " " indi[4][1] + " " + indi[4][2] " occurs in the future")
     if  not birth_before_death(indi[4], indi[7]):
         print("ERROR: INDIVIDUAL: US03: " + indi[0] + ": Died " + indi[7][0] + " " indi[7][1] + " " + indi[7][2] " before born " + indi[4][0] + " " indi[4][1] + " " + indi[4][2])
