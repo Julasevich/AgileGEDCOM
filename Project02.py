@@ -93,6 +93,12 @@ def getAge(today, birthday, alive, deathday):
             age = 0
         return int(age)
 
+def noBigamy(spouses, divorces):
+    '''US11 - Function to check status of marrage'''
+    if (spouses-divorses) > 1 :
+        return False
+    else:
+        return True
 
 def pastDate(date):
     '''
@@ -113,7 +119,7 @@ def pastDate(date):
             if int(today[2]) < int(date[0]):
                 return False
             return True
-        
+
 def birthBfrMarr(birth, marry):
     '''
     Function that takes in a birth date and a marriage date and checks that the marriage occurs after the birth
@@ -404,7 +410,8 @@ for indi in individuals:
         else:
             errmsg += ("at death - Birth " + indi[4][0] + " " indi[4][1] + " " + indi[4][2] + ": Death " + indi[7][0] + " " indi[7][1] + " " + indi[7][2])
         print(errmsg)
-            
+
+
 # Print family Errors
 for i, family in enumerate(families):
     husbID = family[3][1:-1]
@@ -421,3 +428,5 @@ for i, family in enumerate(families):
         print("ERROR: FAMILY: " + family[0][1:-1] + " -- Divorced before married.")
     if deathBeforeMarr(family[1], IndiDeaths[husbIndex], IndiDeaths[wifeIndex]):
         print("ERROR: FAMILY: " + family[0][1:-1] + " -- Death before married.")
+    if !noBigamy(individual[9].count, family[2].count):
+        print("ERROR: FAMILY: US11: " + family[0][1:-1] + " -- Married again without divorcing.")
