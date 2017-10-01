@@ -5,8 +5,21 @@ months = {"JAN": 1, "FEB": 2, "MAR": 3, "APR": 4, "MAY": 5, "JUN": 6, "JUL": 7, 
 today = time.strftime("%Y %m %d")
 
 
+def birth_before_death(birthday, deathday):
+    '''US03 - Function to find any instances of death before birth'''
+    if(birthday[2] > deathday[2]):
+        return False
+    elif(birthday[2]== deathday[2]):
+        if (birthday[1] > deathday[1]):
+            return False
+        elif (birthday[1] == deathday[1]):
+            if (birthday[0] > deathday[0]):
+                return False
+    return True
+
+
 def divBeforeMarr(date_marr, date_div):
-    '''Function to find any instances of divorce before marriage.'''
+    '''US04 - Function to find any instances of divorce before marriage.'''
     if len(date_div) < 3:
         return False
     if(date_marr[2] < date_div[2]):
@@ -21,7 +34,7 @@ def divBeforeMarr(date_marr, date_div):
 
 
 def deathBeforeMarr(date_marr, date_death_husb, date_death_wife):
-    '''Function to find any instances of death before marriage.'''
+    '''US05 - Function to find any instances of death before marriage.'''
     if len(date_death_husb) < 3 and len(date_death_wife) < 3:
         return False
     if (len(date_death_husb) >= 3 and date_marr[2] < date_death_husb[2]) or (len(date_death_wife) >= 3 and date_marr[2] < date_death_wife[2]):
@@ -37,6 +50,19 @@ def deathBeforeMarr(date_marr, date_death_husb, date_death_wife):
             return False
         elif(date_marr[1] == date_death_wife[1]):
             if(date_marr[0] < date_death_wife[0]):
+                return False
+    return True
+
+
+def div_before_death(div_date, deathday):
+    '''US06 - Function to find any instances of death before marriage'''
+    if (div_date[2] > deathday[2]):
+        return False
+    elif (div_date[2] == deathday[2]):
+        if (div_date[1] > deathday[1]):
+            return False
+        elif (div_date[1] == deathday[1]):
+            if (div_date[0] > deathday[0]):
                 return False
     return True
 
