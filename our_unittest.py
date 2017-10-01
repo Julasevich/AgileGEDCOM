@@ -21,6 +21,7 @@ class TestGEDCOM(unittest.TestCase):
         self.assertTrue(marrBeforeDiv(['23', 'FEB', '1970'], ['23', 'FEB', '1970']))
     # ----------------------------------
 
+    # Tests written by ...
 
 if __name__ == '__main__':
     unittest.main()
