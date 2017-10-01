@@ -396,12 +396,12 @@ print(famTable)
 
 #Print individual errors
 for indi in individuals:
-    if !pastDate(indi[4]):
+    if  not pastDate(indi[4]):
         print("ERROR: INDIVIDUAL: US01: " + indi[0] + ": Birthday " + indi[4][0] + " " indi[4][1] + " " + indi[4][2] " occurs in the future")
-    if !indi[6]:
+    if  not indi[6]:
         if !pastDate(indi[7]):
             print("ERROR: INDIVIDUAL: US01: " + indi[0] + ": Death " + indi[4][0] + " " indi[4][1] + " " + indi[4][2] " occurs in the future")
-    if !birth_before_death(indi[4], indi[7]):
+    if  not birth_before_death(indi[4], indi[7]):
         print("ERROR: INDIVIDUAL: US03: " + indi[0] + ": Died " + indi[7][0] + " " indi[7][1] + " " + indi[7][2] " before born " + indi[4][0] + " " indi[4][1] + " " + indi[4][2])
     if indi[5] >= 150:
         errmsg = ("ERROR: INDIVIDUAL: US07: " + indi[0] + " More than 150 years old ")
@@ -428,5 +428,5 @@ for i, family in enumerate(families):
         print("ERROR: FAMILY: " + family[0][1:-1] + " -- Divorced before married.")
     if deathBeforeMarr(family[1], IndiDeaths[husbIndex], IndiDeaths[wifeIndex]):
         print("ERROR: FAMILY: " + family[0][1:-1] + " -- Death before married.")
-    if !noBigamy(individual[9].count, family[2].count):
+    if not noBigamy(individual[9].count, family[2].count):
         print("ERROR: FAMILY: US11: " + family[0][1:-1] + " -- Married again without divorcing.")
