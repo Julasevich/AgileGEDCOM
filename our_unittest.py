@@ -22,9 +22,6 @@ class TestGEDCOM(unittest.TestCase):
         self.assertTrue(marrBeforeDiv(['23', 'FEB', '1970'], ['23', 'FEB', '1970']))
 
 
-
-    # ----------------------------------
-
     # Tests written by Greyson Strouse
     def testDivorceBeforeDeath(self):
         self.assertTrue(div_before_death(['16', 'MAY', '2000'], ['16', 'MAY', '2005']))
