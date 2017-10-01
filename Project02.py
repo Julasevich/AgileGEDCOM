@@ -5,28 +5,38 @@ months = {"JAN": 1, "FEB": 2, "MAR": 3, "APR": 4, "MAY": 5, "JUN": 6, "JUL": 7, 
 today = time.strftime("%Y %m %d")
 
 
-def marrBeforeDiv(date_marr, date_div):
+def divBeforeMarr(date_marr, date_div):
     '''Function to find any instances of divorce before marriage.'''
-    if(date_marr[2] > date_div[2]):
+    if len(date_div) < 3:
+        return False
+    if(date_marr[2] < date_div[2]):
         return False
     elif(date_marr[2] == date_div[2]):
-        if(date_marr[1] > date_div[1]):
+        if(date_marr[1] < date_div[1]):
             return False
         elif(date_marr[1] == date_div[1]):
-            if(date_marr[0] > date_div[0]):
+            if(date_marr[0] < date_div[0]):
                 return False
     return True
 
 
-def marrBeforeDeath(date_marr, date_death):
+def deathBeforeMarr(date_marr, date_death_husb, date_death_wife):
     '''Function to find any instances of death before marriage.'''
-    if(date_marr[2] > date_death[2]):
+    if len(date_death_husb) < 3 and len(date_death_wife) < 3:
         return False
-    elif(date_marr[2] == date_death[2]):
-        if(date_marr[1] > date_death[1]):
+    if (len(date_death_husb) >= 3 and date_marr[2] < date_death_husb[2]) or (len(date_death_wife) >= 3 and date_marr[2] < date_death_wife[2]):
+        return False
+    elif len(date_death_husb) >= 3 and date_marr[2] == date_death_husb[2]:
+        if(date_marr[1] < date_death_husb[1]):
             return False
-        elif(date_marr[1] == date_death[1]):
-            if(date_marr[0] > date_death[0]):
+        elif(date_marr[1] == date_death_husb[1]):
+            if(date_marr[0] < date_death_husb[0]):
+                return False
+    elif len(date_death_wife) >= 3 and date_marr[2] == date_death_wife[2]:
+        if(date_marr[1] < date_death_wife[1]):
+            return False
+        elif(date_marr[1] == date_death_wife[1]):
+            if(date_marr[0] < date_death_wife[0]):
                 return False
     return True
 
@@ -57,6 +67,7 @@ def getAge(today, birthday, alive, deathday):
             age = 0
         return int(age)
 
+
 def pastDate(date):
     '''
     Function that takes in a date and returns false if the date has not happened yet and true if it has.
@@ -76,7 +87,7 @@ def pastDate(date):
             if int(today[2]) < int(date[0]):
                 return False
             return True
-    
+
 
 # Get file
 gedFile = open("MyFamily.ged", "r")
@@ -332,3 +343,20 @@ famTable.add_column("Wife ID", WifeIDs)
 famTable.add_column("Wife Name", WifeNames)
 famTable.add_column("Children", ChildrenIDs)
 print(famTable)
+
+# Print Errors
+for i, family in enumerate(families):
+    husbID = family[3][1:-1]
+    wifeID = family[3][1:-1]
+    husbIndex = 0
+    wifeIndex = 0
+    for y, individual in enumerate(individuals):
+        if individual[0] == husbID:
+            husbIndex = y
+        elif individual[0] == wifeID:
+            wifeIndex = y
+
+    if divBeforeMarr(family[1], family[2]) is True:
+        print("ERROR: FAMILY: " + family[0][1:-1] + " -- Divorced before married.")
+    if deathBeforeMarr(family[1], IndiDeaths[husbIndex], IndiDeaths[wifeIndex]):
+        print("ERROR: FAMILY: " + family[0][1:-1] + " -- Death before married.")
