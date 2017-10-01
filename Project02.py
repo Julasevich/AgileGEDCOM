@@ -388,10 +388,27 @@ famTable.add_column("Wife Name", WifeNames)
 famTable.add_column("Children", ChildrenIDs)
 print(famTable)
 
-# Print Errors
+#Print individual errors
+for indi in individuals:
+    if !pastDate(indi[4]):
+        print("ERROR: INDIVIDUAL: US01: " + indi[0] + ": Birthday " + indi[4][0] + " " indi[4][1] + " " + indi[4][2] " occurs in the future")
+    if !indi[6]:
+        if !pastDate(indi[7]):
+            print("ERROR: INDIVIDUAL: US01: " + indi[0] + ": Death " + indi[4][0] + " " indi[4][1] + " " + indi[4][2] " occurs in the future")
+    if !birth_before_death(indi[4], indi[7]):
+        print("ERROR: INDIVIDUAL: US03: " + indi[0] + ": Died " + indi[7][0] + " " indi[7][1] + " " + indi[7][2] " before born " + indi[4][0] + " " indi[4][1] + " " + indi[4][2])
+    if indi[5] >= 150:
+        errmsg = ("ERROR: INDIVIDUAL: US07: " + indi[0] + " More than 150 years old ")
+        if(indi[6]):
+            errmsg += ("- Birth date " + indi[4][0] + " " indi[4][1] + " " + indi[4][2])
+        else:
+            errmsg += ("at death - Birth " + indi[4][0] + " " indi[4][1] + " " + indi[4][2] + ": Death " + indi[7][0] + " " indi[7][1] + " " + indi[7][2])
+        print(errmsg)
+            
+# Print family Errors
 for i, family in enumerate(families):
     husbID = family[3][1:-1]
-    wifeID = family[3][1:-1]
+    wifeID = family[4][1:-1]
     husbIndex = 0
     wifeIndex = 0
     for y, individual in enumerate(individuals):
