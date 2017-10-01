@@ -113,7 +113,25 @@ def pastDate(date):
             if int(today[2]) < int(date[0]):
                 return False
             return True
-
+        
+def birthBfrMarr(birth, marry):
+    '''
+    Function that takes in a birth date and a marriage date and checks that the marriage occurs after the birth
+    Input is taken as two string lists containing birth date and marriage date information as stored in a GED file
+    '''
+    if int(birth[2]) < int(marry[2]):
+        return True
+    elif int(marry[2]) < int(birth[2]):
+        return False
+    else:
+        if months[birth[1]] < months[marry[1]]:
+            return True
+        elif months[marry[1]] < months[birth[1]]:
+            return False
+        else:
+            if int(int(birth[0]) >= int(marry[0])):
+                return False
+            return True
 
 # Get file
 gedFile = open("MyFamily.ged", "r")
