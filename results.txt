@@ -1,0 +1,592 @@
+--> 0 HEAD
+<-- 0|HEAD|Y
+
+--> 1 NOTE https://github.com/Julasevich/AgileGEDCOM
+<-- 1|NOTE|Y|https://github.com/Julasevich/AgileGEDCOM
+
+--> 1 SOUR Family Echo
+<-- 1|SOUR|N|Family Echo
+
+--> 2 WWW http://www.familyecho.com/
+<-- 2|WWW|N|http://www.familyecho.com/
+
+--> 1 FILE My Family
+<-- 1|FILE|N|My Family
+
+--> 1 DATE 31 AUG 2017
+<-- 1|DATE|Y|31 AUG 2017
+
+--> 1 DEST ANSTFILE
+<-- 1|DEST|N|ANSTFILE
+
+--> 1 GEDC
+<-- 1|GEDC|N|
+
+--> 2 VERS 5.5.1
+<-- 2|VERS|N|5.5.1
+
+--> 2 FORM LINEAGE-LINKED
+<-- 2|FORM|N|LINEAGE-LINKED
+
+--> 1 SUBM @I1@
+<-- 1|SUBM|N|@I1@
+
+--> 2 NAME Jacob Ulasevich
+<-- 2|NAME|Y|Jacob Ulasevich
+
+--> 1 SUBN
+<-- 1|SUBN|N|
+
+--> 1 CHAR UTF-8
+<-- 1|CHAR|N|UTF-8
+
+--> 0 @I1@ INDI
+<-- 0|@I1@|INDI|Y
+
+--> 1 NAME Jacob /Ulasevich/
+<-- 1|NAME|Y|Jacob /Ulasevich/
+
+--> 2 GIVN Jacob
+<-- 2|GIVN|N|Jacob
+
+--> 2 SURN Ulasevich
+<-- 2|SURN|N|Ulasevich
+
+--> 2 _MARNM Ulasevich
+<-- 2|_MARNM|N|Ulasevich
+
+--> 1 SEX M
+<-- 1|SEX|Y|M
+
+--> 1 BIRT
+<-- 1|BIRT|Y|
+
+--> 2 DATE 23 FEB 1796
+<-- 2|DATE|Y|23 FEB 1796
+
+--> 1 FAMC @F1@
+<-- 1|FAMC|Y|@F1@
+
+--> 0 @I2@ INDI
+<-- 0|@I2@|INDI|Y
+
+--> 1 NAME George /Ulasevich/
+<-- 1|NAME|Y|George /Ulasevich/
+
+--> 2 GIVN George
+<-- 2|GIVN|N|George
+
+--> 2 SURN Ulasevich
+<-- 2|SURN|N|Ulasevich
+
+--> 2 _MARNM Ulasevich
+<-- 2|_MARNM|N|Ulasevich
+
+--> 1 SEX M
+<-- 1|SEX|Y|M
+
+--> 1 BIRT
+<-- 1|BIRT|Y|
+
+--> 2 DATE 29 APR 1955
+<-- 2|DATE|Y|29 APR 1955
+
+--> 1 DEAT Y
+<-- 1|DEAT|Y|Y
+
+--> 2 DATE 19 MAR 1975
+<-- 2|DATE|Y|19 MAR 1975
+
+--> 1 FAMS @F1@
+<-- 1|FAMS|Y|@F1@
+
+--> 0 @I3@ INDI
+<-- 0|@I3@|INDI|Y
+
+--> 1 NAME Sharon /Wood/
+<-- 1|NAME|Y|Sharon /Wood/
+
+--> 2 GIVN Sharon
+<-- 2|GIVN|N|Sharon
+
+--> 2 SURN Wood
+<-- 2|SURN|N|Wood
+
+--> 2 _MARNM Ulasevich
+<-- 2|_MARNM|N|Ulasevich
+
+--> 1 SEX F
+<-- 1|SEX|Y|F
+
+--> 1 BIRT
+<-- 1|BIRT|Y|
+
+--> 2 DATE 29 JAN 1760
+<-- 2|DATE|Y|29 JAN 1760
+
+--> 1 DEAT Y
+<-- 1|DEAT|Y|Y
+
+--> 2 DATE 10 APR 1975
+<-- 2|DATE|Y|10 APR 1975
+
+--> 1 FAMS @F1@
+<-- 1|FAMS|Y|@F1@
+
+--> 1 FAMC @F2@
+<-- 1|FAMC|Y|@F2@
+
+--> 0 @I4@ INDI
+<-- 0|@I4@|INDI|Y
+
+--> 1 NAME Dana /Ulasevich/
+<-- 1|NAME|Y|Dana /Ulasevich/
+
+--> 2 GIVN Dana
+<-- 2|GIVN|N|Dana
+
+--> 2 SURN Ulasevich
+<-- 2|SURN|N|Ulasevich
+
+--> 2 _MARNM Smith
+<-- 2|_MARNM|N|Smith
+
+--> 1 SEX F
+<-- 1|SEX|Y|F
+
+--> 1 BIRT
+<-- 1|BIRT|Y|
+
+--> 2 DATE 5 APR 1986
+<-- 2|DATE|Y|5 APR 1986
+
+--> 1 FAMS @F4@
+<-- 1|FAMS|Y|@F4@
+
+--> 1 FAMC @F1@
+<-- 1|FAMC|Y|@F1@
+
+--> 0 @I5@ INDI
+<-- 0|@I5@|INDI|Y
+
+--> 1 NAME Kacie /Ulasevich/
+<-- 1|NAME|Y|Kacie /Ulasevich/
+
+--> 2 GIVN Kacie
+<-- 2|GIVN|N|Kacie
+
+--> 2 SURN Ulasevich
+<-- 2|SURN|N|Ulasevich
+
+--> 2 _MARNM Ulasevich
+<-- 2|_MARNM|N|Ulasevich
+
+--> 1 SEX F
+<-- 1|SEX|Y|F
+
+--> 1 BIRT
+<-- 1|BIRT|Y|
+
+--> 2 DATE 29 DEC 1988
+<-- 2|DATE|Y|29 DEC 1988
+
+--> 1 FAMC @F1@
+<-- 1|FAMC|Y|@F1@
+
+--> 0 @I6@ INDI
+<-- 0|@I6@|INDI|Y
+
+--> 1 NAME Adam /Smith/
+<-- 1|NAME|Y|Adam /Smith/
+
+--> 2 GIVN Adam
+<-- 2|GIVN|N|Adam
+
+--> 2 SURN Smith
+<-- 2|SURN|N|Smith
+
+--> 2 _MARNM Wood
+<-- 2|_MARNM|N|Wood
+
+--> 1 SEX M
+<-- 1|SEX|Y|M
+
+--> 1 BIRT
+<-- 1|BIRT|Y|
+
+--> 2 DATE 25 JUL 1927
+<-- 2|DATE|Y|25 JUL 1927
+
+--> 1 DEAT Y
+<-- 1|DEAT|Y|Y
+
+--> 2 DATE 18 MAR 1986
+<-- 2|DATE|Y|18 MAR 1986
+
+--> 1 FAMS @F2@
+<-- 1|FAMS|Y|@F2@
+
+--> 1 FAMS @F4@
+<-- 1|FAMS|Y|@F4@
+
+--> 0 @I7@ INDI
+<-- 0|@I7@|INDI|Y
+
+--> 1 NAME Nora /Lynn/
+<-- 1|NAME|Y|Nora /Lynn/
+
+--> 2 GIVN Nora
+<-- 2|GIVN|N|Nora
+
+--> 2 SURN Lynn
+<-- 2|SURN|N|Lynn
+
+--> 2 _MARNM Wood
+<-- 2|_MARNM|N|Wood
+
+--> 1 SEX F
+<-- 1|SEX|Y|F
+
+--> 1 BIRT
+<-- 1|BIRT|Y|
+
+--> 2 DATE 17 SEP 1934
+<-- 2|DATE|Y|17 SEP 1934
+
+--> 1 DEAT Y
+<-- 1|DEAT|Y|Y
+
+--> 2 DATE 10 APR 1975
+<-- 2|DATE|Y|10 APR 1975
+
+--> 1 FAMS @F2@
+<-- 1|FAMS|Y|@F2@
+
+--> 0 @I8@ INDI
+<-- 0|@I8@|INDI|Y
+
+--> 1 NAME Maria /Smith/
+<-- 1|NAME|Y|Maria /Smith/
+
+--> 2 GIVN Maria
+<-- 2|GIVN|N|Maria
+
+--> 2 SURN Smith
+<-- 2|SURN|N|Smith
+
+--> 2 _MARNM Pollock
+<-- 2|_MARNM|N|Pollock
+
+--> 1 SEX F
+<-- 1|SEX|Y|F
+
+--> 1 BIRT
+<-- 1|BIRT|Y|
+
+--> 2 DATE 6 DEC 1933
+<-- 2|DATE|Y|6 DEC 1933
+
+--> 1 FAMS @F3@
+<-- 1|FAMS|Y|@F3@
+
+--> 0 @I9@ INDI
+<-- 0|@I9@|INDI|Y
+
+--> 1 NAME Bryan /Wood/
+<-- 1|NAME|Y|Bryan /Wood/
+
+--> 2 GIVN Bryan
+<-- 2|GIVN|N|Bryan
+
+--> 2 SURN Wood
+<-- 2|SURN|N|Wood
+
+--> 2 _MARNM Wood
+<-- 2|_MARNM|N|Wood
+
+--> 1 SEX M
+<-- 1|SEX|Y|M
+
+--> 1 BIRT
+<-- 1|BIRT|Y|
+
+--> 2 DATE 12 OCT 1970
+<-- 2|DATE|Y|12 OCT 1970
+
+--> 1 FAMC @F4@
+<-- 1|FAMC|Y|@F4@
+
+--> 0 @I10@ INDI
+<-- 0|@I10@|INDI|Y
+
+--> 1 NAME Thomas /Wood/
+<-- 1|NAME|Y|Thomas /Wood/
+
+--> 2 GIVN Thomas
+<-- 2|GIVN|N|Thomas
+
+--> 2 SURN Wood
+<-- 2|SURN|N|Wood
+
+--> 2 _MARNM Wood
+<-- 2|_MARNM|N|Wood
+
+--> 1 SEX M
+<-- 1|SEX|Y|M
+
+--> 1 BIRT
+<-- 1|BIRT|Y|
+
+--> 2 DATE 15 OCT 1957
+<-- 2|DATE|Y|15 OCT 1957
+
+--> 1 FAMC @F2@
+<-- 1|FAMC|Y|@F2@
+
+--> 0 @I11@ INDI
+<-- 0|@I11@|INDI|Y
+
+--> 1 NAME Sean /Wood/
+<-- 1|NAME|Y|Sean /Wood/
+
+--> 2 GIVN Sean
+<-- 2|GIVN|N|Sean
+
+--> 2 SURN Wood
+<-- 2|SURN|N|Wood
+
+--> 2 _MARNM Wood
+<-- 2|_MARNM|N|Wood
+
+--> 1 SEX M
+<-- 1|SEX|Y|M
+
+--> 1 BIRT
+<-- 1|BIRT|Y|
+
+--> 2 DATE 21 MAY 1958
+<-- 2|DATE|Y|21 MAY 1958
+
+--> 1 FAMC @F2@
+<-- 1|FAMC|Y|@F2@
+
+--> 0 @I12@ INDI
+<-- 0|@I12@|INDI|Y
+
+--> 1 NAME Gary /Wood/
+<-- 1|NAME|Y|Gary /Wood/
+
+--> 2 GIVN Gary
+<-- 2|GIVN|N|Gary
+
+--> 2 SURN Wood
+<-- 2|SURN|N|Wood
+
+--> 2 _MARNM Wood
+<-- 2|_MARNM|N|Wood
+
+--> 1 SEX M
+<-- 1|SEX|Y|M
+
+--> 1 BIRT
+<-- 1|BIRT|Y|
+
+--> 2 DATE 31 JUL 1962
+<-- 2|DATE|Y|31 JUL 1962
+
+--> 1 FAMC @F2@
+<-- 1|FAMC|Y|@F2@
+
+--> 0 @I13@ INDI
+<-- 0|@I13@|INDI|Y
+
+--> 1 NAME Kyle /Pollock/
+<-- 1|NAME|Y|Kyle /Pollock/
+
+--> 2 GIVN Kyle
+<-- 2|GIVN|N|Kyle
+
+--> 2 SURN Pollock
+<-- 2|SURN|N|Pollock
+
+--> 2 _MARNM Pollock
+<-- 2|_MARNM|N|Pollock
+
+--> 1 SEX M
+<-- 1|SEX|Y|M
+
+--> 1 BIRT
+<-- 1|BIRT|Y|
+
+--> 2 DATE 26 AUG 2085
+<-- 2|DATE|Y|26 AUG 2085
+
+--> 1 DEAT Y
+<-- 1|DEAT|Y|Y
+
+--> 2 DATE 10 APR 2055
+<-- 2|DATE|Y|10 APR 2055
+
+--> 1 FAMS @F3@
+<-- 1|FAMS|Y|@F3@
+
+--> 0 @F1@ FAM
+<-- 0|@F1@|FAM|Y
+
+--> 1 HUSB @I2@
+<-- 1|HUSB|Y|@I2@
+
+--> 1 WIFE @I3@
+<-- 1|WIFE|Y|@I3@
+
+--> 1 CHIL @I1@
+<-- 1|CHIL|Y|@I1@
+
+--> 1 CHIL @I4@
+<-- 1|CHIL|Y|@I4@
+
+--> 1 CHIL @I5@
+<-- 1|CHIL|Y|@I5@
+
+--> 1 MARR
+<-- 1|MARR|Y|
+
+--> 2 DATE 15 MAY 1982
+<-- 2|DATE|Y|15 MAY 1982
+
+--> 1 DIV
+<-- 1|DIV|Y|
+
+--> 2 DATE 15 FEB 1981
+<-- 2|DATE|Y|15 FEB 1981
+
+--> 1 _CURRENT Y
+<-- 1|_CURRENT|N|Y
+
+--> 0 @F2@ FAM
+<-- 0|@F2@|FAM|Y
+
+--> 1 HUSB @I6@
+<-- 1|HUSB|Y|@I6@
+
+--> 1 WIFE @I7@
+<-- 1|WIFE|Y|@I7@
+
+--> 1 CHIL @I3@
+<-- 1|CHIL|Y|@I3@
+
+--> 1 CHIL @I10@
+<-- 1|CHIL|Y|@I10@
+
+--> 1 CHIL @I11@
+<-- 1|CHIL|Y|@I11@
+
+--> 1 CHIL @I12@
+<-- 1|CHIL|Y|@I12@
+
+--> 1 MARR
+<-- 1|MARR|Y|
+
+--> 2 DATE 12 MAY 1899
+<-- 2|DATE|Y|12 MAY 1899
+
+--> 1 EVEN
+<-- 1|EVEN|N|
+
+--> 2 TYPE Ending
+<-- 2|TYPE|N|Ending
+
+--> 1 _CURRENT N
+<-- 1|_CURRENT|N|N
+
+--> 0 @F3@ FAM
+<-- 0|@F3@|FAM|Y
+
+--> 1 HUSB @I13@
+<-- 1|HUSB|Y|@I13@
+
+--> 1 WIFE @I8@
+<-- 1|WIFE|Y|@I8@
+
+--> 1 MARR
+<-- 1|MARR|Y|
+
+--> 2 DATE 14 JUN 2018
+<-- 2|DATE|Y|14 JUN 2018
+
+--> 1 DIV
+<-- 1|DIV|Y|
+
+--> 2 DATE 15 FEB 2023
+<-- 2|DATE|Y|15 FEB 2023
+
+--> 1 _CURRENT Y
+<-- 1|_CURRENT|N|Y
+
+--> 0 @F4@ FAM
+<-- 0|@F4@|FAM|Y
+
+--> 1 HUSB @I6@
+<-- 1|HUSB|Y|@I6@
+
+--> 1 WIFE @I4@
+<-- 1|WIFE|Y|@I4@
+
+--> 1 CHIL @I9@
+<-- 1|CHIL|Y|@I9@
+
+--> 1 MARR
+<-- 1|MARR|Y|
+
+--> 2 DATE 10 FEB 1973
+<-- 2|DATE|Y|10 FEB 1973
+
+--> 1 _CURRENT Y
+<-- 1|_CURRENT|N|Y
+
+--> 0 TRLR
+<-- 0|TRLR|Y
+
++-----+--------------------+-----+-------------+-----+-------+-------------+-------+--------------+
+|  ID |        Name        | Sex |   Birthday  | Age | Alive |    Death    | Child |    Spouse    |
++-----+--------------------+-----+-------------+-----+-------+-------------+-------+--------------+
+|  I1 | Jacob /Ulasevich/  |  M  | 23-FEB-1796 | 221 |  True |      NA     |   F1  |      NA      |
+|  I2 | George /Ulasevich/ |  M  | 29-APR-1955 |  19 | False | 19-MAR-1975 |   NA  |    ['F1']    |
+|  I3 |   Sharon /Wood/    |  F  | 29-JAN-1760 | 215 | False | 10-APR-1975 |   F2  |    ['F1']    |
+|  I4 |  Dana /Ulasevich/  |  F  |  5-APR-1986 |  31 |  True |      NA     |   F1  |    ['F4']    |
+|  I5 | Kacie /Ulasevich/  |  F  | 29-DEC-1988 |  28 |  True |      NA     |   F1  |      NA      |
+|  I6 |    Adam /Smith/    |  M  | 25-JUL-1927 |  58 | False | 18-MAR-1986 |   NA  | ['F2', 'F4'] |
+|  I7 |    Nora /Lynn/     |  F  | 17-SEP-1934 |  40 | False | 10-APR-1975 |   NA  |    ['F2']    |
+|  I8 |   Maria /Smith/    |  F  |  6-DEC-1933 |  83 |  True |      NA     |   NA  |    ['F3']    |
+|  I9 |    Bryan /Wood/    |  M  | 12-OCT-1970 |  46 |  True |      NA     |   F4  |      NA      |
+| I10 |   Thomas /Wood/    |  M  | 15-OCT-1957 |  59 |  True |      NA     |   F2  |      NA      |
+| I11 |    Sean /Wood/     |  M  | 21-MAY-1958 |  59 |  True |      NA     |   F2  |      NA      |
+| I12 |    Gary /Wood/     |  M  | 31-JUL-1962 |  55 |  True |      NA     |   F2  |      NA      |
+| I13 |   Kyle /Pollock/   |  M  | 26-AUG-2085 | -30 | False | 10-APR-2055 |   NA  |    ['F3']    |
++-----+--------------------+-----+-------------+-----+-------+-------------+-------+--------------+
+
++----+-------------+-------------+------------+--------------------+---------+------------------+-----------------------------+
+| ID |   Married   |   Divorced  | Husband ID |    Husband Name    | Wife ID |    Wife Name     |           Children          |
++----+-------------+-------------+------------+--------------------+---------+------------------+-----------------------------+
+| F1 | 15-MAY-1982 | 15-FEB-1981 |     I2     | George /Ulasevich/ |    I3   |  Sharon /Wood/   |      ['I1', 'I4', 'I5']     |
+| F2 | 12-MAY-1899 |      NA     |     I6     |    Adam /Smith/    |    I7   |   Nora /Lynn/    | ['I3', 'I10', 'I11', 'I12'] |
+| F3 | 14-JUN-2018 | 15-FEB-2023 |    I13     |   Kyle /Pollock/   |    I8   |  Maria /Smith/   |              NA             |
+| F4 | 10-FEB-1973 |      NA     |     I6     |    Adam /Smith/    |    I4   | Dana /Ulasevich/ |            ['I9']           |
++----+-------------+-------------+------------+--------------------+---------+------------------+-----------------------------+
+ERROR: INDIVIDUAL: US07: I1: More than 150 years old - Birth date 23-FEB-1796
+ERROR: INDIVIDUAL: US07: I3: More than 150 years old at death - Birth 29-JAN-1760: Death 10-APR-1975
+ERROR: INDIVIDUAL: US01: I13: Birthday 26-AUG-2085 occurs in the future
+ERROR: INDIVIDUAL: US01: I13: Death 10-APR-2055 occurs in the future
+ERROR: INDIVIDUAL: US03: I13: Died 10-APR-2055 before being born on 26-AUG-2085
+ERROR: FAMILY: US04: F1: Divorced on 15-FEB-1981 before marriage on 15-MAY-1982
+ERROR: FAMILY: US05: F1: Married 15-MAY-1982 after husband's (I2) death on 19-MAR-1975
+ERROR: FAMILY: US05: F1: Married 15-MAY-1982 after wife's (I3) death on 10-APR-1975
+ERROR: FAMILY: US06: F1: Divorced 15-FEB-1981 after husband's (I2) death on 19-MAR-1975
+ERROR: FAMILY: US06: F1: Divorced 15-MAY-1982 after wife's (I3) death on 10-APR-1975
+ERROR: FAMILY: US02: F2: Husband (I6) born on 25-JUL-1927 after marriage on 12-MAY-1899
+ERROR: FAMILY: US02: F2: Wife (I7) born on 17-SEP-1934 after marriage on 12-MAY-1899
+ERROR: FAMILY: US01: F3: Marriage date 14-JUN-2018 is in the future
+ERROR: FAMILY: US01: F3: Divorce date 15-FEB-2023 is in the future
+ERROR: FAMILY: US02: F3: Husband (I13) born on 26-AUG-2085 after marriage on 14-JUN-2018
+ERROR: FAMILY: US11: F4: Family married on 10-FEB-1973 before husband's (I6) marriage in family F2 ended on 10-APR-1975
+ERROR: FAMILY: US02: F4: Wife (I4) born on 5-APR-1986 after marriage on 10-FEB-1973
