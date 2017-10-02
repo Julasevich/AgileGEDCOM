@@ -7,12 +7,14 @@ today = time.strftime("%Y %m %d")
 
 def birth_before_death(birthday, deathday):
     '''US03 - Function to find any instances of death before birth'''
+    if len(deathday) < 3:
+        return False
     if(birthday[2] > deathday[2]):
         return False
-    elif(birthday[2]== deathday[2]):
-        if (birthday[1] > deathday[1]):
+    elif(birthday[2] == deathday[2]):
+        if (months[birthday[1]] > months[deathday[1]]):
             return False
-        elif (birthday[1] == deathday[1]):
+        elif (months[birthday[1]] == months[deathday[1]]):
             if (birthday[0] > deathday[0]):
                 return False
     return True
@@ -56,12 +58,14 @@ def deathBeforeMarr(date_marr, date_death_husb, date_death_wife):
 
 def div_before_death(div_date, deathday):
     '''US06 - Function to find any instances of death before marriage'''
+    if len(deathday) < 3:
+        return False
     if (div_date[2] > deathday[2]):
         return False
     elif (div_date[2] == deathday[2]):
-        if (div_date[1] > deathday[1]):
+        if (months[div_date[1]] > months[deathday[1]]):
             return False
-        elif (div_date[1] == deathday[1]):
+        elif (months[div_date[1]] == months[deathday[1]]):
             if (div_date[0] > deathday[0]):
                 return False
     return True
@@ -93,12 +97,16 @@ def getAge(today, birthday, alive, deathday):
             age = 0
         return int(age)
 
+
+#Needs to be fixed in Sprint 2
 def noBigamy(spouses, divorces):
     '''US11 - Function to check status of marrage'''
-    if (spouses-divorses) > 1 :
+    if (spouses-divorses) > 1:
         return False
     else:
         return True
+
+
 
 def pastDate(date):
     '''
@@ -397,18 +405,18 @@ print(famTable)
 #Print individual errors
 for indi in individuals:
     if  not pastDate(indi[4]):
-        print("ERROR: INDIVIDUAL: US01: " + indi[0] + ": Birthday " + indi[4][0] + " " indi[4][1] + " " + indi[4][2] " occurs in the future")
+        print("ERROR: INDIVIDUAL: US01: " + indi[0] + ": Birthday " + indi[4][0] + " " + indi[4][1] + " " + indi[4][2] + " occurs in the future")
     if  not indi[6]:
         if not pastDate(indi[7]):
-            print("ERROR: INDIVIDUAL: US01: " + indi[0] + ": Death " + indi[4][0] + " " indi[4][1] + " " + indi[4][2] " occurs in the future")
-    if  not birth_before_death(indi[4], indi[7]):
-        print("ERROR: INDIVIDUAL: US03: " + indi[0] + ": Died " + indi[7][0] + " " indi[7][1] + " " + indi[7][2] " before born " + indi[4][0] + " " indi[4][1] + " " + indi[4][2])
+            print("ERROR: INDIVIDUAL: US01: " + indi[0] + ": Death " + indi[4][0] + " " + indi[4][1] + " " + indi[4][2] + " occurs in the future")
+    #if  not birth_before_death(indi[4], indi[7]):
+        #print("ERROR: INDIVIDUAL: US03: " + indi[0] + ": Died " + indi[7][0] + " " + indi[7][1] + " " + indi[7][2] + " before born " + indi[4][0] + " " + indi[4][1] + " " + indi[4][2])
     if indi[5] >= 150:
         errmsg = ("ERROR: INDIVIDUAL: US07: " + indi[0] + " More than 150 years old ")
         if(indi[6]):
-            errmsg += ("- Birth date " + indi[4][0] + " " indi[4][1] + " " + indi[4][2])
+            errmsg += ("- Birth date " + indi[4][0] + " " + indi[4][1] + " " + indi[4][2])
         else:
-            errmsg += ("at death - Birth " + indi[4][0] + " " indi[4][1] + " " + indi[4][2] + ": Death " + indi[7][0] + " " indi[7][1] + " " + indi[7][2])
+            errmsg += ("at death - Birth " + indi[4][0] + " " + indi[4][1] + " " + indi[4][2] + ": Death " + indi[7][0] + " " + indi[7][1] + " " + indi[7][2])
         print(errmsg)
 
 
@@ -428,12 +436,10 @@ for i, family in enumerate(families):
         print("ERROR: FAMILY: " + family[0][1:-1] + " -- Divorced before married.")
     if deathBeforeMarr(family[1], IndiDeaths[husbIndex], IndiDeaths[wifeIndex]):
         print("ERROR: FAMILY: " + family[0][1:-1] + " -- Death before married.")
-    if not noBigamy(individual[9].count, family[2].count):
-        print("ERROR: FAMILY: US11: " + family[0][1:-1] + " -- Married again without divorcing.")
-
-    if div_before_death(family[2], IndiDeaths[husbIndex]) is False:
-        print("ERROR: FAMILY: " + family[0][1:-1] + " -- Divorce after death")
-    if div_before_death(family[2], IndiDeaths[wifeIndex]) is False:
-        print("ERROR: FAMILY: " + family[0][1:-1] + " -- Divorce after death")
-
-
+    # Implement in Sprint 2
+    #if not noBigamy(individual[9].count, family[2].count):
+        #print("ERROR: FAMILY: US11: " + family[0][1:-1] + " -- Married again without divorcing.")
+    #if div_before_death(family[2], IndiDeaths[husbIndex]) is False:
+        #print("ERROR: FAMILY: " + family[0][1:-1] + " -- Divorce after death")
+    #if div_before_death(family[2], IndiDeaths[wifeIndex]) is False:
+        #print("ERROR: FAMILY: " + family[0][1:-1] + " -- Divorce after death")
