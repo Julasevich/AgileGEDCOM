@@ -3,6 +3,7 @@ import time
 
 months = {"JAN": 1, "FEB": 2, "MAR": 3, "APR": 4, "MAY": 5, "JUN": 6, "JUL": 7, "AUG": 8, "SEP": 9, "OCT": 10, "NOV": 11, "DEC": 12}
 uniqueIDs = []
+uniqueFamIDs = []
 uniqueNameAndBirth = {}
 today = time.strftime("%Y %m %d")
 
@@ -120,14 +121,24 @@ def checkBigamy(indi, marrDate, fam):
     return
 
 
-def isUniqueID(iD):
+def isUniqueID(iD, idType):
     '''US22 - Function to test whether an ID is unique or not'''
-    if iD in uniqueIDs:
-        print("ERROR: INDIVIDUAL: US22 - NOT UNIQUE ID")
-        return False
+    if idType == 'INDI':
+        if iD in uniqueIDs:
+            print("ERROR: INDIVIDUAL: US22 - NOT UNIQUE ID")
+            return False
+        else:
+            uniqueIDs.append(iD)
+            return True
     else:
-        uniqueIDs.append(iD)
-        return True
+        if iD in uniqueFamIDs:
+            print("ERROR: FAMILY: US22 - NOT UNIQUE ID")
+            return False
+        else:
+            uniqueFamIDs.append(iD)
+            return True
+
+
 
 
 def isUniqueNameAndBirth(fullName, birthdayList):
@@ -224,7 +235,7 @@ for line in gedFile:
                         indiChild["child"] = ''
                         indiSpouse["spouse"] = []
                     idNum = int(words[1][2:-1])
-                    isUniqueID(idNum)
+                    isUniqueID(idNum, 'INDI')
                 elif tag == "FAM":
                     if famID != '' and currentHusb["husband"] != '' and currentWife["wife"] != '':
                         if currentChildren["children"] == []:
@@ -247,6 +258,7 @@ for line in gedFile:
                         currentWife["wife"] = ''
                         currentChildren["children"] = []
                     famID = int(words[1][2:-1])
+                    isUniqueID(famID, 'FAM')
             else:
                 valid = "N"
 
@@ -530,4 +542,5 @@ for fam in families:
 
 
 print(uniqueIDs)
+print(uniqueFamIDs)
 print(uniqueNameAndBirth)
