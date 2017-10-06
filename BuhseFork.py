@@ -2,6 +2,8 @@ from prettytable import PrettyTable
 import time
 
 months = {"JAN": 1, "FEB": 2, "MAR": 3, "APR": 4, "MAY": 5, "JUN": 6, "JUL": 7, "AUG": 8, "SEP": 9, "OCT": 10, "NOV": 11, "DEC": 12}
+uniqueIDs = []
+uniqueNameAndBirth = {}
 today = time.strftime("%Y %m %d")
 
 def dateVal(date):
@@ -50,6 +52,7 @@ def pastDate(date):
             if int(today[2]) < int(date[0]):
                 return False
             return True
+
 
 def birthBfrMarr(fam, fid):
     '''
@@ -102,6 +105,7 @@ def tooOld(age):
     else:
         return False
 
+
 def checkBigamy(indi, marrDate, fam):
     '''US11 - Function to test whether or not a person divorsed before marraige'''
     marriages = individuals[indi]["spouse"]
@@ -114,6 +118,33 @@ def checkBigamy(indi, marrDate, fam):
             if not divBeforeMarr(marrDate, families[m]["endDate"][0]):
                 print("ERROR: FAMILY: US11: " + addF(fam) + ": Family married on " + '-'.join(marrDate) + " before " + spouse + addi(indi) +") marriage in family " + addF(m) + " ended on " + '-'.join(families[m]["endDate"][0]))
     return
+
+
+def isUniqueID(iD):
+    '''US22 - Function to test whether an ID is unique or not'''
+    if iD in uniqueIDs:
+        print("ERROR: INDIVIDUAL: US22 - NOT UNIQUE ID")
+        return False
+    else:
+        uniqueIDs.append(iD)
+        return True
+
+
+def isUniqueNameAndBirth(fullName, birthdayList):
+    '''US23 - Function to test whether a name/birthday combination is unique'''
+    birthday = ''
+    for x in birthdayList:
+        birthday = birthday + x
+    if birthday in uniqueNameAndBirth:
+        if fullName in uniqueNameAndBirth[birthday]:
+            print("ERROR: INDIVIDUAL: US23 - NOT UNIQUE NAME/BIRTHDAY COMBINATION")
+            return False
+        else:
+            uniqueNameAndBirth[birthday].append(fullName)
+            return True
+    else:
+        uniqueNameAndBirth[birthday] = [fullName]
+        return True
 
 # Get file
 gedFile = open("MyFamily.ged", "r")
@@ -183,6 +214,7 @@ for line in gedFile:
                         indiDict[idNum].update(indiChild)
                         indiDict[idNum].update(indiSpouse)
                         individuals.update(indiDict)
+                        isUniqueNameAndBirth(indiFirstName["firstName"] + indiLastName["lastName"], indiBirthday["birthday"])
                         indiFirstName["firstName"] = ''
                         indiLastName["lastName"] = ''
                         indiSex["sex"] = ''
@@ -192,6 +224,7 @@ for line in gedFile:
                         indiChild["child"] = ''
                         indiSpouse["spouse"] = []
                     idNum = int(words[1][2:-1])
+                    isUniqueID(idNum)
                 elif tag == "FAM":
                     if famID != '' and currentHusb["husband"] != '' and currentWife["wife"] != '':
                         if currentChildren["children"] == []:
@@ -494,3 +527,7 @@ for fam in families:
     checkBigamy(families[fam]["wife"], families[fam]["marrDate"], fam)
 
     birthBfrMarr(families[fam], fam)
+
+
+print(uniqueIDs)
+print(uniqueNameAndBirth)
