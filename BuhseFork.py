@@ -7,15 +7,17 @@ uniqueFamIDs = []
 uniqueNameAndBirth = {}
 today = time.strftime("%Y %m %d")
 
+
 def dateVal(date):
     return int(date[2]) * 10000 + months[date[1]] * 100 + int(date[0])
 
-<<<<<<< HEAD
+
 def deathBeforeBirth(birthday, deathday):
     '''US03 - Function to find any instances of death before birth'''
     if deathday == "NA":
         return False
     return dateVal(deathday) < dateVal(birthday)
+
 
 def divBeforeMarr(marrDate, divDate):
     '''US04 - Function to find any instances of divorce before marriage.'''
@@ -41,8 +43,14 @@ def deathBeforeDivorce(divDate, deathDate):
     return dateVal(deathDate) < dateVal(divDate)
 
 
-=======
->>>>>>> 56f678d045ca529811183dad3ff24291a064beda
+def tooOld(age):
+    '''US07 - Function to find if a user is older, or as old as, 150'''
+    if age >= 150:
+        return True
+    else:
+        return False
+
+
 def getAge(today, birthday, alive, deathday):
     '''Take today's date and compute an age.'''
     if alive:
@@ -102,47 +110,6 @@ def birthBfrMarr(fam, fid):
         print("ERROR: FAMILY: US02: " + addF(fid) + ": Wife (" + addi(fam["wife"]) + ") born on " + '-'.join(individuals[fam["wife"]]["birthday"]) + " after marriage on " + '-'.join(fam["marrDate"]))
     return
 
-<<<<<<< HEAD
-=======
-def deathBeforeBirth(birthday, deathday):
-    '''US03 - Function to find any instances of death before birth'''
-    if deathday == "NA":
-        return False
-    return dateVal(deathday) < dateVal(birthday)
-
-def divBeforeMarr(marrDate, divDate):
-    '''US04 - Function to find any instances of divorce before marriage.'''
-    if divDate == "NA":
-        return False
-    else:
-        return dateVal(divDate) < dateVal(marrDate)
-
-def deathBeforeMarr(marrDate, indi):
-    '''US05 - Function to find any instances of death before marriage.'''
-    deathDate = individuals[indi]["death"]
-    if deathDate == 'NA':
-        return False
-    return dateVal(deathDate) < dateVal(marrDate)
-
-
-def deathBeforeDivorce(divDate, indi):
-    '''US06 - Function to find any instances of death before divorce'''
-    deathDate = individuals[indi]["death"]
-    if deathDate == "NA":
-        return False
-    if divDate == "NA":
-        return False
-    return dateVal(deathDate) < dateVal(divDate)
-
-def tooOld(age):
-    '''US07 - Function to find if a user is older, or as old as, 150'''
-    if age >= 150:
-        return True
-    else:
-        return False
-
-
->>>>>>> 56f678d045ca529811183dad3ff24291a064beda
 def checkBigamy(indi, marrDate, fam):
     '''US11 - Function to test whether or not a person divorsed before marraige'''
     marriages = individuals[indi]["spouse"]
@@ -157,9 +124,10 @@ def checkBigamy(indi, marrDate, fam):
     return
 
 
-<<<<<<< HEAD
 def multipleBirths(children):
     '''US06 - Function to find any instances of multiple births'''
+    if children == "NA":
+        return False
     birthCount = {}
     for c in children:
         birthday = individuals[c]["birthday"]
@@ -183,7 +151,6 @@ def tooManySiblings(children):
     return False
 
 
-=======
 def isUniqueID(iD, idType):
     '''US22 - Function to test whether an ID is unique or not'''
     if idType == 'INDI':
@@ -202,8 +169,6 @@ def isUniqueID(iD, idType):
             return True
 
 
-
-
 def isUniqueNameAndBirth(fullName, birthdayList):
     '''US23 - Function to test whether a name/birthday combination is unique'''
     birthday = ''
@@ -220,7 +185,7 @@ def isUniqueNameAndBirth(fullName, birthdayList):
         uniqueNameAndBirth[birthday] = [fullName]
         return True
 
->>>>>>> 56f678d045ca529811183dad3ff24291a064beda
+
 # Get file
 gedFile = open("MyFamily.ged", "r")
 # Acceptable tags
@@ -569,7 +534,7 @@ for indi in individuals:
     if tooOld(individuals[indi]["age"]):
         errmsg = ("ERROR: INDIVIDUAL: US07: " + addi(indi) + ": More than 150 years old ")
         if(individuals[indi]["alive"]):
-            errmsg += ("- Birth date " +  '-'.join(individuals[indi]["birthday"]))
+            errmsg += ("- Birth date " + '-'.join(individuals[indi]["birthday"]))
         else:
             errmsg += ("at death - Birth " + '-'.join(individuals[indi]["birthday"]) + ": Death " + '-'.join(individuals[indi]["death"]))
         print(errmsg)
@@ -586,7 +551,6 @@ for fam in families:
     if divBeforeMarr(families[fam]["marrDate"], families[fam]["divDate"]):
         print("ERROR: FAMILY: US04: " + addF(fam) + ": Divorced on " + '-'.join(families[fam]["divDate"]) + " before marriage on " + '-'.join(families[fam]["marrDate"]))
 
-<<<<<<< HEAD
     if deathBeforeMarr(families[fam]["marrDate"], individuals[families[fam]["husband"]]["death"]):
         print("ERROR: FAMILY: US05: " + addF(fam) + ": Married " + '-'.join(families[fam]["marrDate"]) + " after husband's (" + addi(families[fam]["husband"]) +") death on " + '-'.join(individuals[families[fam]["husband"]]["death"]))
 
@@ -597,18 +561,6 @@ for fam in families:
         print("ERROR: FAMILY: US06: " + addF(fam) + ": Divorced " + '-'.join(families[fam]["divDate"]) + " after husband's (" + addi(families[fam]["husband"]) +") death on " + '-'.join(individuals[families[fam]["husband"]]["death"]))
 
     if deathBeforeDivorce(families[fam]["divDate"], individuals[families[fam]["wife"]]["death"]):
-=======
-    if deathBeforeMarr(families[fam]["marrDate"], families[fam]["husband"]):
-        print("ERROR: FAMILY: US05: " + addF(fam) + ": Married " + '-'.join(families[fam]["marrDate"]) + " after husband's (" + addi(families[fam]["husband"]) +") death on " + '-'.join(individuals[families[fam]["husband"]]["death"]))
-
-    if deathBeforeMarr(families[fam]["marrDate"], families[fam]["wife"]):
-        print("ERROR: FAMILY: US05: " + addF(fam) + ": Married " + '-'.join(families[fam]["marrDate"]) + " after wife's (" + addi(families[fam]["wife"]) +") death on " + '-'.join(individuals[families[fam]["wife"]]["death"]))
-
-    if deathBeforeDivorce(families[fam]["divDate"], families[fam]["husband"]):
-        print("ERROR: FAMILY: US06: " + addF(fam) + ": Divorced " + '-'.join(families[fam]["divDate"]) + " after husband's (" + addi(families[fam]["husband"]) +") death on " + '-'.join(individuals[families[fam]["husband"]]["death"]))
-
-    if deathBeforeDivorce(families[fam]["divDate"], families[fam]["wife"]):
->>>>>>> 56f678d045ca529811183dad3ff24291a064beda
         print("ERROR: FAMILY: US06: " + addF(fam) + ": Divorced " + '-'.join(families[fam]["marrDate"]) + " after wife's (" + addi(families[fam]["wife"]) +") death on " + '-'.join(individuals[families[fam]["wife"]]["death"]))
 
     checkBigamy(families[fam]["husband"], families[fam]["marrDate"], fam)
@@ -617,15 +569,12 @@ for fam in families:
 
     birthBfrMarr(families[fam], fam)
 
-<<<<<<< HEAD
-    # if multipleBirths(families[fam]["children"]):
-        # print("ERROR: FAMILY: US14: " + addF(fam) + ": Multiple Births > 5")
+    if multipleBirths(families[fam]["children"]):
+        print("ERROR: FAMILY: US14: " + addF(fam) + ": Multiple Births > 5")
 
     if tooManySiblings(families[fam]["children"]):
         print("ERROR: FAMILY: US15: " + addF(fam) + ": Too Many Siblings " + '-'.join(str(v) for v in families[fam]["children"]) + " > 15")
-=======
 
-print(uniqueIDs)
-print(uniqueFamIDs)
-print(uniqueNameAndBirth)
->>>>>>> 56f678d045ca529811183dad3ff24291a064beda
+    print(uniqueIDs)
+    print(uniqueFamIDs)
+    print(uniqueNameAndBirth)
