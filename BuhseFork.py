@@ -123,7 +123,36 @@ def checkBigamy(indi, marrDate, fam):
                 print("ERROR: FAMILY: US11: " + addF(fam) + ": Family married on " + '-'.join(marrDate) + " before " + spouse + addi(indi) +") marriage in family " + addF(m) + " ended on " + '-'.join(families[m]["endDate"][0]))
     return
 
+def dbd(d1, d2):
+    if d1 == "NA" or d2 == "NA":
+        return False
+    return dateVal(d1) < dateVal(d2)
 
+def nineMonthsBefore(date2, date1):
+    if date1 == "NA" or date2 == "NA":
+        return True
+    if date1[2] == date2[2]:
+        return (dateVal(date1) - dateVal(date2)) >= 900
+    else:
+        return (dateVal(date1) - dateVal(date2)) >= 9700
+
+def validBirths(family, fid):
+    hid = family["husband"]
+    wid = family["wife"]
+    if family["children"] != "NA":
+        for cid in family["children"]:
+            if dbd(individuals[cid]["birthday"], family["marrDate"]):
+                print("ERROR: FAMILY: US08: " + addF(fid) + ": Child (" + addi(cid) + ") born on " + '-'.join(individuals[cid]["birthday"]) + " before marriage on " + '-'.join(family["marrDate"]))
+            if not nineMonthsBefore(family["divDate"],individuals[cid]["birthday"]):
+                print("ERROR: FAMILY: US08: " + addF(fid) + ": Child (" + addi(cid) + ") born on " + '-'.join(individuals[cid]["birthday"]) + " over 9 months after divorce on " + '-'.join(family["divDate"]))
+            if dbd(individuals[wid]["death"], individuals[cid]["birthday"]):
+                print("ERROR: FAMILY: US09: " + addF(fid) + ": Child (" + addi(cid) + ") born on " + '-'.join(individuals[cid]["birthday"]) + " after mother's (" + addi(wid) + ") death on " + '-'.join(individuals[wid]["death"]))
+            if nineMonthsBefore(individuals[hid]["death"], individuals[cid]["birthday"]):
+                print("ERROR: FAMILY: US09: " + addF(fid) + ": Child (" + addi(cid) + ") born on " + '-'.join(individuals[cid]["birthday"]) + " over 9 months after father's (" + addi(hid) +  ") death on " + '-'.join(individuals[hid]["death"]))
+    return
+    
+    
+    
 def multipleBirths(children):
     '''US06 - Function to find any instances of multiple births'''
     if children == "NA":
@@ -568,6 +597,8 @@ for fam in families:
     checkBigamy(families[fam]["wife"], families[fam]["marrDate"], fam)
 
     birthBfrMarr(families[fam], fam)
+    
+    validBirths(families[fam], fam)
 
     if multipleBirths(families[fam]["children"]):
         print("ERROR: FAMILY: US14: " + addF(fam) + ": Multiple Births > 5")
