@@ -214,6 +214,44 @@ def isUniqueNameAndBirth(fullName, birthdayList):
         uniqueNameAndBirth[birthday] = [fullName]
         return True
 
+def correct_gender_for_role(indiv, fam):
+    hid = addi(fam["husband"])
+    wid = addi(fam["wife"])
+    husband = None
+    wife = None
+
+    if IndiIDs[indiv - 1] == hid:
+        husband = indiv
+        if IndiSexs[husband - 1] is not "M":
+            return False
+        else:
+            return True
+    if IndiIDs[indiv - 1] == wid:
+        wife = indiv
+        if IndiSexs[wife - 1] is not "F":
+            return False
+        else:
+            return True
+    else:
+        return True
+    return True
+
+def male_last_names(children, fam, famX):
+    hid = (fam["husband"])
+    husbLName = individuals[hid]["lastName"]
+
+    for c in children:
+
+        if (c != "N") and (individuals[c]["sex"] == "M"):
+
+            childLname = individuals[c]["lastName"]
+            if childLname != husbLName:
+                print("ERROR: FAMILY: US16: " + addF(famX) + ": Male child (" + addi(
+                    c) + ") does not have same last name as father (" + addi(hid) + ")")
+                return False
+        return True
+    return True
+
 
 # Get file
 gedFile = open("MyFamily.ged", "r")
@@ -609,3 +647,9 @@ for fam in families:
     print(uniqueIDs)
     print(uniqueFamIDs)
     print(uniqueNameAndBirth)
+
+    for indiv in individuals:
+        if correct_gender_for_role(indiv, families[fam]) == False:
+            print("ERROR: FAMILY: US21: "+ addF(fam) +": Wrong gender for role (" + addi(indiv) +")")
+
+    male_last_names(families[fam]["children"],families[fam],fam)

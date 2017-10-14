@@ -9,14 +9,14 @@
 2 VERS 5.5.1
 2 FORM LINEAGE-LINKED
 1 SUBM @I1@
-2 NAME Jacob Ulasevich
+2 NAME Jacob Johnson
 1 SUBN
 1 CHAR UTF-8
 0 @I1@ INDI
-1 NAME Jacob /Ulasevich/
+1 NAME Jacob /Johnson/
 2 GIVN Jacob
-2 SURN Ulasevich
-2 _MARNM Ulasevich
+2 SURN Johnson
+2 _MARNM Johnson
 1 SEX M
 1 BIRT
 2 DATE 23 FEB 1796
@@ -26,7 +26,7 @@
 2 GIVN George
 2 SURN Ulasevich
 2 _MARNM Ulasevich
-1 SEX M
+1 SEX F
 1 BIRT
 2 DATE 29 APR 1955
 1 DEAT Y
