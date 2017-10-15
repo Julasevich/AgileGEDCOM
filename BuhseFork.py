@@ -224,7 +224,7 @@ def isUniqueNameAndBirth(fullName, birthdayList):
         birthday = birthday + x
     if birthday in uniqueNameAndBirth:
         if fullName in uniqueNameAndBirth[birthday]:
-            nameBirthdayErrors.append("ERROR: INDIVIDUAL: US23: " + fullName + ": NOT UNIQUE FNAME/BIRTHDAY COMBO")
+            nameBirthdayErrors.append("ERROR: INDIVIDUAL: US23: " + fullName + ": NOT UNIQUE NAME/BIRTHDAY COMBO")
             return False
         else:
             uniqueNameAndBirth[birthday].append(fullName)
