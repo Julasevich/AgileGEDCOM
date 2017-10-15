@@ -170,7 +170,7 @@ def validBirths(family, fid):
     return
 
 
-def multipleBirths(children):
+def multipleBirths(children, individuals):
     '''US06 - Function to find any instances of multiple births'''
     if children == "NA":
         return False
@@ -677,7 +677,7 @@ for fam in families:
 
     validBirths(families[fam], fam)
 
-    if multipleBirths(families[fam]["children"]):
+    if multipleBirths(families[fam]["children"], individuals):
         print("ERROR: FAMILY: US14: " + addF(fam) + ": Multiple Births > 5")
 
     if tooManySiblings(families[fam]["children"]):
