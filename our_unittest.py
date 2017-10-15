@@ -22,11 +22,17 @@ class TestGEDCOM(unittest.TestCase):
         self.assertFalse(divBeforeMarr(['23', 'FEB', '1970'], ['23', 'FEB', '1970']))
 
     def testMultipleBirths(self):
-        self.assertFalse(multipleBirths())
-        self.assertFalse(multipleBirths())
-        self.assertFalse(multipleBirths())
-        self.assertFalse(multipleBirths())
-        self.assertFalse(multipleBirths())
+        individuals = {'1': {'birthday': ['23', 'FEB', '1970']},
+                       '2': {'birthday': ['23', 'FEB', '1970']},
+                       '3': {'birthday': ['23', 'FEB', '1970']},
+                       '4': {'birthday': ['23', 'FEB', '1970']},
+                       '5': {'birthday': ['23', 'FEB', '1970']},
+                       '6': {'birthday': ['23', 'FEB', '1970']}}
+        self.assertFalse(multipleBirths("NA", individuals))
+        self.assertFalse(multipleBirths(['1'], individuals))
+        self.assertFalse(multipleBirths(['1', '2'], individuals))
+        self.assertFalse(multipleBirths(['1', '2', '3', '4', '5'], individuals))
+        self.assertTrue(multipleBirths(['1', '2', '3', '4', '5', '6'], individuals))
 
     def testTooManySiblings(self):
         self.assertFalse(tooManySiblings([]))
@@ -34,8 +40,6 @@ class TestGEDCOM(unittest.TestCase):
         self.assertFalse(tooManySiblings(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n']))
         self.assertTrue(tooManySiblings(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p']))
         self.assertTrue(tooManySiblings(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o']))
-
-
     # ----------------------------------
 
     # Tests written by Greyson Strouse
