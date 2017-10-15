@@ -201,14 +201,16 @@ def isUniqueID(iD, idType):
     '''US22 - Function to test whether an ID is unique or not'''
     if idType == 'INDI':
         if iD in uniqueIDs:
-            idErrors.append("ERROR: INDIVIDUAL: US22: " + addi(id) + ": NOT UNIQUE INDIVIDUAL ID")
+            temp = "ERROR: INDIVIDUAL: US22: (I" + str(iD) + ") : NOT UNIQUE INDIVIDUAL ID"
+            idErrors.append(temp)
             return False
         else:
             uniqueIDs.append(iD)
             return True
     else:
         if iD in uniqueFamIDs:
-            idErrors.append("ERROR: FAMILY: US22: " + addF(id) + ": NOT UNIQUE FAMILY ID")
+            temp = "ERROR: FAMILY: US22:  (F" + str(iD) + ") : NOT UNIQUE FAMILY ID"
+            idErrors.append(temp)
             return False
         else:
             uniqueFamIDs.append(iD)
@@ -222,7 +224,7 @@ def isUniqueNameAndBirth(fullName, birthdayList):
         birthday = birthday + x
     if birthday in uniqueNameAndBirth:
         if fullName in uniqueNameAndBirth[birthday]:
-            nameBirthdayErrors.append("ERROR: INDIVIDUAL: US23: " + addi(id) + ": NOT UNIQUE FNAME/BIRTHDAY COMBO")
+            nameBirthdayErrors.append("ERROR: INDIVIDUAL: US23: " + fullName + ": NOT UNIQUE FNAME/BIRTHDAY COMBO")
             return False
         else:
             uniqueNameAndBirth[birthday].append(fullName)
@@ -682,9 +684,9 @@ for fam in families:
         print("ERROR: FAMILY: US15: " + addF(fam) + ": Too Many Siblings " + '-'.join(
             str(v) for v in families[fam]["children"]) + " > 15")
 
-    print(uniqueIDs)
-    print(uniqueFamIDs)
-    print(uniqueNameAndBirth)
+    #print(uniqueIDs)
+    #print(uniqueFamIDs)
+    #print(uniqueNameAndBirth)
 
     for indiv in individuals:
         if correct_gender_for_role(indiv, families[fam]) == False:
