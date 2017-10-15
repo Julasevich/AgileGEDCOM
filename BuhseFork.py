@@ -5,6 +5,8 @@ months = {"JAN": 1, "FEB": 2, "MAR": 3, "APR": 4, "MAY": 5, "JUN": 6, "JUL": 7, 
           "NOV": 11, "DEC": 12}
 uniqueIDs = []
 uniqueFamIDs = []
+idErrors = []
+nameBirthdayErrors = []
 uniqueNameAndBirth = {}
 today = time.strftime("%Y %m %d")
 
@@ -199,14 +201,14 @@ def isUniqueID(iD, idType):
     '''US22 - Function to test whether an ID is unique or not'''
     if idType == 'INDI':
         if iD in uniqueIDs:
-            print("ERROR: INDIVIDUAL: US22 - NOT UNIQUE ID")
+            idErrors.append("ERROR: INDIVIDUAL: US22: " + addi(id) + ": NOT UNIQUE INDIVIDUAL ID")
             return False
         else:
             uniqueIDs.append(iD)
             return True
     else:
         if iD in uniqueFamIDs:
-            print("ERROR: FAMILY: US22 - NOT UNIQUE ID")
+            idErrors.append("ERROR: FAMILY: US22: " + addF(id) + ": NOT UNIQUE FAMILY ID")
             return False
         else:
             uniqueFamIDs.append(iD)
@@ -220,7 +222,7 @@ def isUniqueNameAndBirth(fullName, birthdayList):
         birthday = birthday + x
     if birthday in uniqueNameAndBirth:
         if fullName in uniqueNameAndBirth[birthday]:
-            print("ERROR: INDIVIDUAL: US23 - NOT UNIQUE NAME/BIRTHDAY COMBINATION")
+            nameBirthdayErrors.append("ERROR: INDIVIDUAL: US23: " + addi(id) + ": NOT UNIQUE FNAME/BIRTHDAY COMBO")
             return False
         else:
             uniqueNameAndBirth[birthday].append(fullName)
@@ -689,3 +691,9 @@ for fam in families:
             print("ERROR: FAMILY: US21: " + addF(fam) + ": Wrong gender for role (" + addi(indiv) + ")")
 
     male_last_names(families[fam]["children"], families[fam], fam)
+
+for error in idErrors:
+    print(error)
+
+for error in nameBirthdayErrors:
+    print(error)
