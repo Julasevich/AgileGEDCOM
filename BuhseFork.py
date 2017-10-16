@@ -105,20 +105,23 @@ def birthBfrMarr(fam, fid):
     US02 - Function that takes in a birth date and a marriage date and checks that the marriage occurs after the birth
     Input is taken as two string lists containing birth date and marriage date information as stored in a GED file
     '''
+    testMessage = True
     marr = dateVal(fam["marrDate"])
     husb = dateVal(individuals[fam["husband"]]["birthday"])
     wife = dateVal(individuals[fam["wife"]]["birthday"])
     if marr < husb:
-        print("ERROR: FAMILY: US02: " + addF(fid) + ": Husband (" + addi(fam["husband"]) + ") born on " + '-'.join(
-            individuals[fam["husband"]]["birthday"]) + " after marriage on " + '-'.join(fam["marrDate"]))
+        print("ERROR: FAMILY: US02: " + addF(fid) + ": Husband (" + addi(fam["husband"]) + ") born on " + '-'.join(individuals[fam["husband"]]["birthday"]) + " after marriage on " + '-'.join(fam["marrDate"]))
+        testMessage = False
     if marr < wife:
         print("ERROR: FAMILY: US02: " + addF(fid) + ": Wife (" + addi(fam["wife"]) + ") born on " + '-'.join(
             individuals[fam["wife"]]["birthday"]) + " after marriage on " + '-'.join(fam["marrDate"]))
-    return
+        testMessage = False
+    return testMessage
 
 
 def checkBigamy(indi, marrDate, fam):
     '''US11 - Function to test whether or not a person divorsed before marraige'''
+    testMessage = False
     marriages = individuals[indi]["spouse"]
     if individuals[indi]["sex"] == "M":
         spouse = "husband's ("
@@ -130,7 +133,8 @@ def checkBigamy(indi, marrDate, fam):
                 print("ERROR: FAMILY: US11: " + addF(fam) + ": Family married on " + '-'.join(
                     marrDate) + " before " + spouse + addi(indi) + ") marriage in family " + addF(
                     m) + " ended on " + '-'.join(families[m]["endDate"][0]))
-    return
+                testMessage = True
+    return testMessage
 
 
 def dbd(d1, d2):
@@ -151,23 +155,28 @@ def nineMonthsBefore(date2, date1):
 def validBirths(family, fid):
     hid = family["husband"]
     wid = family["wife"]
+    testMessage = False
     if family["children"] != "NA":
         for cid in family["children"]:
             if dbd(individuals[cid]["birthday"], family["marrDate"]):
                 print("ERROR: FAMILY: US08: " + addF(fid) + ": Child (" + addi(cid) + ") born on " + '-'.join(
                     individuals[cid]["birthday"]) + " before marriage on " + '-'.join(family["marrDate"]))
+                testMessage = True
             if not nineMonthsBefore(family["divDate"], individuals[cid]["birthday"]):
                 print("ERROR: FAMILY: US08: " + addF(fid) + ": Child (" + addi(cid) + ") born on " + '-'.join(
                     individuals[cid]["birthday"]) + " over 9 months after divorce on " + '-'.join(family["divDate"]))
+                testMessage = True
             if dbd(individuals[wid]["death"], individuals[cid]["birthday"]):
                 print("ERROR: FAMILY: US09: " + addF(fid) + ": Child (" + addi(cid) + ") born on " + '-'.join(
                     individuals[cid]["birthday"]) + " after mother's (" + addi(wid) + ") death on " + '-'.join(
                     individuals[wid]["death"]))
+                testMessage = True
             if nineMonthsBefore(individuals[hid]["death"], individuals[cid]["birthday"]):
                 print("ERROR: FAMILY: US09: " + addF(fid) + ": Child (" + addi(cid) + ") born on " + '-'.join(
                     individuals[cid]["birthday"]) + " over 9 months after father's (" + addi(
                     hid) + ") death on " + '-'.join(individuals[hid]["death"]))
-    return
+                testMessage = True
+    return testMessage
 
 
 def multipleBirths(children, individuals):
@@ -699,3 +708,4 @@ for error in idErrors:
 
 for error in nameBirthdayErrors:
     print(error)
+
