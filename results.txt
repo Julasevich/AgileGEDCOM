@@ -31,8 +31,8 @@
 --> 1 SUBM @I1@
 <-- 1|SUBM|N|@I1@
 
---> 2 NAME Jacob Ulasevich
-<-- 2|NAME|Y|Jacob Ulasevich
+--> 2 NAME Jacob Johnson
+<-- 2|NAME|Y|Jacob Johnson
 
 --> 1 SUBN
 <-- 1|SUBN|N|
@@ -43,17 +43,17 @@
 --> 0 @I1@ INDI
 <-- 0|@I1@|INDI|Y
 
---> 1 NAME Jacob /Ulasevich/
-<-- 1|NAME|Y|Jacob /Ulasevich/
+--> 1 NAME Jacob /Johnson/
+<-- 1|NAME|Y|Jacob /Johnson/
 
 --> 2 GIVN Jacob
 <-- 2|GIVN|N|Jacob
 
---> 2 SURN Ulasevich
-<-- 2|SURN|N|Ulasevich
+--> 2 SURN Johnson
+<-- 2|SURN|N|Johnson
 
---> 2 _MARNM Ulasevich
-<-- 2|_MARNM|N|Ulasevich
+--> 2 _MARNM Johnson
+<-- 2|_MARNM|N|Johnson
 
 --> 1 SEX M
 <-- 1|SEX|Y|M
@@ -82,8 +82,8 @@
 --> 2 _MARNM Ulasevich
 <-- 2|_MARNM|N|Ulasevich
 
---> 1 SEX M
-<-- 1|SEX|Y|M
+--> 1 SEX F
+<-- 1|SEX|Y|F
 
 --> 1 BIRT
 <-- 1|BIRT|Y|
@@ -430,6 +430,600 @@
 --> 1 FAMS @F3@
 <-- 1|FAMS|Y|@F3@
 
+--> 0 @I14@ INDI
+<-- 0|@I14@|INDI|Y
+
+--> 1 NAME Kyle /Pollock/
+<-- 1|NAME|Y|Kyle /Pollock/
+
+--> 2 GIVN Kyle
+<-- 2|GIVN|N|Kyle
+
+--> 2 SURN Pollock
+<-- 2|SURN|N|Pollock
+
+--> 2 _MARNM Pollock
+<-- 2|_MARNM|N|Pollock
+
+--> 1 SEX M
+<-- 1|SEX|Y|M
+
+--> 1 BIRT
+<-- 1|BIRT|Y|
+
+--> 2 DATE 26 AUG 2085
+<-- 2|DATE|Y|26 AUG 2085
+
+--> 1 DEAT Y
+<-- 1|DEAT|Y|Y
+
+--> 2 DATE 10 APR 2055
+<-- 2|DATE|Y|10 APR 2055
+
+--> 1 FAMC @F5@
+<-- 1|FAMC|Y|@F5@
+
+--> 0 @I15@ INDI
+<-- 0|@I15@|INDI|Y
+
+--> 1 NAME Kyle /Pollock/
+<-- 1|NAME|Y|Kyle /Pollock/
+
+--> 2 GIVN Kyle
+<-- 2|GIVN|N|Kyle
+
+--> 2 SURN Pollock
+<-- 2|SURN|N|Pollock
+
+--> 2 _MARNM Pollock
+<-- 2|_MARNM|N|Pollock
+
+--> 1 SEX M
+<-- 1|SEX|Y|M
+
+--> 1 BIRT
+<-- 1|BIRT|Y|
+
+--> 2 DATE 26 AUG 2085
+<-- 2|DATE|Y|26 AUG 2085
+
+--> 1 DEAT Y
+<-- 1|DEAT|Y|Y
+
+--> 2 DATE 10 APR 2055
+<-- 2|DATE|Y|10 APR 2055
+
+--> 1 FAMC @F5@
+<-- 1|FAMC|Y|@F5@
+
+--> 0 @I16@ INDI
+<-- 0|@I16@|INDI|Y
+
+--> 1 NAME Kyle /Pollock/
+<-- 1|NAME|Y|Kyle /Pollock/
+
+--> 2 GIVN Kyle
+<-- 2|GIVN|N|Kyle
+
+--> 2 SURN Pollock
+<-- 2|SURN|N|Pollock
+
+--> 2 _MARNM Pollock
+<-- 2|_MARNM|N|Pollock
+
+--> 1 SEX M
+<-- 1|SEX|Y|M
+
+--> 1 BIRT
+<-- 1|BIRT|Y|
+
+--> 2 DATE 26 AUG 2085
+<-- 2|DATE|Y|26 AUG 2085
+
+--> 1 DEAT Y
+<-- 1|DEAT|Y|Y
+
+--> 2 DATE 10 APR 2055
+<-- 2|DATE|Y|10 APR 2055
+
+--> 1 FAMC @F5@
+<-- 1|FAMC|Y|@F5@
+
+--> 0 @I17@ INDI
+<-- 0|@I17@|INDI|Y
+
+--> 1 NAME Kyle /Pollock/
+<-- 1|NAME|Y|Kyle /Pollock/
+
+--> 2 GIVN Kyle
+<-- 2|GIVN|N|Kyle
+
+--> 2 SURN Pollock
+<-- 2|SURN|N|Pollock
+
+--> 2 _MARNM Pollock
+<-- 2|_MARNM|N|Pollock
+
+--> 1 SEX M
+<-- 1|SEX|Y|M
+
+--> 1 BIRT
+<-- 1|BIRT|Y|
+
+--> 2 DATE 26 AUG 2085
+<-- 2|DATE|Y|26 AUG 2085
+
+--> 1 DEAT Y
+<-- 1|DEAT|Y|Y
+
+--> 2 DATE 10 APR 2055
+<-- 2|DATE|Y|10 APR 2055
+
+--> 1 FAMC @F5@
+<-- 1|FAMC|Y|@F5@
+
+--> 0 @I18@ INDI
+<-- 0|@I18@|INDI|Y
+
+--> 1 NAME Kyle /Pollock/
+<-- 1|NAME|Y|Kyle /Pollock/
+
+--> 2 GIVN Kyle
+<-- 2|GIVN|N|Kyle
+
+--> 2 SURN Pollock
+<-- 2|SURN|N|Pollock
+
+--> 2 _MARNM Pollock
+<-- 2|_MARNM|N|Pollock
+
+--> 1 SEX M
+<-- 1|SEX|Y|M
+
+--> 1 BIRT
+<-- 1|BIRT|Y|
+
+--> 2 DATE 26 AUG 2085
+<-- 2|DATE|Y|26 AUG 2085
+
+--> 1 DEAT Y
+<-- 1|DEAT|Y|Y
+
+--> 2 DATE 10 APR 2055
+<-- 2|DATE|Y|10 APR 2055
+
+--> 1 FAMC @F5@
+<-- 1|FAMC|Y|@F5@
+
+--> 0 @I19@ INDI
+<-- 0|@I19@|INDI|Y
+
+--> 1 NAME Kyle /Pollock/
+<-- 1|NAME|Y|Kyle /Pollock/
+
+--> 2 GIVN Kyle
+<-- 2|GIVN|N|Kyle
+
+--> 2 SURN Pollock
+<-- 2|SURN|N|Pollock
+
+--> 2 _MARNM Pollock
+<-- 2|_MARNM|N|Pollock
+
+--> 1 SEX M
+<-- 1|SEX|Y|M
+
+--> 1 BIRT
+<-- 1|BIRT|Y|
+
+--> 2 DATE 26 AUG 2085
+<-- 2|DATE|Y|26 AUG 2085
+
+--> 1 DEAT Y
+<-- 1|DEAT|Y|Y
+
+--> 2 DATE 10 APR 2055
+<-- 2|DATE|Y|10 APR 2055
+
+--> 1 FAMC @F5@
+<-- 1|FAMC|Y|@F5@
+
+--> 0 @I20@ INDI
+<-- 0|@I20@|INDI|Y
+
+--> 1 NAME Kyle /Pollock/
+<-- 1|NAME|Y|Kyle /Pollock/
+
+--> 2 GIVN Kyle
+<-- 2|GIVN|N|Kyle
+
+--> 2 SURN Pollock
+<-- 2|SURN|N|Pollock
+
+--> 2 _MARNM Pollock
+<-- 2|_MARNM|N|Pollock
+
+--> 1 SEX M
+<-- 1|SEX|Y|M
+
+--> 1 BIRT
+<-- 1|BIRT|Y|
+
+--> 2 DATE 26 AUG 2085
+<-- 2|DATE|Y|26 AUG 2085
+
+--> 1 DEAT Y
+<-- 1|DEAT|Y|Y
+
+--> 2 DATE 10 APR 2055
+<-- 2|DATE|Y|10 APR 2055
+
+--> 1 FAMC @F5@
+<-- 1|FAMC|Y|@F5@
+
+--> 0 @I21@ INDI
+<-- 0|@I21@|INDI|Y
+
+--> 1 NAME Kyle /Pollock/
+<-- 1|NAME|Y|Kyle /Pollock/
+
+--> 2 GIVN Kyle
+<-- 2|GIVN|N|Kyle
+
+--> 2 SURN Pollock
+<-- 2|SURN|N|Pollock
+
+--> 2 _MARNM Pollock
+<-- 2|_MARNM|N|Pollock
+
+--> 1 SEX M
+<-- 1|SEX|Y|M
+
+--> 1 BIRT
+<-- 1|BIRT|Y|
+
+--> 2 DATE 26 AUG 2085
+<-- 2|DATE|Y|26 AUG 2085
+
+--> 1 DEAT Y
+<-- 1|DEAT|Y|Y
+
+--> 2 DATE 10 APR 2055
+<-- 2|DATE|Y|10 APR 2055
+
+--> 1 FAMC @F5@
+<-- 1|FAMC|Y|@F5@
+
+--> 0 @I22@ INDI
+<-- 0|@I22@|INDI|Y
+
+--> 1 NAME Kyle /Pollock/
+<-- 1|NAME|Y|Kyle /Pollock/
+
+--> 2 GIVN Kyle
+<-- 2|GIVN|N|Kyle
+
+--> 2 SURN Pollock
+<-- 2|SURN|N|Pollock
+
+--> 2 _MARNM Pollock
+<-- 2|_MARNM|N|Pollock
+
+--> 1 SEX M
+<-- 1|SEX|Y|M
+
+--> 1 BIRT
+<-- 1|BIRT|Y|
+
+--> 2 DATE 26 AUG 2085
+<-- 2|DATE|Y|26 AUG 2085
+
+--> 1 DEAT Y
+<-- 1|DEAT|Y|Y
+
+--> 2 DATE 10 APR 2055
+<-- 2|DATE|Y|10 APR 2055
+
+--> 1 FAMC @F5@
+<-- 1|FAMC|Y|@F5@
+
+--> 0 @I23@ INDI
+<-- 0|@I23@|INDI|Y
+
+--> 1 NAME Kyle /Pollock/
+<-- 1|NAME|Y|Kyle /Pollock/
+
+--> 2 GIVN Kyle
+<-- 2|GIVN|N|Kyle
+
+--> 2 SURN Pollock
+<-- 2|SURN|N|Pollock
+
+--> 2 _MARNM Pollock
+<-- 2|_MARNM|N|Pollock
+
+--> 1 SEX M
+<-- 1|SEX|Y|M
+
+--> 1 BIRT
+<-- 1|BIRT|Y|
+
+--> 2 DATE 26 AUG 2085
+<-- 2|DATE|Y|26 AUG 2085
+
+--> 1 DEAT Y
+<-- 1|DEAT|Y|Y
+
+--> 2 DATE 10 APR 2055
+<-- 2|DATE|Y|10 APR 2055
+
+--> 1 FAMC @F5@
+<-- 1|FAMC|Y|@F5@
+
+--> 0 @I24@ INDI
+<-- 0|@I24@|INDI|Y
+
+--> 1 NAME Kyle /Pollock/
+<-- 1|NAME|Y|Kyle /Pollock/
+
+--> 2 GIVN Kyle
+<-- 2|GIVN|N|Kyle
+
+--> 2 SURN Pollock
+<-- 2|SURN|N|Pollock
+
+--> 2 _MARNM Pollock
+<-- 2|_MARNM|N|Pollock
+
+--> 1 SEX M
+<-- 1|SEX|Y|M
+
+--> 1 BIRT
+<-- 1|BIRT|Y|
+
+--> 2 DATE 26 AUG 2085
+<-- 2|DATE|Y|26 AUG 2085
+
+--> 1 DEAT Y
+<-- 1|DEAT|Y|Y
+
+--> 2 DATE 10 APR 2055
+<-- 2|DATE|Y|10 APR 2055
+
+--> 1 FAMC @F5@
+<-- 1|FAMC|Y|@F5@
+
+--> 0 @I25@ INDI
+<-- 0|@I25@|INDI|Y
+
+--> 1 NAME Kyle /Pollock/
+<-- 1|NAME|Y|Kyle /Pollock/
+
+--> 2 GIVN Kyle
+<-- 2|GIVN|N|Kyle
+
+--> 2 SURN Pollock
+<-- 2|SURN|N|Pollock
+
+--> 2 _MARNM Pollock
+<-- 2|_MARNM|N|Pollock
+
+--> 1 SEX M
+<-- 1|SEX|Y|M
+
+--> 1 BIRT
+<-- 1|BIRT|Y|
+
+--> 2 DATE 26 AUG 2085
+<-- 2|DATE|Y|26 AUG 2085
+
+--> 1 DEAT Y
+<-- 1|DEAT|Y|Y
+
+--> 2 DATE 10 APR 2055
+<-- 2|DATE|Y|10 APR 2055
+
+--> 1 FAMC @F5@
+<-- 1|FAMC|Y|@F5@
+
+--> 0 @I26@ INDI
+<-- 0|@I26@|INDI|Y
+
+--> 1 NAME Kyle /Pollock/
+<-- 1|NAME|Y|Kyle /Pollock/
+
+--> 2 GIVN Kyle
+<-- 2|GIVN|N|Kyle
+
+--> 2 SURN Pollock
+<-- 2|SURN|N|Pollock
+
+--> 2 _MARNM Pollock
+<-- 2|_MARNM|N|Pollock
+
+--> 1 SEX M
+<-- 1|SEX|Y|M
+
+--> 1 BIRT
+<-- 1|BIRT|Y|
+
+--> 2 DATE 26 AUG 2085
+<-- 2|DATE|Y|26 AUG 2085
+
+--> 1 DEAT Y
+<-- 1|DEAT|Y|Y
+
+--> 2 DATE 10 APR 2055
+<-- 2|DATE|Y|10 APR 2055
+
+--> 1 FAMC @F5@
+<-- 1|FAMC|Y|@F5@
+
+--> 0 @I27@ INDI
+<-- 0|@I27@|INDI|Y
+
+--> 1 NAME Kyle /Pollock/
+<-- 1|NAME|Y|Kyle /Pollock/
+
+--> 2 GIVN Kyle
+<-- 2|GIVN|N|Kyle
+
+--> 2 SURN Pollock
+<-- 2|SURN|N|Pollock
+
+--> 2 _MARNM Pollock
+<-- 2|_MARNM|N|Pollock
+
+--> 1 SEX M
+<-- 1|SEX|Y|M
+
+--> 1 BIRT
+<-- 1|BIRT|Y|
+
+--> 2 DATE 26 AUG 2085
+<-- 2|DATE|Y|26 AUG 2085
+
+--> 1 DEAT Y
+<-- 1|DEAT|Y|Y
+
+--> 2 DATE 10 APR 2055
+<-- 2|DATE|Y|10 APR 2055
+
+--> 1 FAMC @F5@
+<-- 1|FAMC|Y|@F5@
+
+--> 0 @I28@ INDI
+<-- 0|@I28@|INDI|Y
+
+--> 1 NAME Kyle /Pollock/
+<-- 1|NAME|Y|Kyle /Pollock/
+
+--> 2 GIVN Kyle
+<-- 2|GIVN|N|Kyle
+
+--> 2 SURN Pollock
+<-- 2|SURN|N|Pollock
+
+--> 2 _MARNM Pollock
+<-- 2|_MARNM|N|Pollock
+
+--> 1 SEX M
+<-- 1|SEX|Y|M
+
+--> 1 BIRT
+<-- 1|BIRT|Y|
+
+--> 2 DATE 26 AUG 2085
+<-- 2|DATE|Y|26 AUG 2085
+
+--> 1 DEAT Y
+<-- 1|DEAT|Y|Y
+
+--> 2 DATE 10 APR 2055
+<-- 2|DATE|Y|10 APR 2055
+
+--> 1 FAMC @F5@
+<-- 1|FAMC|Y|@F5@
+
+--> 0 @I29@ INDI
+<-- 0|@I29@|INDI|Y
+
+--> 1 NAME Kyle /Pollock/
+<-- 1|NAME|Y|Kyle /Pollock/
+
+--> 2 GIVN Kyle
+<-- 2|GIVN|N|Kyle
+
+--> 2 SURN Pollock
+<-- 2|SURN|N|Pollock
+
+--> 2 _MARNM Pollock
+<-- 2|_MARNM|N|Pollock
+
+--> 1 SEX M
+<-- 1|SEX|Y|M
+
+--> 1 BIRT
+<-- 1|BIRT|Y|
+
+--> 2 DATE 26 AUG 2085
+<-- 2|DATE|Y|26 AUG 2085
+
+--> 1 DEAT Y
+<-- 1|DEAT|Y|Y
+
+--> 2 DATE 10 APR 2055
+<-- 2|DATE|Y|10 APR 2055
+
+--> 1 FAMC @F5@
+<-- 1|FAMC|Y|@F5@
+
+--> 0 @I30@ INDI
+<-- 0|@I30@|INDI|Y
+
+--> 1 NAME Kyle /Pollock/
+<-- 1|NAME|Y|Kyle /Pollock/
+
+--> 2 GIVN Kyle
+<-- 2|GIVN|N|Kyle
+
+--> 2 SURN Pollock
+<-- 2|SURN|N|Pollock
+
+--> 2 _MARNM Pollock
+<-- 2|_MARNM|N|Pollock
+
+--> 1 SEX M
+<-- 1|SEX|Y|M
+
+--> 1 BIRT
+<-- 1|BIRT|Y|
+
+--> 2 DATE 26 AUG 2085
+<-- 2|DATE|Y|26 AUG 2085
+
+--> 1 DEAT Y
+<-- 1|DEAT|Y|Y
+
+--> 2 DATE 10 APR 2055
+<-- 2|DATE|Y|10 APR 2055
+
+--> 1 FAMC @F5@
+<-- 1|FAMC|Y|@F5@
+
+--> 0 @I30@ INDI
+<-- 0|@I30@|INDI|Y
+
+--> 1 NAME Kyle /Pollock/
+<-- 1|NAME|Y|Kyle /Pollock/
+
+--> 2 GIVN Kyle
+<-- 2|GIVN|N|Kyle
+
+--> 2 SURN Pollock
+<-- 2|SURN|N|Pollock
+
+--> 2 _MARNM Pollock
+<-- 2|_MARNM|N|Pollock
+
+--> 1 SEX M
+<-- 1|SEX|Y|M
+
+--> 1 BIRT
+<-- 1|BIRT|Y|
+
+--> 2 DATE 26 AUG 2085
+<-- 2|DATE|Y|26 AUG 2085
+
+--> 1 DEAT Y
+<-- 1|DEAT|Y|Y
+
+--> 2 DATE 10 APR 2055
+<-- 2|DATE|Y|10 APR 2055
+
+--> 1 FAMC @F5@
+<-- 1|FAMC|Y|@F5@
+
 --> 0 @F1@ FAM
 <-- 0|@F1@|FAM|Y
 
@@ -544,49 +1138,234 @@
 --> 1 _CURRENT Y
 <-- 1|_CURRENT|N|Y
 
+--> 0 @F5@ FAM
+<-- 0|@F5@|FAM|Y
+
+--> 1 HUSB @I6@
+<-- 1|HUSB|Y|@I6@
+
+--> 1 WIFE @I4@
+<-- 1|WIFE|Y|@I4@
+
+--> 1 CHIL @I14@
+<-- 1|CHIL|Y|@I14@
+
+--> 1 CHIL @I15@
+<-- 1|CHIL|Y|@I15@
+
+--> 1 CHIL @I16@
+<-- 1|CHIL|Y|@I16@
+
+--> 1 CHIL @I17@
+<-- 1|CHIL|Y|@I17@
+
+--> 1 CHIL @I18@
+<-- 1|CHIL|Y|@I18@
+
+--> 1 CHIL @I19@
+<-- 1|CHIL|Y|@I19@
+
+--> 1 CHIL @I20@
+<-- 1|CHIL|Y|@I20@
+
+--> 1 CHIL @I21@
+<-- 1|CHIL|Y|@I21@
+
+--> 1 CHIL @I22@
+<-- 1|CHIL|Y|@I22@
+
+--> 1 CHIL @I23@
+<-- 1|CHIL|Y|@I23@
+
+--> 1 CHIL @I24@
+<-- 1|CHIL|Y|@I24@
+
+--> 1 CHIL @I25@
+<-- 1|CHIL|Y|@I25@
+
+--> 1 CHIL @I26@
+<-- 1|CHIL|Y|@I26@
+
+--> 1 CHIL @I27@
+<-- 1|CHIL|Y|@I27@
+
+--> 1 CHIL @I28@
+<-- 1|CHIL|Y|@I28@
+
+--> 1 CHIL @I29@
+<-- 1|CHIL|Y|@I29@
+
+--> 1 MARR
+<-- 1|MARR|Y|
+
+--> 2 DATE 10 FEB 1973
+<-- 2|DATE|Y|10 FEB 1973
+
+--> 1 _CURRENT Y
+<-- 1|_CURRENT|N|Y
+
 --> 0 TRLR
 <-- 0|TRLR|Y
 
 +-----+--------------------+-----+-------------+-----+-------+-------------+-------+--------------+
 |  ID |        Name        | Sex |   Birthday  | Age | Alive |    Death    | Child |    Spouse    |
 +-----+--------------------+-----+-------------+-----+-------+-------------+-------+--------------+
-|  I1 | Jacob /Ulasevich/  |  M  | 23-FEB-1796 | 221 |  True |      NA     |   F1  |      NA      |
-|  I2 | George /Ulasevich/ |  M  | 29-APR-1955 |  19 | False | 19-MAR-1975 |   NA  |    ['F1']    |
+|  I1 |  Jacob /Johnson/   |  M  | 23-FEB-1796 | 221 |  True |      NA     |   F1  |      NA      |
+|  I2 | George /Ulasevich/ |  F  | 29-APR-1955 |  19 | False | 19-MAR-1975 |   NA  |    ['F1']    |
 |  I3 |   Sharon /Wood/    |  F  | 29-JAN-1760 | 215 | False | 10-APR-1975 |   F2  |    ['F1']    |
 |  I4 |  Dana /Ulasevich/  |  F  |  5-APR-1986 |  31 |  True |      NA     |   F1  |    ['F4']    |
 |  I5 | Kacie /Ulasevich/  |  F  | 29-DEC-1988 |  28 |  True |      NA     |   F1  |      NA      |
 |  I6 |    Adam /Smith/    |  M  | 25-JUL-1927 |  58 | False | 18-MAR-1986 |   NA  | ['F2', 'F4'] |
 |  I7 |    Nora /Lynn/     |  F  | 17-SEP-1934 |  40 | False | 10-APR-1975 |   NA  |    ['F2']    |
 |  I8 |   Maria /Smith/    |  F  |  6-DEC-1933 |  83 |  True |      NA     |   NA  |    ['F3']    |
-|  I9 |    Bryan /Wood/    |  M  | 12-OCT-1970 |  46 |  True |      NA     |   F4  |      NA      |
-| I10 |   Thomas /Wood/    |  M  | 15-OCT-1957 |  59 |  True |      NA     |   F2  |      NA      |
+|  I9 |    Bryan /Wood/    |  M  | 12-OCT-1970 |  47 |  True |      NA     |   F4  |      NA      |
+| I10 |   Thomas /Wood/    |  M  | 15-OCT-1957 |  60 |  True |      NA     |   F2  |      NA      |
 | I11 |    Sean /Wood/     |  M  | 21-MAY-1958 |  59 |  True |      NA     |   F2  |      NA      |
 | I12 |    Gary /Wood/     |  M  | 31-JUL-1962 |  55 |  True |      NA     |   F2  |      NA      |
 | I13 |   Kyle /Pollock/   |  M  | 26-AUG-2085 | -30 | False | 10-APR-2055 |   NA  |    ['F3']    |
+| I14 |   Kyle /Pollock/   |  M  | 26-AUG-2085 | -30 | False | 10-APR-2055 |   F5  |      NA      |
+| I15 |   Kyle /Pollock/   |  M  | 26-AUG-2085 | -30 | False | 10-APR-2055 |   F5  |      NA      |
+| I16 |   Kyle /Pollock/   |  M  | 26-AUG-2085 | -30 | False | 10-APR-2055 |   F5  |      NA      |
+| I17 |   Kyle /Pollock/   |  M  | 26-AUG-2085 | -30 | False | 10-APR-2055 |   F5  |      NA      |
+| I18 |   Kyle /Pollock/   |  M  | 26-AUG-2085 | -30 | False | 10-APR-2055 |   F5  |      NA      |
+| I19 |   Kyle /Pollock/   |  M  | 26-AUG-2085 | -30 | False | 10-APR-2055 |   F5  |      NA      |
+| I20 |   Kyle /Pollock/   |  M  | 26-AUG-2085 | -30 | False | 10-APR-2055 |   F5  |      NA      |
+| I21 |   Kyle /Pollock/   |  M  | 26-AUG-2085 | -30 | False | 10-APR-2055 |   F5  |      NA      |
+| I22 |   Kyle /Pollock/   |  M  | 26-AUG-2085 | -30 | False | 10-APR-2055 |   F5  |      NA      |
+| I23 |   Kyle /Pollock/   |  M  | 26-AUG-2085 | -30 | False | 10-APR-2055 |   F5  |      NA      |
+| I24 |   Kyle /Pollock/   |  M  | 26-AUG-2085 | -30 | False | 10-APR-2055 |   F5  |      NA      |
+| I25 |   Kyle /Pollock/   |  M  | 26-AUG-2085 | -30 | False | 10-APR-2055 |   F5  |      NA      |
+| I26 |   Kyle /Pollock/   |  M  | 26-AUG-2085 | -30 | False | 10-APR-2055 |   F5  |      NA      |
+| I27 |   Kyle /Pollock/   |  M  | 26-AUG-2085 | -30 | False | 10-APR-2055 |   F5  |      NA      |
+| I28 |   Kyle /Pollock/   |  M  | 26-AUG-2085 | -30 | False | 10-APR-2055 |   F5  |      NA      |
+| I29 |   Kyle /Pollock/   |  M  | 26-AUG-2085 | -30 | False | 10-APR-2055 |   F5  |      NA      |
+| I30 |   Kyle /Pollock/   |  M  | 26-AUG-2085 | -30 | False | 10-APR-2055 |   F5  |      NA      |
 +-----+--------------------+-----+-------------+-----+-------+-------------+-------+--------------+
 
-+----+-------------+-------------+------------+--------------------+---------+------------------+-----------------------------+
-| ID |   Married   |   Divorced  | Husband ID |    Husband Name    | Wife ID |    Wife Name     |           Children          |
-+----+-------------+-------------+------------+--------------------+---------+------------------+-----------------------------+
-| F1 | 15-MAY-1982 | 15-FEB-1981 |     I2     | George /Ulasevich/ |    I3   |  Sharon /Wood/   |      ['I1', 'I4', 'I5']     |
-| F2 | 12-MAY-1899 |      NA     |     I6     |    Adam /Smith/    |    I7   |   Nora /Lynn/    | ['I3', 'I10', 'I11', 'I12'] |
-| F3 | 14-JUN-2018 | 15-FEB-2023 |    I13     |   Kyle /Pollock/   |    I8   |  Maria /Smith/   |              NA             |
-| F4 | 10-FEB-1973 |      NA     |     I6     |    Adam /Smith/    |    I4   | Dana /Ulasevich/ |            ['I9']           |
-+----+-------------+-------------+------------+--------------------+---------+------------------+-----------------------------+
++----+-------------+-------------+------------+--------------------+---------+------------------+------------------------------------------------------------------------------------------------------------------+
+| ID |   Married   |   Divorced  | Husband ID |    Husband Name    | Wife ID |    Wife Name     |                                                     Children                                                     |
++----+-------------+-------------+------------+--------------------+---------+------------------+------------------------------------------------------------------------------------------------------------------+
+| F1 | 15-MAY-1982 | 15-FEB-1981 |     I2     | George /Ulasevich/ |    I3   |  Sharon /Wood/   |                                                ['I1', 'I4', 'I5']                                                |
+| F2 | 12-MAY-1899 |      NA     |     I6     |    Adam /Smith/    |    I7   |   Nora /Lynn/    |                                           ['I3', 'I10', 'I11', 'I12']                                            |
+| F3 | 14-JUN-2018 | 15-FEB-2023 |    I13     |   Kyle /Pollock/   |    I8   |  Maria /Smith/   |                                                        NA                                                        |
+| F4 | 10-FEB-1973 |      NA     |     I6     |    Adam /Smith/    |    I4   | Dana /Ulasevich/ |                                                      ['I9']                                                      |
+| F5 | 10-FEB-1973 |      NA     |     I6     |    Adam /Smith/    |    I4   | Dana /Ulasevich/ | ['I14', 'I15', 'I16', 'I17', 'I18', 'I19', 'I20', 'I21', 'I22', 'I23', 'I24', 'I25', 'I26', 'I27', 'I28', 'I29'] |
++----+-------------+-------------+------------+--------------------+---------+------------------+------------------------------------------------------------------------------------------------------------------+
 ERROR: INDIVIDUAL: US07: I1: More than 150 years old - Birth date 23-FEB-1796
 ERROR: INDIVIDUAL: US07: I3: More than 150 years old at death - Birth 29-JAN-1760: Death 10-APR-1975
 ERROR: INDIVIDUAL: US01: I13: Birthday 26-AUG-2085 occurs in the future
 ERROR: INDIVIDUAL: US01: I13: Death 10-APR-2055 occurs in the future
 ERROR: INDIVIDUAL: US03: I13: Died 10-APR-2055 before being born on 26-AUG-2085
+ERROR: INDIVIDUAL: US01: I14: Birthday 26-AUG-2085 occurs in the future
+ERROR: INDIVIDUAL: US01: I14: Death 10-APR-2055 occurs in the future
+ERROR: INDIVIDUAL: US03: I14: Died 10-APR-2055 before being born on 26-AUG-2085
+ERROR: INDIVIDUAL: US01: I15: Birthday 26-AUG-2085 occurs in the future
+ERROR: INDIVIDUAL: US01: I15: Death 10-APR-2055 occurs in the future
+ERROR: INDIVIDUAL: US03: I15: Died 10-APR-2055 before being born on 26-AUG-2085
+ERROR: INDIVIDUAL: US01: I16: Birthday 26-AUG-2085 occurs in the future
+ERROR: INDIVIDUAL: US01: I16: Death 10-APR-2055 occurs in the future
+ERROR: INDIVIDUAL: US03: I16: Died 10-APR-2055 before being born on 26-AUG-2085
+ERROR: INDIVIDUAL: US01: I17: Birthday 26-AUG-2085 occurs in the future
+ERROR: INDIVIDUAL: US01: I17: Death 10-APR-2055 occurs in the future
+ERROR: INDIVIDUAL: US03: I17: Died 10-APR-2055 before being born on 26-AUG-2085
+ERROR: INDIVIDUAL: US01: I18: Birthday 26-AUG-2085 occurs in the future
+ERROR: INDIVIDUAL: US01: I18: Death 10-APR-2055 occurs in the future
+ERROR: INDIVIDUAL: US03: I18: Died 10-APR-2055 before being born on 26-AUG-2085
+ERROR: INDIVIDUAL: US01: I19: Birthday 26-AUG-2085 occurs in the future
+ERROR: INDIVIDUAL: US01: I19: Death 10-APR-2055 occurs in the future
+ERROR: INDIVIDUAL: US03: I19: Died 10-APR-2055 before being born on 26-AUG-2085
+ERROR: INDIVIDUAL: US01: I20: Birthday 26-AUG-2085 occurs in the future
+ERROR: INDIVIDUAL: US01: I20: Death 10-APR-2055 occurs in the future
+ERROR: INDIVIDUAL: US03: I20: Died 10-APR-2055 before being born on 26-AUG-2085
+ERROR: INDIVIDUAL: US01: I21: Birthday 26-AUG-2085 occurs in the future
+ERROR: INDIVIDUAL: US01: I21: Death 10-APR-2055 occurs in the future
+ERROR: INDIVIDUAL: US03: I21: Died 10-APR-2055 before being born on 26-AUG-2085
+ERROR: INDIVIDUAL: US01: I22: Birthday 26-AUG-2085 occurs in the future
+ERROR: INDIVIDUAL: US01: I22: Death 10-APR-2055 occurs in the future
+ERROR: INDIVIDUAL: US03: I22: Died 10-APR-2055 before being born on 26-AUG-2085
+ERROR: INDIVIDUAL: US01: I23: Birthday 26-AUG-2085 occurs in the future
+ERROR: INDIVIDUAL: US01: I23: Death 10-APR-2055 occurs in the future
+ERROR: INDIVIDUAL: US03: I23: Died 10-APR-2055 before being born on 26-AUG-2085
+ERROR: INDIVIDUAL: US01: I24: Birthday 26-AUG-2085 occurs in the future
+ERROR: INDIVIDUAL: US01: I24: Death 10-APR-2055 occurs in the future
+ERROR: INDIVIDUAL: US03: I24: Died 10-APR-2055 before being born on 26-AUG-2085
+ERROR: INDIVIDUAL: US01: I25: Birthday 26-AUG-2085 occurs in the future
+ERROR: INDIVIDUAL: US01: I25: Death 10-APR-2055 occurs in the future
+ERROR: INDIVIDUAL: US03: I25: Died 10-APR-2055 before being born on 26-AUG-2085
+ERROR: INDIVIDUAL: US01: I26: Birthday 26-AUG-2085 occurs in the future
+ERROR: INDIVIDUAL: US01: I26: Death 10-APR-2055 occurs in the future
+ERROR: INDIVIDUAL: US03: I26: Died 10-APR-2055 before being born on 26-AUG-2085
+ERROR: INDIVIDUAL: US01: I27: Birthday 26-AUG-2085 occurs in the future
+ERROR: INDIVIDUAL: US01: I27: Death 10-APR-2055 occurs in the future
+ERROR: INDIVIDUAL: US03: I27: Died 10-APR-2055 before being born on 26-AUG-2085
+ERROR: INDIVIDUAL: US01: I28: Birthday 26-AUG-2085 occurs in the future
+ERROR: INDIVIDUAL: US01: I28: Death 10-APR-2055 occurs in the future
+ERROR: INDIVIDUAL: US03: I28: Died 10-APR-2055 before being born on 26-AUG-2085
+ERROR: INDIVIDUAL: US01: I29: Birthday 26-AUG-2085 occurs in the future
+ERROR: INDIVIDUAL: US01: I29: Death 10-APR-2055 occurs in the future
+ERROR: INDIVIDUAL: US03: I29: Died 10-APR-2055 before being born on 26-AUG-2085
+ERROR: INDIVIDUAL: US01: I30: Birthday 26-AUG-2085 occurs in the future
+ERROR: INDIVIDUAL: US01: I30: Death 10-APR-2055 occurs in the future
+ERROR: INDIVIDUAL: US03: I30: Died 10-APR-2055 before being born on 26-AUG-2085
 ERROR: FAMILY: US04: F1: Divorced on 15-FEB-1981 before marriage on 15-MAY-1982
 ERROR: FAMILY: US05: F1: Married 15-MAY-1982 after husband's (I2) death on 19-MAR-1975
 ERROR: FAMILY: US05: F1: Married 15-MAY-1982 after wife's (I3) death on 10-APR-1975
 ERROR: FAMILY: US06: F1: Divorced 15-FEB-1981 after husband's (I2) death on 19-MAR-1975
 ERROR: FAMILY: US06: F1: Divorced 15-MAY-1982 after wife's (I3) death on 10-APR-1975
+ERROR: FAMILY: US08: F1: Child (I1) born on 23-FEB-1796 before marriage on 15-MAY-1982
+ERROR: FAMILY: US08: F1: Child (I1) born on 23-FEB-1796 over 9 months after divorce on 15-FEB-1981
+ERROR: FAMILY: US09: F1: Child (I4) born on 5-APR-1986 after mother's (I3) death on 10-APR-1975
+ERROR: FAMILY: US09: F1: Child (I4) born on 5-APR-1986 over 9 months after father's (I2) death on 19-MAR-1975
+ERROR: FAMILY: US09: F1: Child (I5) born on 29-DEC-1988 after mother's (I3) death on 10-APR-1975
+ERROR: FAMILY: US09: F1: Child (I5) born on 29-DEC-1988 over 9 months after father's (I2) death on 19-MAR-1975
+ERROR: FAMILY: US21: F1: Wrong gender for role (I2)
+ERROR: FAMILY: US16: F1: Male child (I1) does not have same last name as father (I2)
 ERROR: FAMILY: US02: F2: Husband (I6) born on 25-JUL-1927 after marriage on 12-MAY-1899
 ERROR: FAMILY: US02: F2: Wife (I7) born on 17-SEP-1934 after marriage on 12-MAY-1899
+ERROR: FAMILY: US08: F2: Child (I3) born on 29-JAN-1760 before marriage on 12-MAY-1899
 ERROR: FAMILY: US01: F3: Marriage date 14-JUN-2018 is in the future
 ERROR: FAMILY: US01: F3: Divorce date 15-FEB-2023 is in the future
 ERROR: FAMILY: US02: F3: Husband (I13) born on 26-AUG-2085 after marriage on 14-JUN-2018
 ERROR: FAMILY: US11: F4: Family married on 10-FEB-1973 before husband's (I6) marriage in family F2 ended on 10-APR-1975
 ERROR: FAMILY: US02: F4: Wife (I4) born on 5-APR-1986 after marriage on 10-FEB-1973
+ERROR: FAMILY: US08: F4: Child (I9) born on 12-OCT-1970 before marriage on 10-FEB-1973
+ERROR: FAMILY: US16: F4: Male child (I9) does not have same last name as father (I6)
+ERROR: FAMILY: US11: F5: Family married on 10-FEB-1973 before husband's (I6) marriage in family F2 ended on 10-APR-1975
+ERROR: FAMILY: US02: F5: Wife (I4) born on 5-APR-1986 after marriage on 10-FEB-1973
+ERROR: FAMILY: US09: F5: Child (I14) born on 26-AUG-2085 over 9 months after father's (I6) death on 18-MAR-1986
+ERROR: FAMILY: US09: F5: Child (I15) born on 26-AUG-2085 over 9 months after father's (I6) death on 18-MAR-1986
+ERROR: FAMILY: US09: F5: Child (I16) born on 26-AUG-2085 over 9 months after father's (I6) death on 18-MAR-1986
+ERROR: FAMILY: US09: F5: Child (I17) born on 26-AUG-2085 over 9 months after father's (I6) death on 18-MAR-1986
+ERROR: FAMILY: US09: F5: Child (I18) born on 26-AUG-2085 over 9 months after father's (I6) death on 18-MAR-1986
+ERROR: FAMILY: US09: F5: Child (I19) born on 26-AUG-2085 over 9 months after father's (I6) death on 18-MAR-1986
+ERROR: FAMILY: US09: F5: Child (I20) born on 26-AUG-2085 over 9 months after father's (I6) death on 18-MAR-1986
+ERROR: FAMILY: US09: F5: Child (I21) born on 26-AUG-2085 over 9 months after father's (I6) death on 18-MAR-1986
+ERROR: FAMILY: US09: F5: Child (I22) born on 26-AUG-2085 over 9 months after father's (I6) death on 18-MAR-1986
+ERROR: FAMILY: US09: F5: Child (I23) born on 26-AUG-2085 over 9 months after father's (I6) death on 18-MAR-1986
+ERROR: FAMILY: US09: F5: Child (I24) born on 26-AUG-2085 over 9 months after father's (I6) death on 18-MAR-1986
+ERROR: FAMILY: US09: F5: Child (I25) born on 26-AUG-2085 over 9 months after father's (I6) death on 18-MAR-1986
+ERROR: FAMILY: US09: F5: Child (I26) born on 26-AUG-2085 over 9 months after father's (I6) death on 18-MAR-1986
+ERROR: FAMILY: US09: F5: Child (I27) born on 26-AUG-2085 over 9 months after father's (I6) death on 18-MAR-1986
+ERROR: FAMILY: US09: F5: Child (I28) born on 26-AUG-2085 over 9 months after father's (I6) death on 18-MAR-1986
+ERROR: FAMILY: US09: F5: Child (I29) born on 26-AUG-2085 over 9 months after father's (I6) death on 18-MAR-1986
+ERROR: FAMILY: US14: F5: Multiple Births > 5
+ERROR: FAMILY: US15: F5: Too Many Siblings 14-15-16-17-18-19-20-21-22-23-24-25-26-27-28-29 > 15
+ERROR: FAMILY: US16: F5: Male child (I14) does not have same last name as father (I6)
+ERROR: INDIVIDUAL: US22: (I30) : NOT UNIQUE INDIVIDUAL ID
+ERROR: INDIVIDUAL: US23: Kyle/Pollock/: NOT UNIQUE NAME/BIRTHDAY COMBO
+ERROR: INDIVIDUAL: US23: Kyle/Pollock/: NOT UNIQUE NAME/BIRTHDAY COMBO
+ERROR: INDIVIDUAL: US23: Kyle/Pollock/: NOT UNIQUE NAME/BIRTHDAY COMBO
+ERROR: INDIVIDUAL: US23: Kyle/Pollock/: NOT UNIQUE NAME/BIRTHDAY COMBO
+ERROR: INDIVIDUAL: US23: Kyle/Pollock/: NOT UNIQUE NAME/BIRTHDAY COMBO
+ERROR: INDIVIDUAL: US23: Kyle/Pollock/: NOT UNIQUE NAME/BIRTHDAY COMBO
+ERROR: INDIVIDUAL: US23: Kyle/Pollock/: NOT UNIQUE NAME/BIRTHDAY COMBO
+ERROR: INDIVIDUAL: US23: Kyle/Pollock/: NOT UNIQUE NAME/BIRTHDAY COMBO
+ERROR: INDIVIDUAL: US23: Kyle/Pollock/: NOT UNIQUE NAME/BIRTHDAY COMBO
+ERROR: INDIVIDUAL: US23: Kyle/Pollock/: NOT UNIQUE NAME/BIRTHDAY COMBO
+ERROR: INDIVIDUAL: US23: Kyle/Pollock/: NOT UNIQUE NAME/BIRTHDAY COMBO
+ERROR: INDIVIDUAL: US23: Kyle/Pollock/: NOT UNIQUE NAME/BIRTHDAY COMBO
+ERROR: INDIVIDUAL: US23: Kyle/Pollock/: NOT UNIQUE NAME/BIRTHDAY COMBO
+ERROR: INDIVIDUAL: US23: Kyle/Pollock/: NOT UNIQUE NAME/BIRTHDAY COMBO
+ERROR: INDIVIDUAL: US23: Kyle/Pollock/: NOT UNIQUE NAME/BIRTHDAY COMBO
+ERROR: INDIVIDUAL: US23: Kyle/Pollock/: NOT UNIQUE NAME/BIRTHDAY COMBO
+ERROR: INDIVIDUAL: US23: Kyle/Pollock/: NOT UNIQUE NAME/BIRTHDAY COMBO
