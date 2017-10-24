@@ -287,35 +287,50 @@ def male_last_names(children, fam, famX):
         return True
     return True
 
-def list_deceased(individuals):
+def list_deceased(individuals,uTest):
     """US29"""
     deceased = []
     for indiv in individuals:
-
         if individuals[indiv]["alive"] != True:
-            deceased.append(indiv)
+            if(uTest == -1):
+                return True
+            else:
+                deceased.append(indiv)
+        if(uTest == -1):
+            return False
     return deceased
 
-def list_living_married(individuals, families):
+def list_living_married(individuals, families, uTest):
     living=[]
-
     for fam in families:
         x = families[fam]
         hid = addi(x["husband"])
         wid = addi(x["wife"])
         husband = None
         wife = None
-        if families[fam]["divDate"]!= "NA":
+        if families[fam]["divDate"]== "NA":
 
             for indiv in individuals:
                 if IndiIDs[indiv - 1] == hid:
                     husband = indiv
                     if individuals[indiv]["alive"] == True:
-                        living.append(indiv)
+                        if (uTest ==-1):
+                            return True
+                        else:
+                            living.append(indiv)
+                    elif(uTest ==-1):
+                        return False
                 elif IndiIDs[indiv -1] == wid:
                     wife = indiv
                     if individuals[indiv]["alive"]==True:
-                        living.append(indiv)
+                        if (uTest ==-1):
+                            return True
+                        else:
+                            living.append(indiv)
+                    elif(uTest == -1):
+                        return False
+                elif(uTest == -1):
+                    return False
     return living
 # Get file
 gedFile = open("MyFamily.ged", "r")
@@ -738,10 +753,11 @@ for error in idErrors:
 for error in nameBirthdayErrors:
     print(error)
 
-listD = list_deceased(individuals)
-listLiving = list_living_married(individuals, families)
-
 # Print list of deceased, list of living and married.
+uTest = 0
+listD = list_deceased(individuals,uTest)
+listLiving = list_living_married(individuals, families, uTest)
+
 dName = []
 lName = []
 for p in listD:

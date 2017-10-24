@@ -1,6 +1,6 @@
 # Unittest file for Sprint 2
 import unittest
-from BuhseFork import divBeforeMarr, deathBeforeMarr, deathBeforeBirth, deathBeforeDivorce, multipleBirths, tooManySiblings, correct_gender_for_role, male_last_names, tooOld, isUniqueID, isUniqueNameAndBirth, checkBigamy, validBirths, pastDate, birthBfrMarr, individuals, families 
+from BuhseFork import divBeforeMarr, deathBeforeMarr, deathBeforeBirth, deathBeforeDivorce, multipleBirths, tooManySiblings, correct_gender_for_role, male_last_names, tooOld, isUniqueID, isUniqueNameAndBirth, checkBigamy, validBirths, pastDate, birthBfrMarr, individuals, families, list_deceased,list_living_married
 
 
 '''
@@ -108,7 +108,28 @@ class TestGEDCOM(unittest.TestCase):
         "False if gender for role is incorrect."
         self.assertFalse(correct_gender_for_role(2,{'marrDate': ['15', 'MAY', '1982'], 'divDate': ['15', 'FEB', '1981'],'husband': 2, 'wife': 3, 'children': [1, 4, 5], 'endDate':[['19', 'MAR', '1975'], 'Husband']}))
         self.assertTrue(correct_gender_for_role(6,{'marrDate': ['10', 'FEB', '1973'], 'divDate': 'NA', 'husband': 6, 'wife': 4, 'children': [9], 'endDate':[['18', 'MAR', '1986'], 'Husband']}))
-        
+
+    def testLivingandMarried(self):
+        "True if living and married individual is added to the list"
+        self.assertFalse(list_living_married({2: {'firstName': 'George', 'lastName': '/Ulasevich/', 'sex': 'F', 'birthday': ['29', 'APR', '1955'], 'age': 19,
+                                                  'alive': False, 'death': ['19', 'MAR', '1975'], 'child': 'NA', 'spouse': [1]}},
+                                             {1: {'marrDate': ['15', 'MAY', '1982'], 'divDate': ['15', 'FEB', '1981'],
+                                                  'husband': 2, 'wife': 3, 'children': [1, 4, 5],
+                                                  'endDate': [['19', 'MAR', '1975'], 'Husband']}},-1))
+        self.assertTrue(list_living_married({4: {'firstName': 'Dana', 'lastName': '/Ulasevich/', 'sex': 'F', 'birthday': ['5', 'APR', '1986'], 'age': 31,
+                                                  'alive': True, 'death': 'NA', 'child': 'F1', 'spouse': [4]}},
+                                            {4: {'marrDate': ['10', 'FEB', '1973'], 'divDate': 'NA',
+                                                 'husband': 6, 'wife': 4, 'children': [9],
+                                                 'endDate': [['18', 'MAR', '1986'], 'Husband']}},-1))
+
+    def testListDeceased(self):
+        "True if deceased individual is added to the list"
+        self.assertFalse(list_deceased({1: {'firstName': 'Jacob', 'lastName': '/Johnson/', 'sex': 'M', 'birthday': ['23', 'FEB', '1796'], 'age': 221,
+                                            'alive': True, 'death': 'NA', 'child': 'F1', 'spouse': 'NA'}},-1))
+        self.assertTrue(list_deceased({2: {'firstName': 'George', 'lastName': '/Ulasevich/', 'sex': 'F', 'birthday': ['29', 'APR', '1955'], 'age': 19,
+                                           'alive': False, 'death': ['19', 'MAR', '1975'], 'child': 'NA', 'spouse': [1]}},-1))
+
+
     '''Tests written by Alex Buhse'''
     
     def testBirthBeforeMariage(self):
