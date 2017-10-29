@@ -241,7 +241,31 @@ def isUniqueNameAndBirth(fullName, birthdayList):
     else:
         uniqueNameAndBirth[birthday] = [fullName]
         return True
+    
+def uniqueFamBySpouse(fam, families):
+    '''US 24'''
+    res = False;
+    for f in families:
+        if f == fam:
+            res = res;
+        elif families[f]["husband"] == families[fam]["husband"] and families[f]["wife"] == families[fam]["wife"] and families[f]["marrDate"] == families[fam]["marrDate"]:
+            res = True;
+            print("ERROR: FAMILY: US24: " + addF(fam) + ": Family shares same spouses and anniversary as " + addF(f));
+    return res;
 
+def uniqueChildren(fam, fid, indis):
+    '''US 25'''
+    res = False;
+    if fam["children"] == "NA":
+        return False;
+    for c in fam["children"]:
+        for oc in fam["children"]:
+            if c == oc:
+                res = res;
+            elif indis[c]["firstName"] == indis[oc]["firstName"] and indis[c]["birthday"] == indis[oc]["birthday"]:
+                res = True;
+                print("ERROR: FAMILY: US25: " + addF(fid) + ": Child " + addi(c) + " has same name and birthday as child " + addi(oc));
+    return res;
 
 def correct_gender_for_role(indiv, fam):
     "US21 Husband in family should be male and wife in family should be female"
@@ -729,6 +753,10 @@ for fam in families:
     birthBfrMarr(families[fam], fam)
 
     validBirths(families[fam], fam)
+    
+    uniqueFamBySpouse(fam, families)
+    
+    uniqueChildren(families[fam], fam, individuals)
 
     if multipleBirths(families[fam]["children"], individuals):
         print("ERROR: FAMILY: US14: " + addF(fam) + ": Multiple Births > 5")
