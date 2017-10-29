@@ -1,74 +1,46 @@
 from prettytable import PrettyTable
 import time
 
-months = {"JAN": 1, "FEB": 2, "MAR": 3, "APR": 4, "MAY": 5, "JUN": 6, "JUL": 7, "AUG": 8, "SEP": 9, "OCT": 10, "NOV": 11, "DEC": 12}
+months = {"JAN": 1, "FEB": 2, "MAR": 3, "APR": 4, "MAY": 5, "JUN": 6, "JUL": 7, "AUG": 8, "SEP": 9, "OCT": 10,
+          "NOV": 11, "DEC": 12}
 today = time.strftime("%Y %m %d")
 
 
-def birth_before_death(birthday, deathday):
+def dateVal(date):
+    return int(date[2]) * 10000 + months[date[1]] * 100 + int(date[0])
+
+
+def deathBeforeBirth(birthday, deathday):
     '''US03 - Function to find any instances of death before birth'''
-    if len(deathday) < 3:
+    if deathday == "NA":
         return False
-    if(birthday[2] > deathday[2]):
-        return False
-    elif(birthday[2] == deathday[2]):
-        if (months[birthday[1]] > months[deathday[1]]):
-            return False
-        elif (months[birthday[1]] == months[deathday[1]]):
-            if (birthday[0] > deathday[0]):
-                return False
-    return True
+    return dateVal(deathday) < dateVal(birthday)
 
 
-def divBeforeMarr(date_marr, date_div):
+def divBeforeMarr(marrDate, divDate):
     '''US04 - Function to find any instances of divorce before marriage.'''
-    if len(date_div) < 3:
+    if divDate == "NA":
         return False
-    if(date_marr[2] < date_div[2]):
-        return False
-    elif(date_marr[2] == date_div[2]):
-        if(date_marr[1] < date_div[1]):
-            return False
-        elif(date_marr[1] == date_div[1]):
-            if(date_marr[0] < date_div[0]):
-                return False
-    return True
+    else:
+        return dateVal(divDate) < dateVal(marrDate)
 
 
-def deathBeforeMarr(date_marr, date_death_husb, date_death_wife):
+def deathBeforeMarr(marrDate, indi):
     '''US05 - Function to find any instances of death before marriage.'''
-    if len(date_death_husb) < 3 and len(date_death_wife) < 3:
+    deathDate = individuals[indi]["death"]
+    if deathDate == 'NA':
         return False
-    if (len(date_death_husb) >= 3 and date_marr[2] < date_death_husb[2]) or (len(date_death_wife) >= 3 and date_marr[2] < date_death_wife[2]):
-        return False
-    elif len(date_death_husb) >= 3 and date_marr[2] == date_death_husb[2]:
-        if(date_marr[1] < date_death_husb[1]):
-            return False
-        elif(date_marr[1] == date_death_husb[1]):
-            if(date_marr[0] < date_death_husb[0]):
-                return False
-    elif len(date_death_wife) >= 3 and date_marr[2] == date_death_wife[2]:
-        if(date_marr[1] < date_death_wife[1]):
-            return False
-        elif(date_marr[1] == date_death_wife[1]):
-            if(date_marr[0] < date_death_wife[0]):
-                return False
-    return True
+    return dateVal(deathDate) < dateVal(marrDate)
 
 
-def div_before_death(div_date, deathday):
-    '''US06 - Function to find any instances of death before marriage'''
-    if len(deathday) < 3:
+def deathBeforeDivorce(divDate, indi):
+    '''US06 - Function to find any instances of death before divorce'''
+    deathDate = individuals[indi]["death"]
+    if deathDate == "NA":
         return False
-    if (div_date[2] > deathday[2]):
+    if divDate == "NA":
         return False
-    elif (div_date[2] == deathday[2]):
-        if (months[div_date[1]] > months[deathday[1]]):
-            return False
-        elif (months[div_date[1]] == months[deathday[1]]):
-            if (div_date[0] > deathday[0]):
-                return False
-    return True
+    return dateVal(deathDate) < dateVal(divDate)
 
 
 def getAge(today, birthday, alive, deathday):
@@ -80,32 +52,18 @@ def getAge(today, birthday, alive, deathday):
         today_month = date[1]
         today_day = date[2]
         age = int(today_year) - int(birthday[2])
-        age += (int(today_month) / 12.0) - (months[birthday[1]]/12.0)
-        age += (int(today_day)/365.0) - (int(birthday[0])/365.0)
-        if int(age) >= 150:
-            age = 0
-        return(int(age))
+        age += (int(today_month) / 12.0) - (months[birthday[1]] / 12.0)
+        age += (int(today_day) / 365.0) - (int(birthday[0]) / 365.0)
+        return (int(age))
     else:
         # Compute Age up to death day
         death_year = deathday[2]
         death_month = months[deathday[1]]
         death_day = deathday[0]
         age = int(death_year) - int(birthday[2])
-        age += (int(death_month) / 12.0) - (months[birthday[1]]/12.0)
-        age += (int(death_day)/365.0) - (int(birthday[0])/365.0)
-        if int(age) >= 150:
-            age = 0
+        age += (int(death_month) / 12.0) - (months[birthday[1]] / 12.0)
+        age += (int(death_day) / 365.0) - (int(birthday[0]) / 365.0)
         return int(age)
-
-
-#Needs to be fixed in Sprint 2
-def noBigamy(spouses, divorces):
-    '''US11 - Function to check status of marrage'''
-    if (spouses-divorses) > 1:
-        return False
-    else:
-        return True
-
 
 
 def pastDate(date):
@@ -114,6 +72,8 @@ def pastDate(date):
     Input is taken as a list containing date information as stored in a GED file
     '''
     today = time.strftime("%Y %m %d").split()
+    if date == "NA":
+        return True
     if int(date[2]) < int(today[0]):
         return True
     elif int(today[0]) < int(date[2]):
@@ -128,53 +88,72 @@ def pastDate(date):
                 return False
             return True
 
-def birthBfrMarr(birth, marry):
+
+def birthBfrMarr(fam, fid):
     '''
     Function that takes in a birth date and a marriage date and checks that the marriage occurs after the birth
     Input is taken as two string lists containing birth date and marriage date information as stored in a GED file
     '''
-    if int(birth[2]) < int(marry[2]):
-        return True
-    elif int(marry[2]) < int(birth[2]):
-        return False
+    marr = dateVal(fam["marrDate"])
+    husb = dateVal(individuals[fam["husband"]]["birthday"])
+    wife = dateVal(individuals[fam["wife"]]["birthday"])
+    if marr < husb:
+        print("ERROR: FAMILY: US02: " + addF(fid) + ": Husband (" + addi(fam["husband"]) + ") born on " + '-'.join(
+            individuals[fam["husband"]]["birthday"]) + " after marriage on " + '-'.join(fam["marrDate"]))
+    if marr < wife:
+        print("ERROR: FAMILY: US02: " + addF(fid) + ": Wife (" + addi(fam["wife"]) + ") born on " + '-'.join(
+            individuals[fam["wife"]]["birthday"]) + " after marriage on " + '-'.join(fam["marrDate"]))
+    return
+
+
+def checkBigamy(indi, marrDate, fam):
+    marriages = individuals[indi]["spouse"]
+    if individuals[indi]["sex"] == "M":
+        spouse = "husband's ("
     else:
-        if months[birth[1]] < months[marry[1]]:
-            return True
-        elif months[marry[1]] < months[birth[1]]:
-            return False
-        else:
-            if int(int(birth[0]) >= int(marry[0])):
-                return False
-            return True
+        spouse = "wife's ("
+    for m in marriages:
+        if divBeforeMarr(marrDate, families[m]["marrDate"]):
+            if not divBeforeMarr(marrDate, families[m]["endDate"][0]):
+                print("ERROR: FAMILY: US11: " + addF(fam) + ": Family married on " + '-'.join(
+                    marrDate) + " before " + spouse + addi(indi) + ") marriage in family " + addF(
+                    m) + " ended on " + '-'.join(families[m]["endDate"][0]))
+    return
+
+
+
+
 
 # Get file
 gedFile = open("MyFamily.ged", "r")
 # Acceptable tags
-projectTags = ["INDI", "NAME", "SEX", "BIRT", "DEAT", "FAMC", "FAMS", "FAM", "MARR", "HUSB", "WIFE", "CHIL", "DIV", "DATE", "HEAD", "TRLR", "NOTE"]
+projectTags = ["INDI", "NAME", "SEX", "BIRT", "DEAT", "FAMC", "FAMS", "FAM", "MARR", "HUSB", "WIFE", "CHIL", "DIV",
+               "DATE", "HEAD", "TRLR", "NOTE"]
 
 # Unique Individual Values
-individuals = []
-idnum = ''
-indiFirstName = ''
-indiLastName = ''
-indiSex = ''
-indiBirthday = ''
-indiAge = ''
-indiAlive = True
-indiDeath = ''
-indiChild = ''
-indiSpouse = ''
+individuals = {}
+idNum = ''
+indiFirstName = {"firstName": ''}
+indiLastName = {"lastName": ''}
+indiSex = {"sex": ''}
+indiBirthday = {"birthday": ''}
+indiAge = {"age": ''}
+indiAlive = {"alive": True}
+indiDeath = {"death": ''}
+indiChild = {"child": ''}
+indiSpouse = {"spouse": []}
 birthday = False
 deathday = False
 
 # Unique Family Values
-families = []
-currentFam = ''
-currentMarr = ''
-currentDiv = ''
-currentHusb = ''
-currentWife = ''
-currentChildren = []
+families = {}
+famID = ''
+currentMarr = {"marrDate": ''}
+currentDiv = {"divDate": ''}
+endDate = {"endDate": ['', '']}
+currentHusb = {"husband": ''}
+currentWife = {"wife": ''}
+currentChildren = {"children": []}
 stillMarried = True
 
 # Main loop
@@ -193,40 +172,58 @@ for line in gedFile:
             if tag in projectTags:
                 valid = "Y"
                 if tag == "INDI":
-                    if indiFirstName != '' and indiLastName != '' and idnum != '':
-                        if indiDeath == '':
-                            indiDeath = "NA"
-                        if indiChild == '':
-                            indiChild = "NA"
-                        if indiSpouse == '':
-                            indiSpouse = "NA"
-                        indiAge = getAge(today, indiBirthday, indiAlive, indiDeath)
-                        if indiAge >= 150:
-                            indiAge = 0
-                        individuals.append([idnum, indiFirstName, indiLastName, indiSex, indiBirthday, indiAge, indiAlive, indiDeath, indiChild, indiSpouse])
-                        indiFirstName = ''
-                        indiLastName = ''
-                        indiSex = ''
-                        indiAge = ''
-                        indiAlive = True
-                        indiDeath = ''
-                        indiChild = ''
-                        indiSpouse = ''
-                    idnum = words[1][1:-1]
+                    if indiFirstName["firstName"] != '' and indiLastName["lastName"] != '' and idNum != '':
+                        if indiDeath["death"] == '':
+                            indiDeath["death"] = "NA"
+                        if indiChild["child"] == '':
+                            indiChild["child"] = "NA"
+                        if indiSpouse["spouse"] == []:
+                            indiSpouse["spouse"] = "NA"
+                        indiAge["age"] = getAge(today, indiBirthday["birthday"], indiAlive["alive"], indiDeath["death"])
+                        # individuals.append([idnum, indiFirstName, indiLastName, indiSex, indiBirthday, indiAge, indiAlive, indiDeath, indiChild, indiSpouse])
+                        # indiDict = {idNum: [indiFirstName, indiLastName, indiSex, indiBirthday, indiAge, indiAlive, indiDeath, indiChild, indiSpouse]}
+                        indiDict = {idNum: {}}
+                        indiDict[idNum].update(indiFirstName)
+                        indiDict[idNum].update(indiLastName)
+                        indiDict[idNum].update(indiSex)
+                        indiDict[idNum].update(indiBirthday)
+                        indiDict[idNum].update(indiAge)
+                        indiDict[idNum].update(indiAlive)
+                        indiDict[idNum].update(indiDeath)
+                        indiDict[idNum].update(indiChild)
+                        indiDict[idNum].update(indiSpouse)
+                        individuals.update(indiDict)
+                        indiFirstName["firstName"] = ''
+                        indiLastName["lastName"] = ''
+                        indiSex["sex"] = ''
+                        indiAge["age"] = ''
+                        indiAlive["alive"] = True
+                        indiDeath["death"] = ''
+                        indiChild["child"] = ''
+                        indiSpouse["spouse"] = []
+                    idNum = int(words[1][2:-1])
                 elif tag == "FAM":
-                    if currentFam != '' and currentHusb != '' and currentWife != '':
-                        if currentChildren == []:
-                            currentChildren = "NA"
-                        if currentDiv == '':
-                            currentDiv = "NA"
-                        addFam = [currentFam, currentMarr, currentDiv, currentHusb, currentWife, currentChildren]
-                        families.append(addFam)
-                        currentMarr = ''
-                        currentDiv = ''
-                        currentHusb = ''
-                        currentWife = ''
-                        currentChildren = []
-                    currentFam = words[1]
+                    if famID != '' and currentHusb["husband"] != '' and currentWife["wife"] != '':
+                        if currentChildren["children"] == []:
+                            currentChildren["children"] = "NA"
+                        if currentDiv["divDate"] == '':
+                            currentDiv["divDate"] = "NA"
+                        # addFam = [currentFam, currentMarr, currentDiv, currentHusb, currentWife, currentChildren, endDate]
+                        # families.append(addFam)
+                        famDict = {famID: {}}
+                        famDict[famID].update(currentMarr)
+                        famDict[famID].update(currentDiv)
+                        famDict[famID].update(currentHusb)
+                        famDict[famID].update(currentWife)
+                        famDict[famID].update(currentChildren)
+                        famDict[famID].update(endDate)
+                        families.update(famDict)
+                        currentMarr["marrDate"] = ''
+                        currentDiv["divDate"] = ''
+                        currentHusb["husband"] = ''
+                        currentWife["wife"] = ''
+                        currentChildren["children"] = []
+                    famID = int(words[1][2:-1])
             else:
                 valid = "N"
 
@@ -261,40 +258,40 @@ for line in gedFile:
         if tag in projectTags:
             valid = "Y"
             if tag == "HUSB":
-                currentHusb = words[2]
+                currentHusb["husband"] = int(words[2][2:-1])
             elif tag == "WIFE":
-                currentWife = words[2]
+                currentWife["wife"] = int(words[2][2:-1])
             elif tag == "CHIL":
-                currentChildren.append(words[2])
+                currentChildren["children"].append(int(words[2][2:-1]))
             elif tag == "MARR":
                 stillMarried = True
             elif tag == "DIV":
                 stillMarried = False
             elif tag == "DATE":
                 if stillMarried is True and birthday is False and deathday is False:
-                    currentMarr = words[2:]
+                    currentMarr["marrDate"] = words[2:]
                 elif birthday is False and deathday is False:
-                    currentDiv = words[2:]
+                    currentDiv["divDate"] = words[2:]
                 elif deathday is False:
-                    indiBirthday = words[2:]
+                    indiBirthday["birthday"] = words[2:]
                     birthday = False
                 else:
-                    indiDeath = words[2:]
+                    indiDeath["death"] = words[2:]
                     deathday = False
             elif tag == "NAME":
-                indiFirstName = words[2]
-                indiLastName = words[3]
+                indiFirstName["firstName"] = words[2]
+                indiLastName["lastName"] = words[3]
             elif tag == "SEX":
-                indiSex = words[2]
+                indiSex["sex"] = words[2]
             elif tag == "BIRT":
                 birthday = True
             elif tag == "DEAT":
                 deathday = True
-                indiAlive = False
+                indiAlive["alive"] = False
             elif tag == "FAMC":
-                indiChild = words[2][1:-1]
+                indiChild["child"] = words[2][1:-1]
             elif tag == "FAMS":
-                indiSpouse = words[2][1:-1]
+                indiSpouse["spouse"].append(int(words[2][2:-1]))
         else:
             valid = "N"
         # Input
@@ -308,24 +305,40 @@ for line in gedFile:
 gedFile.close()
 
 # Check if any new families are waiting to be added
-if currentFam != '' and currentHusb != '' and currentWife != '':
-    if currentChildren == []:
-        currentChildren = "NA"
-    if currentDiv == '':
-        currentDiv = "NA"
-    addFam = [currentFam, currentMarr, currentDiv, currentHusb, currentWife, currentChildren]
-    families.append(addFam)
+if famID != '' and currentHusb["husband"] != '' and currentWife["wife"] != '':
+    if currentChildren["children"] == []:
+        currentChildren["children"] = "NA"
+    if currentDiv["divDate"] == '':
+        currentDiv["divDate"] = "NA"
+    famDict = {famID: {}}
+    famDict[famID].update(currentMarr)
+    famDict[famID].update(currentDiv)
+    famDict[famID].update(currentHusb)
+    famDict[famID].update(currentWife)
+    famDict[famID].update(currentChildren)
+    famDict[famID].update(endDate)
+    families.update(famDict)
 
 # Check if any new individuals are waiting to be added
-if indiFirstName != '' and indiLastName != '':
-    if indiDeath == '':
-        indiDeath = "NA"
-    if indiChild == '':
-        indiChild = "NA"
-    if indiSpouse == '':
-        indiSpouse = "NA"
-    indiAge = getAge(today, indiBirthday, indiAlive, indiDeath)
-    individuals.append([idnum, indiFirstName, indiLastName, indiSex, indiBirthday, indiAge, indiAlive, indiDeath, indiChild, indiSpouse])
+if indiFirstName["firstName"] != '' and indiLastName["lastName"] != '':
+    if indiDeath["death"] == '':
+        indiDeath["death"] = "NA"
+    if indiChild["child"] == '':
+        indiChild["child"] = "NA"
+    if indiSpouse["spouse"] == []:
+        indiSpouse["spouse"] = "NA"
+    indiAge["age"] = getAge(today, indiBirthday["birthday"], indiAlive["alive"], indiDeath["death"])
+    indiDict = {idNum: {}}
+    indiDict[idNum].update(indiFirstName)
+    indiDict[idNum].update(indiLastName)
+    indiDict[idNum].update(indiSex)
+    indiDict[idNum].update(indiBirthday)
+    indiDict[idNum].update(indiAge)
+    indiDict[idNum].update(indiAlive)
+    indiDict[idNum].update(indiDeath)
+    indiDict[idNum].update(indiChild)
+    indiDict[idNum].update(indiSpouse)
+    individuals.update(indiDict)
 
 # Print Individuals Table
 IndiIDs = []
@@ -338,16 +351,35 @@ IndiDeaths = []
 IndiChilds = []
 IndiSpouses = []
 
-for individual in individuals:
-    IndiIDs.append(individual[0])
-    IndiNames.append(individual[1] + " " + individual[2])
-    IndiSexs.append(individual[3])
-    IndiBirthdays.append(individual[4])
-    IndiAges.append(individual[5])
-    IndiAlives.append(individual[6])
-    IndiDeaths.append(individual[7])
-    IndiChilds.append(individual[8])
-    IndiSpouses.append(individual[9])
+individs = [value for (key, value) in sorted(individuals.items())]
+
+
+def addi(x):
+    return "I" + str(x)
+
+
+def addF(x):
+    return "F" + str(x)
+
+
+rawIDs = list(individuals.keys())
+IndiIDs = list(map(addi, sorted(rawIDs)))
+
+for individual in individs:
+    IndiNames.append(individual["firstName"] + " " + individual["lastName"])
+    IndiSexs.append(individual["sex"])
+    IndiBirthdays.append('-'.join(individual["birthday"]))
+    IndiAges.append(individual["age"])
+    IndiAlives.append(individual["alive"])
+    if individual["death"] != "NA":
+        IndiDeaths.append('-'.join(list(individual["death"])))
+    else:
+        IndiDeaths.append("NA")
+    IndiChilds.append(individual["child"])
+    if individual["spouse"] == "NA":
+        IndiSpouses.append("NA")
+    else:
+        IndiSpouses.append(list(map(addF, individual["spouse"])))
 
 indiTable = PrettyTable()
 indiTable.add_column("ID", IndiIDs)
@@ -372,24 +404,45 @@ ChildrenIDs = []
 HusbNames = []
 WifeNames = []
 
-for family in families:
-    FamIDs.append(family[0][1:-1])
-    MarrDates.append(family[1])
-    DivDates.append(family[2])
-    husbID = family[3][1:-1]
-    HusbIDs.append(husbID)
-    wifeID = family[4][1:-1]
-    WifeIDs.append(wifeID)
-    ChildrenIDs.append(family[5])
+fams = [value for (key, value) in sorted(families.items())]
+rawFIDs = list(families.keys())
+FamIDs = list(map(addF, sorted(rawFIDs)))
+
+for ID in families:
+    MarrDates.append('-'.join(families[ID]["marrDate"]))
+    if families[ID]["divDate"] == "NA":
+        DivDates.append("NA")
+    else:
+        DivDates.append('-'.join(families[ID]["divDate"]))
+    husbID = families[ID]["husband"]
+    HusbIDs.append(addi(husbID))
+    wifeID = families[ID]["wife"]
+    WifeIDs.append(addi(wifeID))
+    if families[ID]["children"] == "NA":
+        ChildrenIDs.append("NA")
+    else:
+        ChildrenIDs.append(list(map(addi, families[ID]["children"])))
     husbName = ''
     wifeName = ''
-    for individual in individuals:
-        if individual[0] == husbID:
-            husbName = individual[1] + " " + individual[2]
-        elif individual[0] == wifeID:
-            wifeName = individual[1] + " " + individual[2]
+    husbDeath = ''
+    wifeDeath = ''
+    husbName = individuals[husbID]["firstName"] + " " + individuals[husbID]["lastName"]
+    husbDeath = individuals[husbID]["death"]
+    wifeName = individuals[wifeID]["firstName"] + " " + individuals[wifeID]["lastName"]
+    wifeDeath = individuals[wifeID]["death"]
     HusbNames.append(husbName)
     WifeNames.append(wifeName)
+    if husbDeath == "NA" and wifeDeath == "NA":
+        families[ID]["endDate"] = [families[ID]["divDate"], "Divorce"]
+    elif husbDeath == "NA":
+        families[ID]["endDate"] = [wifeDeath, "Wife"]
+    elif wifeDeath == "NA":
+        families[ID]["endDate"] = [husbDeath, "Husband"]
+    else:
+        if dateVal(husbDeath) > dateVal(wifeDeath):
+            families[ID]["endDate"] = [wifeDeath, "Wife"]
+        else:
+            families[ID]["endDate"] = [husbDeath, "Husband"]
 
 famTable = PrettyTable()
 famTable.add_column("ID", FamIDs)
@@ -402,44 +455,63 @@ famTable.add_column("Wife Name", WifeNames)
 famTable.add_column("Children", ChildrenIDs)
 print(famTable)
 
-#Print individual errors
+# Print individual errors
 for indi in individuals:
-    if  not pastDate(indi[4]):
-        print("ERROR: INDIVIDUAL: US01: " + indi[0] + ": Birthday " + indi[4][0] + " " + indi[4][1] + " " + indi[4][2] + " occurs in the future")
-    if  not indi[6]:
-        if not pastDate(indi[7]):
-            print("ERROR: INDIVIDUAL: US01: " + indi[0] + ": Death " + indi[4][0] + " " + indi[4][1] + " " + indi[4][2] + " occurs in the future")
-    #if  not birth_before_death(indi[4], indi[7]):
-        #print("ERROR: INDIVIDUAL: US03: " + indi[0] + ": Died " + indi[7][0] + " " + indi[7][1] + " " + indi[7][2] + " before born " + indi[4][0] + " " + indi[4][1] + " " + indi[4][2])
-    if indi[5] >= 150:
-        errmsg = ("ERROR: INDIVIDUAL: US07: " + indi[0] + " More than 150 years old ")
-        if(indi[6]):
-            errmsg += ("- Birth date " + indi[4][0] + " " + indi[4][1] + " " + indi[4][2])
+    if not pastDate(individuals[indi]["birthday"]):
+        print("ERROR: INDIVIDUAL: US01: " + addi(indi) + ": Birthday " + '-'.join(
+            individuals[indi]["birthday"]) + " occurs in the future")
+    if not individuals[indi]["alive"]:
+        if not pastDate(individuals[indi]["death"]):
+            print("ERROR: INDIVIDUAL: US01: " + addi(indi) + ": Death " + '-'.join(
+                individuals[indi]["death"]) + " occurs in the future")
+    if deathBeforeBirth(individuals[indi]["birthday"], individuals[indi]["death"]):
+        print("ERROR: INDIVIDUAL: US03: " + addi(indi) + ": Died " + '-'.join(
+            individuals[indi]["death"]) + " before being born on " + '-'.join(individuals[indi]["birthday"]))
+    if individuals[indi]["age"] >= 150:
+        errmsg = ("ERROR: INDIVIDUAL: US07: " + addi(indi) + ": More than 150 years old ")
+        if (individuals[indi]["alive"]):
+            errmsg += ("- Birth date " + '-'.join(individuals[indi]["birthday"]))
         else:
-            errmsg += ("at death - Birth " + indi[4][0] + " " + indi[4][1] + " " + indi[4][2] + ": Death " + indi[7][0] + " " + indi[7][1] + " " + indi[7][2])
+            errmsg += ("at death - Birth " + '-'.join(individuals[indi]["birthday"]) + ": Death " + '-'.join(
+                individuals[indi]["death"]))
         print(errmsg)
 
-
 # Print family Errors
-for i, family in enumerate(families):
-    husbID = family[3][1:-1]
-    wifeID = family[4][1:-1]
-    husbIndex = 0
-    wifeIndex = 0
-    for y, individual in enumerate(individuals):
-        if individual[0] == husbID:
-            husbIndex = y
-        elif individual[0] == wifeID:
-            wifeIndex = y
+for fam in families:
+    if not pastDate(families[fam]["marrDate"]):
+        print("ERROR: FAMILY: US01: " + addF(fam) + ": Marriage date " + '-'.join(
+            families[fam]["marrDate"]) + " is in the future")
 
-    if divBeforeMarr(family[1], family[2]) is True:
-        print("ERROR: FAMILY: " + family[0][1:-1] + " -- Divorced before married.")
-    if deathBeforeMarr(family[1], IndiDeaths[husbIndex], IndiDeaths[wifeIndex]):
-        print("ERROR: FAMILY: " + family[0][1:-1] + " -- Death before married.")
-    # Implement in Sprint 2
-    #if not noBigamy(individual[9].count, family[2].count):
-        #print("ERROR: FAMILY: US11: " + family[0][1:-1] + " -- Married again without divorcing.")
-    #if div_before_death(family[2], IndiDeaths[husbIndex]) is False:
-        #print("ERROR: FAMILY: " + family[0][1:-1] + " -- Divorce after death")
-    #if div_before_death(family[2], IndiDeaths[wifeIndex]) is False:
-        #print("ERROR: FAMILY: " + family[0][1:-1] + " -- Divorce after death")
+    if not pastDate(families[fam]["divDate"]):
+        print("ERROR: FAMILY: US01: " + addF(fam) + ": Divorce date " + '-'.join(
+            families[fam]["divDate"]) + " is in the future")
+
+    if divBeforeMarr(families[fam]["marrDate"], families[fam]["divDate"]):
+        print("ERROR: FAMILY: US04: " + addF(fam) + ": Divorced on " + '-'.join(
+            families[fam]["divDate"]) + " before marriage on " + '-'.join(families[fam]["marrDate"]))
+
+    if deathBeforeMarr(families[fam]["marrDate"], families[fam]["husband"]):
+        print("ERROR: FAMILY: US05: " + addF(fam) + ": Married " + '-'.join(
+            families[fam]["marrDate"]) + " after husband's (" + addi(
+            families[fam]["husband"]) + ") death on " + '-'.join(individuals[families[fam]["husband"]]["death"]))
+
+    if deathBeforeMarr(families[fam]["marrDate"], families[fam]["wife"]):
+        print("ERROR: FAMILY: US05: " + addF(fam) + ": Married " + '-'.join(
+            families[fam]["marrDate"]) + " after wife's (" + addi(families[fam]["wife"]) + ") death on " + '-'.join(
+            individuals[families[fam]["wife"]]["death"]))
+
+    if deathBeforeDivorce(families[fam]["divDate"], families[fam]["husband"]):
+        print("ERROR: FAMILY: US06: " + addF(fam) + ": Divorced " + '-'.join(
+            families[fam]["divDate"]) + " after husband's (" + addi(
+            families[fam]["husband"]) + ") death on " + '-'.join(individuals[families[fam]["husband"]]["death"]))
+
+    if deathBeforeDivorce(families[fam]["divDate"], families[fam]["wife"]):
+        print("ERROR: FAMILY: US06: " + addF(fam) + ": Divorced " + '-'.join(
+            families[fam]["marrDate"]) + " after wife's (" + addi(families[fam]["wife"]) + ") death on " + '-'.join(
+            individuals[families[fam]["wife"]]["death"]))
+
+    checkBigamy(families[fam]["husband"], families[fam]["marrDate"], fam)
+
+    checkBigamy(families[fam]["wife"], families[fam]["marrDate"], fam)
+
+    birthBfrMarr(families[fam], fam)

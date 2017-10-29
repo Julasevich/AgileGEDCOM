@@ -6,6 +6,8 @@ months = {"JAN": 1, "FEB": 2, "MAR": 3, "APR": 4, "MAY": 5, "JUN": 6, "JUL": 7, 
 uniqueIDs = []
 uniqueFamIDs = []
 idErrors = []
+multipleBirthsList = []
+livingSingleList = []
 nameBirthdayErrors = []
 uniqueNameAndBirth = {}
 today = time.strftime("%Y %m %d")
@@ -233,6 +235,30 @@ def isUniqueNameAndBirth(fullName, birthdayList):
         uniqueNameAndBirth[birthday] = [fullName]
         return True
 
+def uniqueFamBySpouse(fam, families):
+    '''US 24'''
+    res = False;
+    for f in families:
+        if f == fam:
+            res = res;
+        elif families[f]["husband"] == families[fam]["husband"] and families[f]["wife"] == families[fam]["wife"] and families[f]["marrDate"] == families[fam]["marrDate"]:
+            res = True;
+            print("ERROR: FAMILY: US24: " + addF(fam) + ": Family shares same spouses and anniversary as " + addF(f));
+    return res;
+
+def uniqueChildren(fam, fid, indis):
+    '''US 25'''
+    res = False;
+    if fam["children"] == "NA":
+        return False;
+    for c in fam["children"]:
+        for oc in fam["children"]:
+            if c == oc:
+                res = res;
+            elif indis[c]["firstName"] == indis[oc]["firstName"] and indis[c]["birthday"] == indis[oc]["birthday"]:
+                res = True;
+                print("ERROR: FAMILY: US25: " + addF(fid) + ": Child " + addi(c) + " has same name and birthday as child " + addi(oc));
+    return res;
 
 def correct_gender_for_role(indiv, fam):
     "US21 Husband in family should be male and wife in family should be female"
@@ -278,7 +304,6 @@ def male_last_names(children, fam, famX):
         return True
     return True
 
-
 def orderChildren(childContainer, individuals):
     '''US## - All chilren printed should be ordered by age.'''
     result = []
@@ -289,6 +314,68 @@ def orderChildren(childContainer, individuals):
             temp = sorted(clist, key=lambda child: dateVal(individuals[int(child[1:])]["birthday"]))
             result.append(temp)
     return result
+
+def list_deceased(individuals,uTest):
+    """US29"""
+    deceased = []
+    for indiv in individuals:
+        if individuals[indiv]["alive"] != True:
+            if(uTest == -1):
+                return True
+            else:
+                deceased.append(indiv)
+        if(uTest == -1):
+            return False
+    return deceased
+
+def list_living_married(individuals, families, uTest):
+    living=[]
+    for fam in families:
+        x = families[fam]
+        hid = addi(x["husband"])
+        wid = addi(x["wife"])
+        husband = None
+        wife = None
+        if families[fam]["divDate"]== "NA":
+
+            for indiv in individuals:
+                if IndiIDs[indiv - 1] == hid:
+                    husband = indiv
+                    if individuals[indiv]["alive"] == True:
+                        if (uTest ==-1):
+                            return True
+                        else:
+                            living.append(indiv)
+                    elif(uTest ==-1):
+                        return False
+                elif IndiIDs[indiv -1] == wid:
+                    wife = indiv
+                    if individuals[indiv]["alive"]==True:
+                        if (uTest ==-1):
+                            return True
+                        else:
+                            living.append(indiv)
+                    elif(uTest == -1):
+                        return False
+                elif(uTest == -1):
+                    return False
+    return living
+
+def listLivingSingle(lsList):
+    "US31 - List any liviing person above the age of 30 that hasnt been married </3"
+    singleTable = PrettyTable()
+    singleTable.add_column("List of Living Single Names:", livingSingleList)
+    print(singleTable)
+    print("")
+    return
+
+def listMultipleBirths(mbList):
+    "US32 - List all multiple births."
+    multipleBirthsTable = PrettyTable()
+    multipleBirthsTable.add_column("List of Multiple Birth IDs:", mbList)
+    print(multipleBirthsTable)
+    print("")
+    return
 
 
 # Get file
@@ -552,6 +639,11 @@ for individual in individs:
     else:
         IndiSpouses.append(list(map(addF, individual["spouse"])))
 
+    # For Living Single, check alive, no spouses and above 30
+    if individual["death"] == "NA" and individual["spouse"] == "NA" and int(individual["age"]) >= 30:
+        livingSingleList.append(individual["firstName"] + " " + individual["lastName"])
+
+
 indiTable = PrettyTable()
 indiTable.add_column("ID", IndiIDs)
 indiTable.add_column("Name", IndiNames)
@@ -690,7 +782,16 @@ for fam in families:
 
     validBirths(families[fam], fam)
 
+    uniqueFamBySpouse(fam, families)
+
+    uniqueChildren(families[fam], fam, individuals)
+
     if multipleBirths(families[fam]["children"], individuals):
+        tempIDList = families[fam]["children"]
+        tempNameList = []
+        for x in tempIDList:
+            tempNameList.append(str(x) + ": " + individuals[x]["firstName"] + individuals[x]["lastName"])
+        multipleBirthsList.append(tempNameList)
         print("ERROR: FAMILY: US14: " + addF(fam) + ": Multiple Births > 5")
 
     if tooManySiblings(families[fam]["children"]):
@@ -712,3 +813,29 @@ for error in idErrors:
 
 for error in nameBirthdayErrors:
     print(error)
+
+# Print list of deceased, list of living and married.
+uTest = 0
+listD = list_deceased(individuals,uTest)
+listLiving = list_living_married(individuals, families, uTest)
+
+dName = []
+lName = []
+for p in listD:
+    dName.append(individuals[p]["firstName"]+individuals[p]["lastName"])
+for p in listLiving:
+    lName.append(individuals[p]["firstName"]+individuals[p]["lastName"])
+
+indiTable1 = PrettyTable()
+indiTable1.add_column("List of deceased:", dName)
+print(indiTable1)
+print("")
+
+# List Specifications for single and married
+listLivingSingle(livingSingleList)
+listMultipleBirths(multipleBirthsList)
+
+indiTable2 = PrettyTable()
+indiTable2.add_column("List of living and married:",lName)
+print(indiTable2)
+print("")
