@@ -782,7 +782,11 @@ for fam in families:
     uniqueChildren(families[fam], fam, individuals)
 
     if multipleBirths(families[fam]["children"], individuals):
-        multipleBirthsList.append(families[fam]["children"])
+        tempIDList = families[fam]["children"]
+        tempNameList = []
+        for x in tempIDList:
+            tempNameList.append(str(x) + ": " + individuals[x]["firstName"] + individuals[x]["lastName"])
+        multipleBirthsList.append(tempNameList)
         print("ERROR: FAMILY: US14: " + addF(fam) + ": Multiple Births > 5")
 
     if tooManySiblings(families[fam]["children"]):
