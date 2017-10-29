@@ -243,7 +243,7 @@ def isUniqueNameAndBirth(fullName, birthdayList):
     else:
         uniqueNameAndBirth[birthday] = [fullName]
         return True
-    
+
 def uniqueFamBySpouse(fam, families):
     '''US 24'''
     res = False;
@@ -361,16 +361,18 @@ def list_living_married(individuals, families, uTest):
 
 def listLivingSingle(lsList):
     "US31 - List any liviing person above the age of 30 that hasnt been married </3"
-    print("Living Single People:")
-    for person in lsList:
-        print(person)
+    singleTable = PrettyTable()
+    singleTable.add_column("List of Living Single Names:", livingSingleList)
+    print(singleTable)
+    print("")
     return
 
 def listMultipleBirths(mbList):
     "US32 - List all multiple births."
-    print("Multiple Births Include:")
-    for birth in mbList:
-        print(birth)
+    multipleBirthsTable = PrettyTable()
+    multipleBirthsTable.add_column("List of Multiple Birth IDs:", mbList)
+    print(multipleBirthsTable)
+    print("")
     return
 # Get file
 gedFile = open("MyFamily.ged", "r")
@@ -712,10 +714,6 @@ famTable.add_column("Wife Name", WifeNames)
 famTable.add_column("Children", ChildrenIDs)
 print(famTable)
 
-# List Specifications
-listLivingSingle(livingSingleList)
-listMultipleBirths(multipleBirthsList)
-
 # Print individual errors
 for indi in individuals:
     if not pastDate(individuals[indi]["birthday"]):
@@ -778,9 +776,9 @@ for fam in families:
     birthBfrMarr(families[fam], fam)
 
     validBirths(families[fam], fam)
-    
+
     uniqueFamBySpouse(fam, families)
-    
+
     uniqueChildren(families[fam], fam, individuals)
 
     if multipleBirths(families[fam]["children"], individuals):
@@ -820,9 +818,13 @@ for p in listLiving:
     lName.append(individuals[p]["firstName"]+individuals[p]["lastName"])
 
 indiTable1 = PrettyTable()
-indiTable1.add_column("List of deceased:",dName)
+indiTable1.add_column("List of deceased:", dName)
 print(indiTable1)
 print("")
+
+# List Specifications for single and married
+listLivingSingle(livingSingleList)
+listMultipleBirths(multipleBirthsList)
 
 indiTable2 = PrettyTable()
 indiTable2.add_column("List of living and married:",lName)
