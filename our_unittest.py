@@ -1,6 +1,6 @@
 # Unittest file for Sprint 2
 import unittest
-from BuhseFork import divBeforeMarr, deathBeforeMarr, deathBeforeBirth, deathBeforeDivorce, multipleBirths, tooManySiblings, correct_gender_for_role, male_last_names, tooOld, isUniqueID, isUniqueNameAndBirth, checkBigamy, validBirths, pastDate, birthBfrMarr, individuals, families 
+from BuhseFork import divBeforeMarr, deathBeforeMarr, deathBeforeBirth, deathBeforeDivorce, multipleBirths, tooManySiblings, correct_gender_for_role, male_last_names, tooOld, isUniqueID, isUniqueNameAndBirth, checkBigamy, validBirths, pastDate, birthBfrMarr, orderChildren, individuals, families
 
 
 '''
@@ -49,6 +49,17 @@ class TestGEDCOM(unittest.TestCase):
         self.assertFalse(tooManySiblings(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n']))
         self.assertTrue(tooManySiblings(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p']))
         self.assertTrue(tooManySiblings(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o']))
+
+    def testOrderSiblings(self):
+        individuals = {1: {'birthday': ['23', 'FEB', '1970']},
+                       2: {'birthday': ['24', 'FEB', '1970']},
+                       3: {'birthday': ['25', 'FEB', '1970']},
+                       4: {'birthday': ['26', 'FEB', '1970']}}
+        self.assertEqual(orderChildren([[]], individuals), [[]])
+        self.assertEqual(orderChildren([['I1', 'I2', 'I3']], individuals), [['I1', 'I2', 'I3']])
+        self.assertEqual(orderChildren([['I3', 'I2', 'I1']], individuals), [['I1', 'I2', 'I3']])
+        self.assertEqual(orderChildren([['I2', 'I3', 'I1']], individuals), [['I1', 'I2', 'I3']])
+        self.assertEqual(orderChildren([['I2', 'I3', 'I1', 'I4']], individuals), [['I1', 'I2', 'I3', 'I4']])
 
     # ----------------------------------
 
@@ -108,38 +119,35 @@ class TestGEDCOM(unittest.TestCase):
         "False if gender for role is incorrect."
         self.assertFalse(correct_gender_for_role(2,{'marrDate': ['15', 'MAY', '1982'], 'divDate': ['15', 'FEB', '1981'],'husband': 2, 'wife': 3, 'children': [1, 4, 5], 'endDate':[['19', 'MAR', '1975'], 'Husband']}))
         self.assertTrue(correct_gender_for_role(6,{'marrDate': ['10', 'FEB', '1973'], 'divDate': 'NA', 'husband': 6, 'wife': 4, 'children': [9], 'endDate':[['18', 'MAR', '1986'], 'Husband']}))
-        
+
     '''Tests written by Alex Buhse'''
-    
+
     def testBirthBeforeMariage(self):
         '''Unit testing for user story 02'''
         self.assertFalse(birthBfrMarr(families[2], 2))
         self.assertFalse(birthBfrMarr(families[3], 3))
         self.assertTrue(birthBfrMarr(families[1], 1))
-        
+
     def testCheckBigamy(self):
         '''Unit testing for user story 11'''
         self.assertTrue(checkBigamy(families[4]["husband"], families[4]["marrDate"], 4))
         self.assertFalse(checkBigamy(families[4]["wife"], families[4]["marrDate"], 4))
-        
+
     def testValidBirths(self):
         '''Unit testing for both user stories 08 and 09'''
         self.assertTrue(validBirths(families[4], 4))
         self.assertTrue(validBirths(families[2], 2))
         self.assertTrue(validBirths(families[1], 1))
         self.assertFalse(validBirths(families[3], 3))
-        
+
     def testInPast(self):
         '''Unit testing for user story 01'''
         self.assertTrue(pastDate(["28", "OCT", "1996"]))
         self.assertTrue(pastDate(["11", "OCT", "2017"]))
         self.assertFalse(pastDate(["28", "OCT", "2089"]))
-        
- 
-        
+
+
+
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.test_past_dates']
     unittest.main()
-
-
-
