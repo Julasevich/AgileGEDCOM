@@ -6,6 +6,8 @@ months = {"JAN": 1, "FEB": 2, "MAR": 3, "APR": 4, "MAY": 5, "JUN": 6, "JUL": 7, 
 uniqueIDs = []
 uniqueFamIDs = []
 idErrors = []
+multipleBirthsList = []
+livingSingleList = []
 nameBirthdayErrors = []
 uniqueNameAndBirth = {}
 today = time.strftime("%Y %m %d")
@@ -332,6 +334,20 @@ def list_living_married(individuals, families, uTest):
                 elif(uTest == -1):
                     return False
     return living
+
+def listLivingSingle(lsList):
+    "US31 - List any liviing person above the age of 30 that hasnt been married </3"
+    print("Living Single People:")
+    for person in lsList:
+        print(person)
+    return
+
+def listMultipleBirths(mbList):
+    "US32 - List all multiple births."
+    print("Multiple Births Include:")
+    for birth in mbList:
+        print(birth)
+    return
 # Get file
 gedFile = open("MyFamily.ged", "r")
 # Acceptable tags
@@ -593,6 +609,11 @@ for individual in individs:
     else:
         IndiSpouses.append(list(map(addF, individual["spouse"])))
 
+    # For Living Single, check alive, no spouses and above 30
+    if individual["death"] == "NA" and individual["spouse"] == "NA" and int(individual["age"]) >= 30:
+        livingSingleList.append(individual["firstName"] + " " + individual["lastName"])
+
+
 indiTable = PrettyTable()
 indiTable.add_column("ID", IndiIDs)
 indiTable.add_column("Name", IndiNames)
@@ -667,6 +688,10 @@ famTable.add_column("Wife Name", WifeNames)
 famTable.add_column("Children", ChildrenIDs)
 print(famTable)
 
+# List Specifications
+listLivingSingle(livingSingleList)
+listMultipleBirths(multipleBirthsList)
+
 # Print individual errors
 for indi in individuals:
     if not pastDate(individuals[indi]["birthday"]):
@@ -731,6 +756,7 @@ for fam in families:
     validBirths(families[fam], fam)
 
     if multipleBirths(families[fam]["children"], individuals):
+        multipleBirthsList.append(families[fam]["children"])
         print("ERROR: FAMILY: US14: " + addF(fam) + ": Multiple Births > 5")
 
     if tooManySiblings(families[fam]["children"]):
