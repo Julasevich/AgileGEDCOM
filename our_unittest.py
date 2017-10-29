@@ -156,6 +156,19 @@ class TestGEDCOM(unittest.TestCase):
         self.assertTrue(pastDate(["11", "OCT", "2017"]))
         self.assertFalse(pastDate(["28", "OCT", "2089"]))
         
+    def testUniqueChildren(self):
+        '''Unit testing for user story 25'''
+        self.assertTrue(uniqueChildren(families[5], 5, individuals))
+        self.assertFalse(uniqueChildren(families[2], 2, individuals))
+        self.assertFalse(uniqueChildren(families[3], 3, individuals))
+        
+    def testUniqueSpousesByFam(self):
+        '''Unit testing for user story 24'''
+        self.assertTrue(uniqueFamBySpouse(4, families))
+        self.assertTrue(uniqueFamBySpouse(5, families))
+        self.assertFalse(uniqueFamBySpouse(3, families))
+        self.assertFalse(uniqueFamBySpouse(2, families))
+        
  
         
 if __name__ == "__main__":
