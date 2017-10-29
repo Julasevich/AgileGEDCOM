@@ -61,6 +61,9 @@ class TestGEDCOM(unittest.TestCase):
         self.assertEqual(orderChildren([['I2', 'I3', 'I1']], individuals), [['I1', 'I2', 'I3']])
         self.assertEqual(orderChildren([['I2', 'I3', 'I1', 'I4']], individuals), [['I1', 'I2', 'I3', 'I4']])
 
+    # There is no test case for "include individual ages" because that story
+    # has been done from Sprint 1.
+
     # ----------------------------------
 
     # Tests written by Jacob Ulasevich

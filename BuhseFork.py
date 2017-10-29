@@ -305,7 +305,7 @@ def male_last_names(children, fam, famX):
     return True
 
 def orderChildren(childContainer, individuals):
-    '''US## - All chilren printed should be ordered by age.'''
+    '''US28 - All chilren printed should be ordered by age.'''
     result = []
     for clist in childContainer:
         if clist == 'NA':
