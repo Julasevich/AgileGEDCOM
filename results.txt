@@ -1329,6 +1329,7 @@ ERROR: FAMILY: US02: F3: Husband (I13) born on 26-AUG-2085 after marriage on 14-
 ERROR: FAMILY: US11: F4: Family married on 10-FEB-1973 before husband's (I6) marriage in family F2 ended on 10-APR-1975
 ERROR: FAMILY: US02: F4: Wife (I4) born on 5-APR-1986 after marriage on 10-FEB-1973
 ERROR: FAMILY: US08: F4: Child (I9) born on 12-OCT-1970 before marriage on 10-FEB-1973
+ERROR: FAMILY: US24: F4: Family shares same spouses and anniversary as F5
 ERROR: FAMILY: US16: F4: Male child (I9) does not have same last name as father (I6)
 ERROR: FAMILY: US11: F5: Family married on 10-FEB-1973 before husband's (I6) marriage in family F2 ended on 10-APR-1975
 ERROR: FAMILY: US02: F5: Wife (I4) born on 5-APR-1986 after marriage on 10-FEB-1973
@@ -1348,6 +1349,247 @@ ERROR: FAMILY: US09: F5: Child (I26) born on 26-AUG-2085 over 9 months after fat
 ERROR: FAMILY: US09: F5: Child (I27) born on 26-AUG-2085 over 9 months after father's (I6) death on 18-MAR-1986
 ERROR: FAMILY: US09: F5: Child (I28) born on 26-AUG-2085 over 9 months after father's (I6) death on 18-MAR-1986
 ERROR: FAMILY: US09: F5: Child (I29) born on 26-AUG-2085 over 9 months after father's (I6) death on 18-MAR-1986
+ERROR: FAMILY: US24: F5: Family shares same spouses and anniversary as F4
+ERROR: FAMILY: US25: F5: Child I14 has same name and birthday as child I15
+ERROR: FAMILY: US25: F5: Child I14 has same name and birthday as child I16
+ERROR: FAMILY: US25: F5: Child I14 has same name and birthday as child I17
+ERROR: FAMILY: US25: F5: Child I14 has same name and birthday as child I18
+ERROR: FAMILY: US25: F5: Child I14 has same name and birthday as child I19
+ERROR: FAMILY: US25: F5: Child I14 has same name and birthday as child I20
+ERROR: FAMILY: US25: F5: Child I14 has same name and birthday as child I21
+ERROR: FAMILY: US25: F5: Child I14 has same name and birthday as child I22
+ERROR: FAMILY: US25: F5: Child I14 has same name and birthday as child I23
+ERROR: FAMILY: US25: F5: Child I14 has same name and birthday as child I24
+ERROR: FAMILY: US25: F5: Child I14 has same name and birthday as child I25
+ERROR: FAMILY: US25: F5: Child I14 has same name and birthday as child I26
+ERROR: FAMILY: US25: F5: Child I14 has same name and birthday as child I27
+ERROR: FAMILY: US25: F5: Child I14 has same name and birthday as child I28
+ERROR: FAMILY: US25: F5: Child I14 has same name and birthday as child I29
+ERROR: FAMILY: US25: F5: Child I15 has same name and birthday as child I14
+ERROR: FAMILY: US25: F5: Child I15 has same name and birthday as child I16
+ERROR: FAMILY: US25: F5: Child I15 has same name and birthday as child I17
+ERROR: FAMILY: US25: F5: Child I15 has same name and birthday as child I18
+ERROR: FAMILY: US25: F5: Child I15 has same name and birthday as child I19
+ERROR: FAMILY: US25: F5: Child I15 has same name and birthday as child I20
+ERROR: FAMILY: US25: F5: Child I15 has same name and birthday as child I21
+ERROR: FAMILY: US25: F5: Child I15 has same name and birthday as child I22
+ERROR: FAMILY: US25: F5: Child I15 has same name and birthday as child I23
+ERROR: FAMILY: US25: F5: Child I15 has same name and birthday as child I24
+ERROR: FAMILY: US25: F5: Child I15 has same name and birthday as child I25
+ERROR: FAMILY: US25: F5: Child I15 has same name and birthday as child I26
+ERROR: FAMILY: US25: F5: Child I15 has same name and birthday as child I27
+ERROR: FAMILY: US25: F5: Child I15 has same name and birthday as child I28
+ERROR: FAMILY: US25: F5: Child I15 has same name and birthday as child I29
+ERROR: FAMILY: US25: F5: Child I16 has same name and birthday as child I14
+ERROR: FAMILY: US25: F5: Child I16 has same name and birthday as child I15
+ERROR: FAMILY: US25: F5: Child I16 has same name and birthday as child I17
+ERROR: FAMILY: US25: F5: Child I16 has same name and birthday as child I18
+ERROR: FAMILY: US25: F5: Child I16 has same name and birthday as child I19
+ERROR: FAMILY: US25: F5: Child I16 has same name and birthday as child I20
+ERROR: FAMILY: US25: F5: Child I16 has same name and birthday as child I21
+ERROR: FAMILY: US25: F5: Child I16 has same name and birthday as child I22
+ERROR: FAMILY: US25: F5: Child I16 has same name and birthday as child I23
+ERROR: FAMILY: US25: F5: Child I16 has same name and birthday as child I24
+ERROR: FAMILY: US25: F5: Child I16 has same name and birthday as child I25
+ERROR: FAMILY: US25: F5: Child I16 has same name and birthday as child I26
+ERROR: FAMILY: US25: F5: Child I16 has same name and birthday as child I27
+ERROR: FAMILY: US25: F5: Child I16 has same name and birthday as child I28
+ERROR: FAMILY: US25: F5: Child I16 has same name and birthday as child I29
+ERROR: FAMILY: US25: F5: Child I17 has same name and birthday as child I14
+ERROR: FAMILY: US25: F5: Child I17 has same name and birthday as child I15
+ERROR: FAMILY: US25: F5: Child I17 has same name and birthday as child I16
+ERROR: FAMILY: US25: F5: Child I17 has same name and birthday as child I18
+ERROR: FAMILY: US25: F5: Child I17 has same name and birthday as child I19
+ERROR: FAMILY: US25: F5: Child I17 has same name and birthday as child I20
+ERROR: FAMILY: US25: F5: Child I17 has same name and birthday as child I21
+ERROR: FAMILY: US25: F5: Child I17 has same name and birthday as child I22
+ERROR: FAMILY: US25: F5: Child I17 has same name and birthday as child I23
+ERROR: FAMILY: US25: F5: Child I17 has same name and birthday as child I24
+ERROR: FAMILY: US25: F5: Child I17 has same name and birthday as child I25
+ERROR: FAMILY: US25: F5: Child I17 has same name and birthday as child I26
+ERROR: FAMILY: US25: F5: Child I17 has same name and birthday as child I27
+ERROR: FAMILY: US25: F5: Child I17 has same name and birthday as child I28
+ERROR: FAMILY: US25: F5: Child I17 has same name and birthday as child I29
+ERROR: FAMILY: US25: F5: Child I18 has same name and birthday as child I14
+ERROR: FAMILY: US25: F5: Child I18 has same name and birthday as child I15
+ERROR: FAMILY: US25: F5: Child I18 has same name and birthday as child I16
+ERROR: FAMILY: US25: F5: Child I18 has same name and birthday as child I17
+ERROR: FAMILY: US25: F5: Child I18 has same name and birthday as child I19
+ERROR: FAMILY: US25: F5: Child I18 has same name and birthday as child I20
+ERROR: FAMILY: US25: F5: Child I18 has same name and birthday as child I21
+ERROR: FAMILY: US25: F5: Child I18 has same name and birthday as child I22
+ERROR: FAMILY: US25: F5: Child I18 has same name and birthday as child I23
+ERROR: FAMILY: US25: F5: Child I18 has same name and birthday as child I24
+ERROR: FAMILY: US25: F5: Child I18 has same name and birthday as child I25
+ERROR: FAMILY: US25: F5: Child I18 has same name and birthday as child I26
+ERROR: FAMILY: US25: F5: Child I18 has same name and birthday as child I27
+ERROR: FAMILY: US25: F5: Child I18 has same name and birthday as child I28
+ERROR: FAMILY: US25: F5: Child I18 has same name and birthday as child I29
+ERROR: FAMILY: US25: F5: Child I19 has same name and birthday as child I14
+ERROR: FAMILY: US25: F5: Child I19 has same name and birthday as child I15
+ERROR: FAMILY: US25: F5: Child I19 has same name and birthday as child I16
+ERROR: FAMILY: US25: F5: Child I19 has same name and birthday as child I17
+ERROR: FAMILY: US25: F5: Child I19 has same name and birthday as child I18
+ERROR: FAMILY: US25: F5: Child I19 has same name and birthday as child I20
+ERROR: FAMILY: US25: F5: Child I19 has same name and birthday as child I21
+ERROR: FAMILY: US25: F5: Child I19 has same name and birthday as child I22
+ERROR: FAMILY: US25: F5: Child I19 has same name and birthday as child I23
+ERROR: FAMILY: US25: F5: Child I19 has same name and birthday as child I24
+ERROR: FAMILY: US25: F5: Child I19 has same name and birthday as child I25
+ERROR: FAMILY: US25: F5: Child I19 has same name and birthday as child I26
+ERROR: FAMILY: US25: F5: Child I19 has same name and birthday as child I27
+ERROR: FAMILY: US25: F5: Child I19 has same name and birthday as child I28
+ERROR: FAMILY: US25: F5: Child I19 has same name and birthday as child I29
+ERROR: FAMILY: US25: F5: Child I20 has same name and birthday as child I14
+ERROR: FAMILY: US25: F5: Child I20 has same name and birthday as child I15
+ERROR: FAMILY: US25: F5: Child I20 has same name and birthday as child I16
+ERROR: FAMILY: US25: F5: Child I20 has same name and birthday as child I17
+ERROR: FAMILY: US25: F5: Child I20 has same name and birthday as child I18
+ERROR: FAMILY: US25: F5: Child I20 has same name and birthday as child I19
+ERROR: FAMILY: US25: F5: Child I20 has same name and birthday as child I21
+ERROR: FAMILY: US25: F5: Child I20 has same name and birthday as child I22
+ERROR: FAMILY: US25: F5: Child I20 has same name and birthday as child I23
+ERROR: FAMILY: US25: F5: Child I20 has same name and birthday as child I24
+ERROR: FAMILY: US25: F5: Child I20 has same name and birthday as child I25
+ERROR: FAMILY: US25: F5: Child I20 has same name and birthday as child I26
+ERROR: FAMILY: US25: F5: Child I20 has same name and birthday as child I27
+ERROR: FAMILY: US25: F5: Child I20 has same name and birthday as child I28
+ERROR: FAMILY: US25: F5: Child I20 has same name and birthday as child I29
+ERROR: FAMILY: US25: F5: Child I21 has same name and birthday as child I14
+ERROR: FAMILY: US25: F5: Child I21 has same name and birthday as child I15
+ERROR: FAMILY: US25: F5: Child I21 has same name and birthday as child I16
+ERROR: FAMILY: US25: F5: Child I21 has same name and birthday as child I17
+ERROR: FAMILY: US25: F5: Child I21 has same name and birthday as child I18
+ERROR: FAMILY: US25: F5: Child I21 has same name and birthday as child I19
+ERROR: FAMILY: US25: F5: Child I21 has same name and birthday as child I20
+ERROR: FAMILY: US25: F5: Child I21 has same name and birthday as child I22
+ERROR: FAMILY: US25: F5: Child I21 has same name and birthday as child I23
+ERROR: FAMILY: US25: F5: Child I21 has same name and birthday as child I24
+ERROR: FAMILY: US25: F5: Child I21 has same name and birthday as child I25
+ERROR: FAMILY: US25: F5: Child I21 has same name and birthday as child I26
+ERROR: FAMILY: US25: F5: Child I21 has same name and birthday as child I27
+ERROR: FAMILY: US25: F5: Child I21 has same name and birthday as child I28
+ERROR: FAMILY: US25: F5: Child I21 has same name and birthday as child I29
+ERROR: FAMILY: US25: F5: Child I22 has same name and birthday as child I14
+ERROR: FAMILY: US25: F5: Child I22 has same name and birthday as child I15
+ERROR: FAMILY: US25: F5: Child I22 has same name and birthday as child I16
+ERROR: FAMILY: US25: F5: Child I22 has same name and birthday as child I17
+ERROR: FAMILY: US25: F5: Child I22 has same name and birthday as child I18
+ERROR: FAMILY: US25: F5: Child I22 has same name and birthday as child I19
+ERROR: FAMILY: US25: F5: Child I22 has same name and birthday as child I20
+ERROR: FAMILY: US25: F5: Child I22 has same name and birthday as child I21
+ERROR: FAMILY: US25: F5: Child I22 has same name and birthday as child I23
+ERROR: FAMILY: US25: F5: Child I22 has same name and birthday as child I24
+ERROR: FAMILY: US25: F5: Child I22 has same name and birthday as child I25
+ERROR: FAMILY: US25: F5: Child I22 has same name and birthday as child I26
+ERROR: FAMILY: US25: F5: Child I22 has same name and birthday as child I27
+ERROR: FAMILY: US25: F5: Child I22 has same name and birthday as child I28
+ERROR: FAMILY: US25: F5: Child I22 has same name and birthday as child I29
+ERROR: FAMILY: US25: F5: Child I23 has same name and birthday as child I14
+ERROR: FAMILY: US25: F5: Child I23 has same name and birthday as child I15
+ERROR: FAMILY: US25: F5: Child I23 has same name and birthday as child I16
+ERROR: FAMILY: US25: F5: Child I23 has same name and birthday as child I17
+ERROR: FAMILY: US25: F5: Child I23 has same name and birthday as child I18
+ERROR: FAMILY: US25: F5: Child I23 has same name and birthday as child I19
+ERROR: FAMILY: US25: F5: Child I23 has same name and birthday as child I20
+ERROR: FAMILY: US25: F5: Child I23 has same name and birthday as child I21
+ERROR: FAMILY: US25: F5: Child I23 has same name and birthday as child I22
+ERROR: FAMILY: US25: F5: Child I23 has same name and birthday as child I24
+ERROR: FAMILY: US25: F5: Child I23 has same name and birthday as child I25
+ERROR: FAMILY: US25: F5: Child I23 has same name and birthday as child I26
+ERROR: FAMILY: US25: F5: Child I23 has same name and birthday as child I27
+ERROR: FAMILY: US25: F5: Child I23 has same name and birthday as child I28
+ERROR: FAMILY: US25: F5: Child I23 has same name and birthday as child I29
+ERROR: FAMILY: US25: F5: Child I24 has same name and birthday as child I14
+ERROR: FAMILY: US25: F5: Child I24 has same name and birthday as child I15
+ERROR: FAMILY: US25: F5: Child I24 has same name and birthday as child I16
+ERROR: FAMILY: US25: F5: Child I24 has same name and birthday as child I17
+ERROR: FAMILY: US25: F5: Child I24 has same name and birthday as child I18
+ERROR: FAMILY: US25: F5: Child I24 has same name and birthday as child I19
+ERROR: FAMILY: US25: F5: Child I24 has same name and birthday as child I20
+ERROR: FAMILY: US25: F5: Child I24 has same name and birthday as child I21
+ERROR: FAMILY: US25: F5: Child I24 has same name and birthday as child I22
+ERROR: FAMILY: US25: F5: Child I24 has same name and birthday as child I23
+ERROR: FAMILY: US25: F5: Child I24 has same name and birthday as child I25
+ERROR: FAMILY: US25: F5: Child I24 has same name and birthday as child I26
+ERROR: FAMILY: US25: F5: Child I24 has same name and birthday as child I27
+ERROR: FAMILY: US25: F5: Child I24 has same name and birthday as child I28
+ERROR: FAMILY: US25: F5: Child I24 has same name and birthday as child I29
+ERROR: FAMILY: US25: F5: Child I25 has same name and birthday as child I14
+ERROR: FAMILY: US25: F5: Child I25 has same name and birthday as child I15
+ERROR: FAMILY: US25: F5: Child I25 has same name and birthday as child I16
+ERROR: FAMILY: US25: F5: Child I25 has same name and birthday as child I17
+ERROR: FAMILY: US25: F5: Child I25 has same name and birthday as child I18
+ERROR: FAMILY: US25: F5: Child I25 has same name and birthday as child I19
+ERROR: FAMILY: US25: F5: Child I25 has same name and birthday as child I20
+ERROR: FAMILY: US25: F5: Child I25 has same name and birthday as child I21
+ERROR: FAMILY: US25: F5: Child I25 has same name and birthday as child I22
+ERROR: FAMILY: US25: F5: Child I25 has same name and birthday as child I23
+ERROR: FAMILY: US25: F5: Child I25 has same name and birthday as child I24
+ERROR: FAMILY: US25: F5: Child I25 has same name and birthday as child I26
+ERROR: FAMILY: US25: F5: Child I25 has same name and birthday as child I27
+ERROR: FAMILY: US25: F5: Child I25 has same name and birthday as child I28
+ERROR: FAMILY: US25: F5: Child I25 has same name and birthday as child I29
+ERROR: FAMILY: US25: F5: Child I26 has same name and birthday as child I14
+ERROR: FAMILY: US25: F5: Child I26 has same name and birthday as child I15
+ERROR: FAMILY: US25: F5: Child I26 has same name and birthday as child I16
+ERROR: FAMILY: US25: F5: Child I26 has same name and birthday as child I17
+ERROR: FAMILY: US25: F5: Child I26 has same name and birthday as child I18
+ERROR: FAMILY: US25: F5: Child I26 has same name and birthday as child I19
+ERROR: FAMILY: US25: F5: Child I26 has same name and birthday as child I20
+ERROR: FAMILY: US25: F5: Child I26 has same name and birthday as child I21
+ERROR: FAMILY: US25: F5: Child I26 has same name and birthday as child I22
+ERROR: FAMILY: US25: F5: Child I26 has same name and birthday as child I23
+ERROR: FAMILY: US25: F5: Child I26 has same name and birthday as child I24
+ERROR: FAMILY: US25: F5: Child I26 has same name and birthday as child I25
+ERROR: FAMILY: US25: F5: Child I26 has same name and birthday as child I27
+ERROR: FAMILY: US25: F5: Child I26 has same name and birthday as child I28
+ERROR: FAMILY: US25: F5: Child I26 has same name and birthday as child I29
+ERROR: FAMILY: US25: F5: Child I27 has same name and birthday as child I14
+ERROR: FAMILY: US25: F5: Child I27 has same name and birthday as child I15
+ERROR: FAMILY: US25: F5: Child I27 has same name and birthday as child I16
+ERROR: FAMILY: US25: F5: Child I27 has same name and birthday as child I17
+ERROR: FAMILY: US25: F5: Child I27 has same name and birthday as child I18
+ERROR: FAMILY: US25: F5: Child I27 has same name and birthday as child I19
+ERROR: FAMILY: US25: F5: Child I27 has same name and birthday as child I20
+ERROR: FAMILY: US25: F5: Child I27 has same name and birthday as child I21
+ERROR: FAMILY: US25: F5: Child I27 has same name and birthday as child I22
+ERROR: FAMILY: US25: F5: Child I27 has same name and birthday as child I23
+ERROR: FAMILY: US25: F5: Child I27 has same name and birthday as child I24
+ERROR: FAMILY: US25: F5: Child I27 has same name and birthday as child I25
+ERROR: FAMILY: US25: F5: Child I27 has same name and birthday as child I26
+ERROR: FAMILY: US25: F5: Child I27 has same name and birthday as child I28
+ERROR: FAMILY: US25: F5: Child I27 has same name and birthday as child I29
+ERROR: FAMILY: US25: F5: Child I28 has same name and birthday as child I14
+ERROR: FAMILY: US25: F5: Child I28 has same name and birthday as child I15
+ERROR: FAMILY: US25: F5: Child I28 has same name and birthday as child I16
+ERROR: FAMILY: US25: F5: Child I28 has same name and birthday as child I17
+ERROR: FAMILY: US25: F5: Child I28 has same name and birthday as child I18
+ERROR: FAMILY: US25: F5: Child I28 has same name and birthday as child I19
+ERROR: FAMILY: US25: F5: Child I28 has same name and birthday as child I20
+ERROR: FAMILY: US25: F5: Child I28 has same name and birthday as child I21
+ERROR: FAMILY: US25: F5: Child I28 has same name and birthday as child I22
+ERROR: FAMILY: US25: F5: Child I28 has same name and birthday as child I23
+ERROR: FAMILY: US25: F5: Child I28 has same name and birthday as child I24
+ERROR: FAMILY: US25: F5: Child I28 has same name and birthday as child I25
+ERROR: FAMILY: US25: F5: Child I28 has same name and birthday as child I26
+ERROR: FAMILY: US25: F5: Child I28 has same name and birthday as child I27
+ERROR: FAMILY: US25: F5: Child I28 has same name and birthday as child I29
+ERROR: FAMILY: US25: F5: Child I29 has same name and birthday as child I14
+ERROR: FAMILY: US25: F5: Child I29 has same name and birthday as child I15
+ERROR: FAMILY: US25: F5: Child I29 has same name and birthday as child I16
+ERROR: FAMILY: US25: F5: Child I29 has same name and birthday as child I17
+ERROR: FAMILY: US25: F5: Child I29 has same name and birthday as child I18
+ERROR: FAMILY: US25: F5: Child I29 has same name and birthday as child I19
+ERROR: FAMILY: US25: F5: Child I29 has same name and birthday as child I20
+ERROR: FAMILY: US25: F5: Child I29 has same name and birthday as child I21
+ERROR: FAMILY: US25: F5: Child I29 has same name and birthday as child I22
+ERROR: FAMILY: US25: F5: Child I29 has same name and birthday as child I23
+ERROR: FAMILY: US25: F5: Child I29 has same name and birthday as child I24
+ERROR: FAMILY: US25: F5: Child I29 has same name and birthday as child I25
+ERROR: FAMILY: US25: F5: Child I29 has same name and birthday as child I26
+ERROR: FAMILY: US25: F5: Child I29 has same name and birthday as child I27
+ERROR: FAMILY: US25: F5: Child I29 has same name and birthday as child I28
 ERROR: FAMILY: US14: F5: Multiple Births > 5
 ERROR: FAMILY: US15: F5: Too Many Siblings 14-15-16-17-18-19-20-21-22-23-24-25-26-27-28-29 > 15
 ERROR: FAMILY: US16: F5: Male child (I14) does not have same last name as father (I6)
@@ -1369,3 +1611,53 @@ ERROR: INDIVIDUAL: US23: Kyle/Pollock/: NOT UNIQUE NAME/BIRTHDAY COMBO
 ERROR: INDIVIDUAL: US23: Kyle/Pollock/: NOT UNIQUE NAME/BIRTHDAY COMBO
 ERROR: INDIVIDUAL: US23: Kyle/Pollock/: NOT UNIQUE NAME/BIRTHDAY COMBO
 ERROR: INDIVIDUAL: US23: Kyle/Pollock/: NOT UNIQUE NAME/BIRTHDAY COMBO
++-------------------+
+| List of deceased: |
++-------------------+
+| George/Ulasevich/ |
+|    Sharon/Wood/   |
+|    Adam/Smith/    |
+|     Nora/Lynn/    |
+|   Kyle/Pollock/   |
+|   Kyle/Pollock/   |
+|   Kyle/Pollock/   |
+|   Kyle/Pollock/   |
+|   Kyle/Pollock/   |
+|   Kyle/Pollock/   |
+|   Kyle/Pollock/   |
+|   Kyle/Pollock/   |
+|   Kyle/Pollock/   |
+|   Kyle/Pollock/   |
+|   Kyle/Pollock/   |
+|   Kyle/Pollock/   |
+|   Kyle/Pollock/   |
+|   Kyle/Pollock/   |
+|   Kyle/Pollock/   |
+|   Kyle/Pollock/   |
+|   Kyle/Pollock/   |
+|   Kyle/Pollock/   |
++-------------------+
+
++------------------------------+
+| List of Living Single Names: |
++------------------------------+
+|       Jacob /Johnson/        |
+|         Bryan /Wood/         |
+|        Thomas /Wood/         |
+|         Sean /Wood/          |
+|         Gary /Wood/          |
++------------------------------+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|                                                                                                                                                           List of Multiple Birth IDs:                                                                                                                                                            |
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ['14: Kyle/Pollock/', '15: Kyle/Pollock/', '16: Kyle/Pollock/', '17: Kyle/Pollock/', '18: Kyle/Pollock/', '19: Kyle/Pollock/', '20: Kyle/Pollock/', '21: Kyle/Pollock/', '22: Kyle/Pollock/', '23: Kyle/Pollock/', '24: Kyle/Pollock/', '25: Kyle/Pollock/', '26: Kyle/Pollock/', '27: Kyle/Pollock/', '28: Kyle/Pollock/', '29: Kyle/Pollock/'] |
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
++-----------------------------+
+| List of living and married: |
++-----------------------------+
+|       Dana/Ulasevich/       |
+|       Dana/Ulasevich/       |
++-----------------------------+
+
