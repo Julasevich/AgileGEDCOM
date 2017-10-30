@@ -1,6 +1,6 @@
 # Unittest file for Sprint 2
 import unittest
-from BuhseFork import divBeforeMarr, deathBeforeMarr, deathBeforeBirth, deathBeforeDivorce, multipleBirths, tooManySiblings, correct_gender_for_role, male_last_names, tooOld, isUniqueID, isUniqueNameAndBirth, checkBigamy, validBirths, pastDate, birthBfrMarr, orderChildren, individuals, families, list_deceased,list_living_married
+from BuhseFork import divBeforeMarr, deathBeforeMarr, deathBeforeBirth, deathBeforeDivorce, multipleBirths, tooManySiblings, correct_gender_for_role, male_last_names, tooOld, isUniqueID, isUniqueNameAndBirth, checkBigamy, validBirths, pastDate, birthBfrMarr, orderChildren, individuals, families, list_deceased,list_living_married, uniqueFamBySpouse, uniqueChildren
 
 
 '''
