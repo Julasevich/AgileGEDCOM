@@ -314,6 +314,7 @@ def male_last_names(children, fam, famX):
         return True
     return True
 
+
 def orderChildren(childContainer, individuals):
     '''US28 - All chilren printed should be ordered by age.'''
     result = []
@@ -325,7 +326,8 @@ def orderChildren(childContainer, individuals):
             result.append(temp)
     return result
 
-def list_deceased(individuals,uTest):
+
+def list_deceased(individuals, uTest):
     """US29"""
     deceased = []
     for indiv in individuals:
@@ -337,6 +339,7 @@ def list_deceased(individuals,uTest):
         if(uTest == -1):
             return False
     return deceased
+
 
 def list_living_married(individuals, families, uTest):
     living=[]
@@ -371,6 +374,7 @@ def list_living_married(individuals, families, uTest):
                     return False
     return living
 
+
 def listLivingSingle(lsList):
     "US31 - List any liviing person above the age of 30 that hasnt been married </3"
     singleTable = PrettyTable()
@@ -379,6 +383,7 @@ def listLivingSingle(lsList):
     print("")
     return
 
+
 def listMultipleBirths(mbList):
     "US32 - List all multiple births."
     multipleBirthsTable = PrettyTable()
@@ -386,6 +391,40 @@ def listMultipleBirths(mbList):
     print(multipleBirthsTable)
     print("")
     return
+
+
+def listRecentBirths(individuals):
+    "US## - List recent births."
+    recentBirths = []
+    today = time.strftime("%d.%m.%Y").split('.')
+    today = int(today[2]) * 10000 + int(today[1]) * 100 + int(today[0])
+    for indi in individuals:
+        bday = dateVal(individuals[indi]["birthday"])
+        if today < bday:
+            # Skip this person, they were born in the future. ERROR.
+            continue
+        if today - bday < 100:
+            # 100 because in dateVal 1 month difference = 100 * 1
+            recentBirths.append("{0}: {1} {2}".format(indi, individuals[indi]["firstName"], individuals[indi]["lastName"]))
+    return recentBirths
+
+
+def listRecentDeaths(individuals):
+    "US## - List recent deaths."
+    recentDeaths = []
+    today = time.strftime("%d.%m.%Y").split('.')
+    today = int(today[2]) * 10000 + int(today[1]) * 100 + int(today[0])
+    for indi in individuals:
+        if individuals[indi]["death"] == "NA":
+            continue
+        death = dateVal(individuals[indi]["death"])
+        if today < death:
+            # Skip this person, they died in the future or are alive.
+            continue
+        if today - death < 100:
+            # 100 because in dateVal 1 month difference = 100 * 1
+            recentDeaths.append("{0}: {1} {2}".format(indi, individuals[indi]["firstName"], individuals[indi]["lastName"]))
+    return recentDeaths
 
 
 # Get file
@@ -826,7 +865,7 @@ for error in nameBirthdayErrors:
 
 # Print list of deceased, list of living and married.
 uTest = 0
-listD = list_deceased(individuals,uTest)
+listD = list_deceased(individuals, uTest)
 listLiving = list_living_married(individuals, families, uTest)
 
 dName = []
@@ -846,6 +885,20 @@ listLivingSingle(livingSingleList)
 listMultipleBirths(multipleBirthsList)
 
 indiTable2 = PrettyTable()
-indiTable2.add_column("List of living and married:",lName)
+indiTable2.add_column("List of living and married:", lName)
 print(indiTable2)
 print("")
+
+# Print list of recent births
+recentBirthsTable = PrettyTable()
+recentBirths = listRecentBirths(individuals)
+recentBirthsTable.add_column("List of Recent Birth IDs:", recentBirths)
+print(recentBirthsTable)
+print()
+
+# Print list of recent deaths
+recentDeathsTable = PrettyTable()
+recentDeaths = listRecentDeaths(individuals)
+recentDeathsTable.add_column("List of Recent Death IDs:", recentDeaths)
+print(recentDeathsTable)
+print()

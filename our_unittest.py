@@ -1,6 +1,6 @@
 # Unittest file for Sprint 2
 import unittest
-from BuhseFork import divBeforeMarr, deathBeforeMarr, deathBeforeBirth, deathBeforeDivorce, multipleBirths, tooManySiblings, correct_gender_for_role, male_last_names, tooOld, isUniqueID, isUniqueNameAndBirth, checkBigamy, validBirths, pastDate, birthBfrMarr, orderChildren, individuals, families, list_deceased,list_living_married, uniqueFamBySpouse, uniqueChildren
+from BuhseFork import divBeforeMarr, deathBeforeMarr, deathBeforeBirth, deathBeforeDivorce, multipleBirths, tooManySiblings, correct_gender_for_role, male_last_names, tooOld, isUniqueID, isUniqueNameAndBirth, checkBigamy, validBirths, pastDate, birthBfrMarr, orderChildren, individuals, families, list_deceased,list_living_married, uniqueFamBySpouse, uniqueChildren, listRecentBirths, listRecentDeaths
 
 
 '''
@@ -63,6 +63,54 @@ class TestGEDCOM(unittest.TestCase):
 
     # There is no test case for "include individual ages" because that story
     # has been done from Sprint 1.
+
+    def testListRecentBirths(self):
+        individuals = {}
+        self.assertEqual(listRecentBirths(individuals), [])
+        individuals = {1: {'birthday': ['23', 'FEB', '1970'], 'firstName': '1', 'lastName': '1'},
+                       2: {'birthday': ['24', 'FEB', '1970'], 'firstName': '2', 'lastName': '2'},
+                       3: {'birthday': ['25', 'FEB', '1970'], 'firstName': '3', 'lastName': '3'},
+                       4: {'birthday': ['26', 'FEB', '1970'], 'firstName': '4', 'lastName': '4'}}
+        self.assertEqual(listRecentBirths(individuals), [])
+        individuals = {1: {'birthday': ['23', 'OCT', '2017'], 'firstName': '1', 'lastName': '1'},
+                       2: {'birthday': ['24', 'FEB', '1970'], 'firstName': '2', 'lastName': '2'},
+                       3: {'birthday': ['25', 'FEB', '1970'], 'firstName': '3', 'lastName': '3'},
+                       4: {'birthday': ['26', 'FEB', '1970'], 'firstName': '4', 'lastName': '4'}}
+        self.assertEqual(listRecentBirths(individuals), ["1: 1 1"])
+        individuals = {1: {'birthday': ['23', 'FEB', '1970'], 'firstName': '1', 'lastName': '1'},
+                       2: {'birthday': ['24', 'FEB', '1970'], 'firstName': '2', 'lastName': '2'},
+                       3: {'birthday': ['25', 'OCT', '2017'], 'firstName': '3', 'lastName': '3'},
+                       4: {'birthday': ['26', 'FEB', '1970'], 'firstName': '4', 'lastName': '4'}}
+        self.assertEqual(listRecentBirths(individuals), ["3: 3 3"])
+        individuals = {1: {'birthday': ['23', 'OCT', '2017'], 'firstName': '1', 'lastName': '1'},
+                       2: {'birthday': ['24', 'OCT', '2017'], 'firstName': '2', 'lastName': '2'},
+                       3: {'birthday': ['25', 'OCT', '2017'], 'firstName': '3', 'lastName': '3'},
+                       4: {'birthday': ['01', 'NOV', '2017'], 'firstName': '4', 'lastName': '4'}}
+        self.assertEqual(listRecentBirths(individuals), ["1: 1 1", "2: 2 2", "3: 3 3", "4: 4 4"])
+
+    def testListRecentDeaths(self):
+        individuals = {}
+        self.assertEqual(listRecentDeaths(individuals), [])
+        individuals = {1: {'death': ['23', 'FEB', '1970'], 'firstName': '1', 'lastName': '1'},
+                       2: {'death': ['24', 'FEB', '1970'], 'firstName': '2', 'lastName': '2'},
+                       3: {'death': ['25', 'FEB', '1970'], 'firstName': '3', 'lastName': '3'},
+                       4: {'death': ['26', 'FEB', '1970'], 'firstName': '4', 'lastName': '4'}}
+        self.assertEqual(listRecentDeaths(individuals), [])
+        individuals = {1: {'death': ['23', 'OCT', '2017'], 'firstName': '1', 'lastName': '1'},
+                       2: {'death': ['24', 'FEB', '1970'], 'firstName': '2', 'lastName': '2'},
+                       3: {'death': ['25', 'FEB', '1970'], 'firstName': '3', 'lastName': '3'},
+                       4: {'death': ['26', 'FEB', '1970'], 'firstName': '4', 'lastName': '4'}}
+        self.assertEqual(listRecentDeaths(individuals), ["1: 1 1"])
+        individuals = {1: {'death': ['23', 'FEB', '1970'], 'firstName': '1', 'lastName': '1'},
+                       2: {'death': ['24', 'FEB', '1970'], 'firstName': '2', 'lastName': '2'},
+                       3: {'death': ['25', 'OCT', '2017'], 'firstName': '3', 'lastName': '3'},
+                       4: {'death': ['26', 'FEB', '1970'], 'firstName': '4', 'lastName': '4'}}
+        self.assertEqual(listRecentDeaths(individuals), ["3: 3 3"])
+        individuals = {1: {'death': ['23', 'OCT', '2017'], 'firstName': '1', 'lastName': '1'},
+                       2: {'death': ['24', 'OCT', '2017'], 'firstName': '2', 'lastName': '2'},
+                       3: {'death': ['25', 'OCT', '2017'], 'firstName': '3', 'lastName': '3'},
+                       4: {'death': ['01', 'NOV', '2017'], 'firstName': '4', 'lastName': '4'}}
+        self.assertEqual(listRecentDeaths(individuals), ["1: 1 1", "2: 2 2", "3: 3 3", "4: 4 4"])
 
     # ----------------------------------
 
