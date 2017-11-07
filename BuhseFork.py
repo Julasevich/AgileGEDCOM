@@ -427,6 +427,22 @@ def listRecentDeaths(individuals):
     return recentDeaths
 
 
+def listUpcomingBirthdays(individuals):
+    "US38 List upcoming birthdays"
+    upcomingBirthdays = []
+    today = time.strftime("%d.%m.%Y").split('.')
+    today = int(today[2]) * 10000 + int(today[1]) * 100 + int(today[0])
+
+    for indi in individuals:
+        birthD = dateVal(individuals[indi]["birthday"])
+        age = individuals[indi]["age"]
+        bdayS = str(birthD)[4:]
+        todayS = str(today)[4:]
+
+        if (int(bdayS) - int(todayS)) > 0 and (int(bdayS) - int(todayS)) < 100:
+            upcomingBirthdays.append("{0}: {1} {2} {3}".format(indi, individuals[indi]["firstName"], individuals[indi]["lastName"],individuals[indi]["birthday"]))
+    return upcomingBirthdays
+
 # Get file
 gedFile = open("MyFamily.ged", "r")
 # Acceptable tags
@@ -902,3 +918,11 @@ recentDeaths = listRecentDeaths(individuals)
 recentDeathsTable.add_column("List of Recent Death IDs:", recentDeaths)
 print(recentDeathsTable)
 print()
+
+
+#print list of upcoming birthdays
+upcomingBirthdaysTable = PrettyTable()
+upcomingBirthdays = listUpcomingBirthdays(individuals)
+upcomingBirthdaysTable.add_column("List of upcoming Birthdays ", upcomingBirthdays)
+print(upcomingBirthdaysTable)
+print("")

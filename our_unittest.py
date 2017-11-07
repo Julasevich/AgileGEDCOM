@@ -1,6 +1,8 @@
 # Unittest file for Sprint 2
 import unittest
-from BuhseFork import divBeforeMarr, deathBeforeMarr, deathBeforeBirth, deathBeforeDivorce, multipleBirths, tooManySiblings, correct_gender_for_role, male_last_names, tooOld, isUniqueID, isUniqueNameAndBirth, checkBigamy, validBirths, pastDate, birthBfrMarr, orderChildren, individuals, families, list_deceased,list_living_married, uniqueFamBySpouse, uniqueChildren, listRecentBirths, listRecentDeaths
+from BuhseFork import divBeforeMarr, deathBeforeMarr, deathBeforeBirth, deathBeforeDivorce, multipleBirths, tooManySiblings, correct_gender_for_role, male_last_names, tooOld, isUniqueID, \
+    isUniqueNameAndBirth, checkBigamy, validBirths, pastDate, birthBfrMarr, orderChildren, individuals, families, list_deceased,list_living_married, uniqueFamBySpouse, uniqueChildren, \
+    listRecentBirths, listRecentDeaths, listUpcomingBirthdays
 
 
 '''
@@ -191,6 +193,16 @@ class TestGEDCOM(unittest.TestCase):
         self.assertTrue(list_deceased({2: {'firstName': 'George', 'lastName': '/Ulasevich/', 'sex': 'F', 'birthday': ['29', 'APR', '1955'], 'age': 19,
                                            'alive': False, 'death': ['19', 'MAR', '1975'], 'child': 'NA', 'spouse': [1]}},-1))
 
+
+    def testListUpcomingBirthdays(self):
+        "True if birthday is within the next 30 days"
+        self.assertTrue(listUpcomingBirthdays({1: {'firstName': 'Jacob', 'lastName': '/Johnson/', 'sex': 'M', 'birthday': ['11', 'NOV', '2015'], 'age': 1,
+                                            'alive': True, 'death': 'NA', 'child': 'F1', 'spouse': 'NA'}}))
+        self.assertFalse(listUpcomingBirthdays({1: {'firstName': 'Jacob', 'lastName': '/Johnson/', 'sex': 'M', 'birthday': ['8', 'DEC', '2015'], 'age': 1,
+                 'alive': True, 'death': 'NA', 'child': 'F1', 'spouse': 'NA'}}))
+        self.assertFalse(listUpcomingBirthdays(
+            {1: {'firstName': 'Jacob', 'lastName': '/Johnson/', 'sex': 'M', 'birthday': ['6', 'NOV', '2015'], 'age': 2,
+                 'alive': True, 'death': 'NA', 'child': 'F1', 'spouse': 'NA'}}))
 
     '''Tests written by Alex Buhse'''
 
