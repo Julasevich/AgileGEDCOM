@@ -432,16 +432,54 @@ def listUpcomingBirthdays(individuals):
     upcomingBirthdays = []
     today = time.strftime("%d.%m.%Y").split('.')
     today = int(today[2]) * 10000 + int(today[1]) * 100 + int(today[0])
-
     for indi in individuals:
         birthD = dateVal(individuals[indi]["birthday"])
-        age = individuals[indi]["age"]
         bdayS = str(birthD)[4:]
         todayS = str(today)[4:]
-
         if (int(bdayS) - int(todayS)) > 0 and (int(bdayS) - int(todayS)) < 100:
             upcomingBirthdays.append("{0}: {1} {2} {3}".format(indi, individuals[indi]["firstName"], individuals[indi]["lastName"],individuals[indi]["birthday"]))
     return upcomingBirthdays
+
+def listRecentSurvivors(individuals,families, uTest):
+    "US37 List recent survivors"
+    deceased = []
+    deceasedFam = []
+    today = time.strftime("%d.%m.%Y").split('.')
+    today = int(today[2]) * 10000 + int(today[1]) * 100 + int(today[0])
+    for fam in families:
+        x = families[fam]
+        hid = addi(x["husband"])
+        wid = addi(x["wife"])
+        husband = None
+        wife = None
+        if families[fam]["divDate"] == "NA":
+            for indiv in individuals:
+                if IndiIDs[indiv - 1] == hid:
+                    husband = indiv
+                    if individuals[indiv]["alive"] == False:
+                        if individuals[indiv]["death"] == "NA":
+                            continue
+                        deathday = dateVal(individuals[indiv]["death"])
+                        if(today - deathday < 100):
+                            if (uTest == -1):
+                                return True
+                            else:
+                                deceased.append(indiv)
+                    elif (uTest == -1):
+                        return False
+                elif IndiIDs[indiv - 1] == wid:
+                    wife = indiv
+                    if individuals[indiv]["alive"] == False:
+                        deathday = dateVal(individuals[indiv]["death"])
+                        if(today - deathday < 100):
+                            if (uTest == -1):
+                                return True
+                            else:
+                                deceased.append(indiv)
+                elif (uTest == -1):
+                    return False
+    return deceased
+
 
 # Get file
 gedFile = open("MyFamily.ged", "r")
@@ -879,17 +917,44 @@ for error in idErrors:
 for error in nameBirthdayErrors:
     print(error)
 
-# Print list of deceased, list of living and married.
+# Print list of deceased, list of living and married, list of recent survivors.
 uTest = 0
 listD = list_deceased(individuals, uTest)
 listLiving = list_living_married(individuals, families, uTest)
+listR = listRecentSurvivors(individuals, families, uTest)
 
 dName = []
 lName = []
+spName =[]
+chName =[]
 for p in listD:
     dName.append(individuals[p]["firstName"]+individuals[p]["lastName"])
 for p in listLiving:
     lName.append(individuals[p]["firstName"]+individuals[p]["lastName"])
+for p in listR:
+    sp = individuals[p]["spouse"]
+    gender = individuals[p]["sex"]
+    for f in sp:
+        if gender == "M":
+            spouse = families[f]["wife"]
+            if(individuals[spouse]["firstName"] + individuals[spouse]["lastName"]) in spName:
+                continue
+            else:
+                spName.append(individuals[spouse]["firstName"] + individuals[spouse]["lastName"])
+        else:
+            spouse = families[f]["husband"]
+            if (individuals[spouse]["firstName"] + individuals[spouse]["lastName"]) in spName:
+                continue
+            else:
+                spName.append(individuals[spouse]["firstName"] + individuals[spouse]["lastName"])
+        childL = families[f]["children"]
+        for child in childL:
+            if(individuals[spouse]["firstName"] + individuals[spouse]["lastName"]) in chName:
+                continue
+            else:
+                chName.append(individuals[child]["firstName"] + individuals[child]["lastName"])
+
+
 
 indiTable1 = PrettyTable()
 indiTable1.add_column("List of deceased:", dName)
@@ -925,4 +990,13 @@ upcomingBirthdaysTable = PrettyTable()
 upcomingBirthdays = listUpcomingBirthdays(individuals)
 upcomingBirthdaysTable.add_column("List of upcoming Birthdays ", upcomingBirthdays)
 print(upcomingBirthdaysTable)
+print("")
+
+recentSurvivorsTableS = PrettyTable()
+recentSurvivorsTableC = PrettyTable()
+recentSurvivorsTableS.add_column("Recent Survivors (Spouses)", spName)
+recentSurvivorsTableC.add_column("Recent Survivors (Children)", chName)
+
+print(recentSurvivorsTableS)
+print(recentSurvivorsTableC)
 print("")

@@ -2,7 +2,7 @@
 import unittest
 from BuhseFork import divBeforeMarr, deathBeforeMarr, deathBeforeBirth, deathBeforeDivorce, multipleBirths, tooManySiblings, correct_gender_for_role, male_last_names, tooOld, isUniqueID, \
     isUniqueNameAndBirth, checkBigamy, validBirths, pastDate, birthBfrMarr, orderChildren, individuals, families, list_deceased,list_living_married, uniqueFamBySpouse, uniqueChildren, \
-    listRecentBirths, listRecentDeaths, listUpcomingBirthdays
+    listRecentBirths, listRecentDeaths, listUpcomingBirthdays, listRecentSurvivors
 
 
 '''
@@ -196,13 +196,30 @@ class TestGEDCOM(unittest.TestCase):
 
     def testListUpcomingBirthdays(self):
         "True if birthday is within the next 30 days"
-        self.assertTrue(listUpcomingBirthdays({1: {'firstName': 'Jacob', 'lastName': '/Johnson/', 'sex': 'M', 'birthday': ['11', 'NOV', '2015'], 'age': 1,
+        self.assertTrue(listUpcomingBirthdays({1: {'firstName': 'Jacob', 'lastName': '/Johnson/', 'sex': 'M', 'birthday': ['19', 'NOV', '2015'], 'age': 1,
                                             'alive': True, 'death': 'NA', 'child': 'F1', 'spouse': 'NA'}}))
-        self.assertFalse(listUpcomingBirthdays({1: {'firstName': 'Jacob', 'lastName': '/Johnson/', 'sex': 'M', 'birthday': ['8', 'DEC', '2015'], 'age': 1,
+        self.assertFalse(listUpcomingBirthdays({1: {'firstName': 'Jacob', 'lastName': '/Johnson/', 'sex': 'M', 'birthday': ['28', 'DEC', '2015'], 'age': 1,
                  'alive': True, 'death': 'NA', 'child': 'F1', 'spouse': 'NA'}}))
         self.assertFalse(listUpcomingBirthdays(
             {1: {'firstName': 'Jacob', 'lastName': '/Johnson/', 'sex': 'M', 'birthday': ['6', 'NOV', '2015'], 'age': 2,
                  'alive': True, 'death': 'NA', 'child': 'F1', 'spouse': 'NA'}}))
+
+    def testListRecentSurvivors(self):
+        self.assertTrue(listRecentSurvivors({2: {'firstName': 'George', 'lastName': '/Ulasevich/', 'sex': 'F',
+                                                  'birthday': ['29', 'APR', '1955'], 'age': 19,
+                                                  'alive': False, 'death': ['8', 'NOV', '2017'], 'child': 'NA',
+                                                  'spouse': [1]}},
+                                             {1: {'marrDate': ['15', 'MAY', '1982'], 'divDate': 'NA',
+                                                  'husband': 2, 'wife': 3, 'children': [1, 4, 5],
+                                                  'endDate': [['19', 'MAR', '1975'], 'Husband']}}, -1))
+
+        self.assertFalse(listRecentSurvivors({4: {'firstName': 'Dana', 'lastName': '/Ulasevich/', 'sex': 'F',
+                                                 'birthday': ['5', 'APR', '1986'], 'age': 31,
+                                                 'alive': True, 'death': 'NA', 'child': 'F1', 'spouse': [4]}},
+                                            {4: {'marrDate': ['10', 'FEB', '1973'], 'divDate': 'NA',
+                                                 'husband': 6, 'wife': 4, 'children': [9],
+                                                 'endDate': [['18', 'MAR', '1986'], 'Husband']}}, -1))
+
 
     '''Tests written by Alex Buhse'''
 
