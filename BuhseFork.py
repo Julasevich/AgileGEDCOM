@@ -1,5 +1,6 @@
 from prettytable import PrettyTable
 import time
+import datetime
 
 months = {"JAN": 1, "FEB": 2, "MAR": 3, "APR": 4, "MAY": 5, "JUN": 6, "JUL": 7, "AUG": 8, "SEP": 9, "OCT": 10,
           "NOV": 11, "DEC": 12}
@@ -8,6 +9,7 @@ uniqueFamIDs = []
 idErrors = []
 multipleBirthsList = []
 livingSingleList = []
+upcomingAniversaryList = []
 nameBirthdayErrors = []
 uniqueNameAndBirth = {}
 today = time.strftime("%Y %m %d")
@@ -480,6 +482,40 @@ def listRecentSurvivors(individuals,families, uTest):
                     return False
     return deceased
 
+def listUpComingAniversaries(aList):
+    "US32 - List all multiple births."
+    upcomingAniversaryTable = PrettyTable()
+    upcomingAniversaryTable.add_column("Upcoming Aniversary Dataes:", aList)
+    print(upcomingAniversaryTable)
+    print("")
+    return
+
+def monthToNum(strMonth):
+    if strMonth == "JAN":
+        return 1
+    elif strMonth == "FEB":
+        return 2
+    elif strMonth == "MAR":
+        return 3
+    elif strMonth == "APR":
+        return 4
+    elif strMonth == "MAY":
+        return 5
+    elif strMonth == "JUN":
+        return 6
+    elif strMonth == "JUL":
+        return 7
+    elif strMonth == "AUG":
+        return 8
+    elif strMonth == "SEPT":
+        return 9
+    elif strMonth == "OCT":
+        return 10
+    elif strMonth == "NOV":
+        return 11
+    elif strMonth == "DEC":
+        return 12
+
 
 # Get file
 gedFile = open("MyFamily.ged", "r")
@@ -630,7 +666,15 @@ for line in gedFile:
                 stillMarried = False
             elif tag == "DATE":
                 if stillMarried is True and birthday is False and deathday is False:
+                    tempDate = words[2:]
+                    now = datetime.datetime.now()
+                    marrMonth = monthToNum(tempDate[1])
+                    if marrMonth == now.month or marrMonth == now.month + 1 and int(tempDate[0]) <= now.day + 30:
+                        upcomingAniversaryList.append(tempDate)
                     currentMarr["marrDate"] = words[2:]
+                    # Add Date for Aniversary if close
+                    print(words[2:])
+                    print("this")
                 elif birthday is False and deathday is False:
                     currentDiv["divDate"] = words[2:]
                 elif deathday is False:
@@ -964,6 +1008,9 @@ print("")
 # List Specifications for single and married
 listLivingSingle(livingSingleList)
 listMultipleBirths(multipleBirthsList)
+
+# List upcoming anniversaries
+listUpComingAniversaries(upcomingAniversaryList)
 
 indiTable2 = PrettyTable()
 indiTable2.add_column("List of living and married:", lName)
