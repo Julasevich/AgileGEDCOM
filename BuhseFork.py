@@ -490,6 +490,41 @@ def listUpComingAniversaries(aList):
     print("")
     return
 
+
+def validateDate(date):
+    now = datetime.datetime.now()
+    year = now.year
+    if int(date[2]) > year:
+        return False
+    if date[1] not in months:
+        return False
+    if date[1] == "JAN" and int(date[0]) > 31:
+        return False
+    if date[1] == "FEB" and int(date[0]) > 28:
+        return False
+    if date[1] == "MAR" and int(date[0]) > 30:
+        return False
+    if date[1] == "APR" and int(date[0]) > 30:
+        return False
+    if date[1] == "MAY" and int(date[0]) > 31:
+        return False
+    if date[1] == "JUN" and int(date[0]) > 29:
+        return False
+    if date[1] == "JUL" and int(date[0]) > 31:
+        return False
+    if date[1] == "AUG" and int(date[0]) > 31:
+        return False
+    if date[1] == "SEP" and int(date[0]) > 28:
+        return False
+    if date[1] == "OCT" and int(date[0]) > 31:
+        return False
+    if date[1] == "NOV" and int(date[0]) > 30:
+        return False
+    if date[1] == "DEV" and int(date[0]) > 31:
+        return False
+    return True
+
+
 def monthToNum(strMonth):
     if strMonth == "JAN":
         return 1
