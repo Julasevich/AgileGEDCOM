@@ -2,7 +2,7 @@
 import unittest
 from BuhseFork import divBeforeMarr, deathBeforeMarr, deathBeforeBirth, deathBeforeDivorce, multipleBirths, tooManySiblings, correct_gender_for_role, male_last_names, tooOld, isUniqueID, \
     isUniqueNameAndBirth, checkBigamy, validBirths, pastDate, birthBfrMarr, orderChildren, individuals, families, list_deceased,list_living_married, uniqueFamBySpouse, uniqueChildren, \
-    listRecentBirths, listRecentDeaths, listUpcomingBirthdays, listRecentSurvivors
+    listRecentBirths, listRecentDeaths, listUpcomingBirthdays, listRecentSurvivors, listOrphans, listAgeDiff
 
 
 '''
@@ -259,6 +259,19 @@ class TestGEDCOM(unittest.TestCase):
         self.assertTrue(uniqueFamBySpouse(5, families))
         self.assertFalse(uniqueFamBySpouse(3, families))
         self.assertFalse(uniqueFamBySpouse(2, families))
+
+    def testOrpans(self):
+        '''Unit testing for user story 33'''
+        self.assertTrue(listOrphans(families[1], 1, individuals))
+        self.assertFalse(listOrphans(families[2], 2, individuals))
+        self.assertFalse(listOrphans(families[3], 3, individuals))
+
+    def testAgeDiff(self):
+        '''Unit testing for user story 34'''
+        self.assertTrue(listAgeDiff(families[2], 2, individuals))
+        self.assertFalse(listAgeDiff(families[1], 1, individuals))
+        self.assertFalse(listAgeDiff(families[3], 3, individuals))
+
 
 
 

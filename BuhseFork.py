@@ -15,6 +15,39 @@ uniqueNameAndBirth = {}
 today = time.strftime("%Y %m %d")
 
 
+def validateDate(date):
+    now = datetime.datetime.now()
+    year = now.year
+    if int(date[2]) > year:
+        return False
+    if date[1] not in months:
+        return False
+    if date[1] == "JAN" and int(date[0]) > 31:
+        return False
+    if date[1] == "FEB" and int(date[0]) > 28:
+        return False
+    if date[1] == "MAR" and int(date[0]) > 31:
+        return False
+    if date[1] == "APR" and int(date[0]) > 30:
+        return False
+    if date[1] == "MAY" and int(date[0]) > 31:
+        return False
+    if date[1] == "JUN" and int(date[0]) > 30:
+        return False
+    if date[1] == "JUL" and int(date[0]) > 31:
+        return False
+    if date[1] == "AUG" and int(date[0]) > 31:
+        return False
+    if date[1] == "SEP" and int(date[0]) > 30:
+        return False
+    if date[1] == "OCT" and int(date[0]) > 31:
+        return False
+    if date[1] == "NOV" and int(date[0]) > 30:
+        return False
+    if date[1] == "DEV" and int(date[0]) > 31:
+        return False
+    return True
+
 def dateVal(date):
     return int(date[2]) * 10000 + months[date[1]] * 100 + int(date[0])
 
@@ -271,6 +304,59 @@ def uniqueChildren(fam, fid, indis):
                 res = True;
                 print("ERROR: FAMILY: US25: " + addF(fid) + ": Child " + addi(c) + " has same name and birthday as child " + addi(oc));
     return res;
+
+
+orphans = []
+
+def listOrphans(fam, fid, indis):
+    '''US 33'''
+    res = False
+    if fam["children"] == "NA":
+        return False
+    husb = fam["husband"];
+    wife = fam["wife"];
+    pdeath = "NA";
+    if indis[husb]["death"] == "NA" or indis[wife]["death"] == "NA":
+        return False
+    elif dateVal(indis[husb]["death"]) > dateVal(indis[wife]["death"]):
+        pdeath = indis[husb]["death"]
+    else:
+        pdeath = indis[wife]["death"]
+    for c in fam["children"]:
+        if (dateVal(pdeath) - dateVal(indis[c]["birthday"])) < 180000:
+            res = True
+            mess = "WARNING: FAMILY: US33: " + addF(fid) + ": Child " + addi(c) + " was orphaned"
+            orphans.append(mess)
+    return res
+
+largeDiffs = []
+
+def listAgeDiff(fam, fid, indis):
+    '''US 34'''
+    res = False
+    m = fam["marrDate"]
+    husb = fam["husband"]
+    wife = fam["wife"]
+    h = indis[husb]["birthday"]
+    w = indis[wife]["birthday"]
+    old = 0
+    young = 0
+    oldg = "NA"
+    if dateVal(h) > dateVal(w):
+        young = dateVal(m) - dateVal(w)
+        old = dateVal(m) - dateVal(h)
+        oldg = ": Husband"
+    else:
+        young = dateVal(m) - dateVal(h)
+        old = dateVal(m) - dateVal(w)
+        oldg = ": Wife"
+    if old >= young*2:
+        res = True
+        mess = "WARNING: FAMILY: US34: " + addF(fid) + oldg + " was more than twice as old as their spouse at marriage"
+        largeDiffs.append(mess)
+    return res
+
+
 
 def correct_gender_for_role(indiv, fam):
     "US21 Husband in family should be male and wife in family should be female"
@@ -968,6 +1054,10 @@ for fam in families:
 
     uniqueChildren(families[fam], fam, individuals)
 
+    listOrphans(families[fam], fam, individuals)
+
+    listAgeDiff(families[fam], fam, individuals)
+
     if multipleBirths(families[fam]["children"], individuals):
         tempIDList = families[fam]["children"]
         tempNameList = []
@@ -1033,7 +1123,11 @@ for p in listR:
             else:
                 chName.append(individuals[child]["firstName"] + individuals[child]["lastName"])
 
+for warn in orphans:
+    print(warn)
 
+for warn in largeDiffs:
+    print(warn)
 
 indiTable1 = PrettyTable()
 indiTable1.add_column("List of deceased:", dName)
